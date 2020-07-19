@@ -1,16 +1,6 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import {Map, Record} from 'immutable';
-import {PLATFORM_ID, Inject} from '@angular/core';
-import {isPlatformBrowser} from '@angular/common';
-
+import { Map, Record } from "immutable";
+import { PLATFORM_ID, Inject } from "@angular/core";
+import { isPlatformBrowser } from "@angular/common";
 
 export interface ProductControlState extends Map<string, any> {
     wishlist: any;
@@ -49,5 +39,5 @@ export const productControlRecord = Record({
 
     checkoutLoading: false,
     checkoutLoaded: false,
-    checkoutFailed: false,
+    checkoutFailed: false
 });

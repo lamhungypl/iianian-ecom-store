@@ -1,14 +1,5 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import {Map, Record} from 'immutable';
-import {ProfileModel} from '../models/profile.model';
+import { Map, Record } from "immutable";
+import { ProfileModel } from "../models/profile.model";
 
 export interface CommonState extends Map<string, any> {
     wishlistCount: number;
@@ -26,7 +17,6 @@ export interface CommonState extends Map<string, any> {
     getlanguageLoading: boolean;
     getlanguageLoaded: boolean;
     getlanguageFailed: boolean;
-
 }
 
 export const CommonRecord = Record({
@@ -44,7 +34,5 @@ export const CommonRecord = Record({
 
     getlanguageLoading: false,
     getlanguageLoaded: false,
-    getlanguageFailed: false,
-
-
+    getlanguageFailed: false
 });

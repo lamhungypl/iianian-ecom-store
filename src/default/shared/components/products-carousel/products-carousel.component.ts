@@ -1,24 +1,14 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import {Component, OnInit, Input, AfterViewInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {SwiperConfigInterface} from 'ngx-swiper-wrapper';
-import {MatDialog} from '@angular/material';
-import {ProductDialogComponent} from './product-dialog/product-dialog.component';
-import {ConfigService} from '../../../../core/service/config.service';
-
+import { Component, OnInit, Input, AfterViewInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { SwiperConfigInterface } from "ngx-swiper-wrapper";
+import { MatDialog } from "@angular/material";
+import { ProductDialogComponent } from "./product-dialog/product-dialog.component";
+import { ConfigService } from "../../../../core/service/config.service";
 
 @Component({
-    selector: 'app-products-carousel',
-    templateUrl: './products-carousel.component.html',
-    styleUrls: ['./products-carousel.component.scss']
+    selector: "app-products-carousel",
+    templateUrl: "./products-carousel.component.html",
+    styleUrls: ["./products-carousel.component.scss"]
 })
 export class ProductsCarouselComponent implements OnInit, AfterViewInit {
     // decorator
@@ -28,10 +18,11 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
     // path of the image
     public imagePath: string;
 
-    constructor(public dialog: MatDialog,
-                private router: Router,
-                private configService: ConfigService) {
-    }
+    constructor(
+        public dialog: MatDialog,
+        private router: Router,
+        private configService: ConfigService
+    ) {}
 
     // initially get data from config service
     ngOnInit() {
@@ -56,16 +47,16 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
                     slidesPerView: 1
                 },
                 740: {
-                    slidesPerView: 2,
+                    slidesPerView: 2
                 },
                 960: {
-                    slidesPerView: 3,
+                    slidesPerView: 3
                 },
                 1280: {
-                    slidesPerView: 4,
+                    slidesPerView: 4
                 },
                 1500: {
-                    slidesPerView: 5,
+                    slidesPerView: 5
                 }
             }
         };
@@ -79,13 +70,12 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
     public openProductDialog(product) {
         const dialogRef = this.dialog.open(ProductDialogComponent, {
             data: product,
-            panelClass: 'product-dialog'
+            panelClass: "product-dialog"
         });
         dialogRef.afterClosed().subscribe(products => {
             if (products) {
-                this.router.navigate(['/products/productdetails', products.id]);
+                this.router.navigate(["/products/productdetails", products.id]);
             }
         });
     }
-
 }

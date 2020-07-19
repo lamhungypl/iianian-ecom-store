@@ -1,24 +1,21 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {Store} from '@ngrx/store';
-import {Subscription} from 'rxjs';
-import * as authAction from './action/product-control.action';
-import * as store from '../state.interface';
-import {MatSnackBar} from '@angular/material';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
+import { Subscription } from "rxjs";
+import * as authAction from "./action/product-control.action";
+import * as store from "../state.interface";
+import { MatSnackBar } from "@angular/material";
 import {
-    getCartList, getCartListCount, getCheckedOutData, getCheckoutFailed, getCheckoutLoaded, getCheckoutLoading,
-    getTotalCartPrice, getOptionsAvailable
-} from './reducer/product-control.selector';
-import {CheckoutModel} from './models/checkout.model';
+    getCartList,
+    getCartListCount,
+    getCheckedOutData,
+    getCheckoutFailed,
+    getCheckoutLoaded,
+    getCheckoutLoading,
+    getTotalCartPrice,
+    getOptionsAvailable
+} from "./reducer/product-control.selector";
+import { CheckoutModel } from "./models/checkout.model";
 
 @Injectable()
 export class ProductControlSandbox {
@@ -38,8 +35,11 @@ export class ProductControlSandbox {
     changeCountTotalPrice = 0;
     private subscriptions: Array<Subscription> = [];
 
-    constructor(private router: Router,
-                protected appState$: Store<store.AppState>, public snackBar: MatSnackBar) {
+    constructor(
+        private router: Router,
+        protected appState$: Store<store.AppState>,
+        public snackBar: MatSnackBar
+    ) {
         this.completeOrder();
     }
 
@@ -73,7 +73,7 @@ export class ProductControlSandbox {
         this.productTotal = 0;
         for (let i = 0; i < this.selectedProducts.length; i++) {
             if (this.selectedProducts[i].productId === id) {
-                if (this.selectedProducts[i].pricerefer !== '') {
+                if (this.selectedProducts[i].pricerefer !== "") {
                     if (this.selectedProducts[i].productCount === 1) {
                         const tempPricerefer = parseInt(this.selectedProducts[i].pricerefer, 10);
                         this.productTotal = this.productTotal + tempPricerefer;
@@ -128,17 +128,16 @@ export class ProductControlSandbox {
         const availableData: any = {};
         availableData.options = param.totalOptions;
         cartParams.totalPrice = this.productTotal;
-        this.snackBar.open('Product ' + item.name + ' is successfully added to cart', '×', {
-            panelClass: 'success',
-            verticalPosition: 'top',
-            horizontalPosition: 'right',
+        this.snackBar.open("Product " + item.name + " is successfully added to cart", "×", {
+            panelClass: "success",
+            verticalPosition: "top",
+            horizontalPosition: "right",
             duration: 3000
         });
         this.changeCountTotalPrice = cartParams.totalPrice;
-        sessionStorage.setItem('changeCountTotalPrice', JSON.stringify(this.changeCountTotalPrice));
+        sessionStorage.setItem("changeCountTotalPrice", JSON.stringify(this.changeCountTotalPrice));
         this.totalOptionsSelected(availableData);
         this.HandleCart(cartParams);
-
     }
 
     /**
@@ -161,12 +160,11 @@ export class ProductControlSandbox {
         this.selectedProducts.forEach(_price => {
             if (_price.pricerefer) {
                 const tempPricerefer = Number(_price.pricerefer);
-                this.productTotal += (tempPricerefer * _price.productCount);
+                this.productTotal += tempPricerefer * _price.productCount;
             } else {
                 const tempPrice = Number(_price.price);
-                this.productTotal += (tempPrice * _price.productCount);
+                this.productTotal += tempPrice * _price.productCount;
             }
-
         });
         const cartParams: any = {};
         cartParams.products = this.selectedProducts;
@@ -201,12 +199,12 @@ export class ProductControlSandbox {
                     }
                     return _items;
                 });
-                if (product.pricerefer !== '') {
-                    const totalValue: any = (product._totalOptions + product.pricerefer);
+                if (product.pricerefer !== "") {
+                    const totalValue: any = product._totalOptions + product.pricerefer;
                     const halfValue: any = totalValue;
                     this.productTotal -= halfValue;
                 } else {
-                    const totalValue: any = (product._totalOptions + product.price);
+                    const totalValue: any = product._totalOptions + product.price;
                     const halfValue: any = totalValue;
                     this.productTotal -= halfValue;
                 }
@@ -219,12 +217,12 @@ export class ProductControlSandbox {
                         return true;
                     }
                 });
-                if (product.pricerefer !== '') {
-                    const totalValue: any = (product._totalOptions + product.pricerefer);
+                if (product.pricerefer !== "") {
+                    const totalValue: any = product._totalOptions + product.pricerefer;
                     const halfValue: any = totalValue;
                     this.productTotal -= halfValue;
                 } else {
-                    const totalValue: any = (product._totalOptions + product.price);
+                    const totalValue: any = product._totalOptions + product.price;
                     const halfValue: any = totalValue;
                     this.productTotal -= halfValue;
                 }
@@ -234,27 +232,31 @@ export class ProductControlSandbox {
         cartParams.products = this.selectedProducts;
         cartParams.productTotal = this.cartTotal;
         cartParams.totalPrice = this.productTotal;
-        sessionStorage.setItem('changeCountTotalPrice', JSON.stringify(cartParams.totalPrice));
+        sessionStorage.setItem("changeCountTotalPrice", JSON.stringify(cartParams.totalPrice));
         this.HandleCart(cartParams);
     }
 
     // increase product count from cart
     public addItems(product) {
         this.productTotal = 0;
-        if (product.pricerefer !== '') {
-            const _changeTotalPrice: any = sessionStorage.getItem('changeCountTotalPrice') ? parseFloat(sessionStorage.getItem('changeCountTotalPrice')) : 0;
+        if (product.pricerefer !== "") {
+            const _changeTotalPrice: any = sessionStorage.getItem("changeCountTotalPrice")
+                ? parseFloat(sessionStorage.getItem("changeCountTotalPrice"))
+                : 0;
             const numberPricerefer: any = parseInt(product.pricerefer, 10);
             let calculation: any = numberPricerefer + product._totalOptions;
             if (calculation < 0) {
-                calculation = calculation / (-1);
+                calculation = calculation / -1;
             }
             this.productTotal = _changeTotalPrice + calculation;
         } else {
-            const _changeTotalPrice: any = sessionStorage.getItem('changeCountTotalPrice') ? parseFloat(sessionStorage.getItem('changeCountTotalPrice')) : 0;
+            const _changeTotalPrice: any = sessionStorage.getItem("changeCountTotalPrice")
+                ? parseFloat(sessionStorage.getItem("changeCountTotalPrice"))
+                : 0;
             const numberPrice: any = parseInt(product.price, 10);
             let calculation: any = numberPrice + product._totalOptions;
             if (calculation < 0) {
-                calculation = calculation / (-1);
+                calculation = calculation / -1;
             }
             this.productTotal = _changeTotalPrice + calculation;
         }
@@ -276,9 +278,9 @@ export class ProductControlSandbox {
      * @param params product detail
      */
     HandleCart(params) {
-        sessionStorage.setItem('productTotal', JSON.stringify(params.totalPrice));
-        sessionStorage.setItem('selectedProducts', JSON.stringify(params.products));
-        sessionStorage.setItem('selectedProductsCount', JSON.stringify(params.productTotal));
+        sessionStorage.setItem("productTotal", JSON.stringify(params.totalPrice));
+        sessionStorage.setItem("selectedProducts", JSON.stringify(params.products));
+        sessionStorage.setItem("selectedProductsCount", JSON.stringify(params.productTotal));
         this.appState$.dispatch(new authAction.CartHandleAction(params));
     }
 
@@ -293,12 +295,17 @@ export class ProductControlSandbox {
      * get session data from session storage
      */
     public getSessionData() {
-        this.selectedProducts = sessionStorage.getItem('selectedProducts') ? JSON.parse(sessionStorage.getItem('selectedProducts')) : [];
-        const cartTotal: number = sessionStorage.getItem('selectedProducts') ? parseFloat(sessionStorage.getItem('selectedProductsCount')) : 0;
+        this.selectedProducts = sessionStorage.getItem("selectedProducts")
+            ? JSON.parse(sessionStorage.getItem("selectedProducts"))
+            : [];
+        const cartTotal: number = sessionStorage.getItem("selectedProducts")
+            ? parseFloat(sessionStorage.getItem("selectedProductsCount"))
+            : 0;
         this.cartTotal = cartTotal;
-        const productTotal: number = sessionStorage.getItem('productTotal') ? parseFloat(sessionStorage.getItem('productTotal')) : 0;
+        const productTotal: number = sessionStorage.getItem("productTotal")
+            ? parseFloat(sessionStorage.getItem("productTotal"))
+            : 0;
         this.productTotal = productTotal;
-
     }
 
     /**
@@ -308,7 +315,7 @@ export class ProductControlSandbox {
         this.checkedOutData$.subscribe(data => {
             if (data) {
                 if (data.customerId) {
-                    this.router.navigate(['/checkout/success']);
+                    this.router.navigate(["/checkout/success"]);
                     const params: any = {};
                     params.products = [];
                     params.productTotal = 0;
@@ -318,6 +325,4 @@ export class ProductControlSandbox {
             }
         });
     }
-
-
 }

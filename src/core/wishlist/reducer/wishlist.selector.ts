@@ -1,16 +1,7 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import {createSelector} from 'reselect';
+import { createSelector } from "reselect";
 
-import * as  fromWishlist from './wishlist.reducer';
-import {AppState} from '../../state.interface';
+import * as fromWishlist from "./wishlist.reducer";
+import { AppState } from "../../state.interface";
 
 export const getState = (State: AppState) => State.wishlist;
 export const getWishlist = createSelector(getState, fromWishlist.getWishlist);

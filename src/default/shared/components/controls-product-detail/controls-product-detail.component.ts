@@ -1,23 +1,13 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {MatSnackBar} from '@angular/material';
-import {ProductControlSandbox} from '../../../../core/product-control/product-control.sandbox';
-import {Router} from '@angular/router';
-import {ListsSandbox} from '../../../../core/lists/lists.sandbox';
-
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { MatSnackBar } from "@angular/material";
+import { ProductControlSandbox } from "../../../../core/product-control/product-control.sandbox";
+import { Router } from "@angular/router";
+import { ListsSandbox } from "../../../../core/lists/lists.sandbox";
 
 @Component({
-    selector: 'app-controls-product-detail',
-    templateUrl: './controls-product-detail.component.html',
-    styleUrls: ['./controls-product-detail.component.scss'],
+    selector: "app-controls-product-detail",
+    templateUrl: "./controls-product-detail.component.html",
+    styleUrls: ["./controls-product-detail.component.scss"]
 })
 export class ControlsProductDetailComponent implements OnInit {
     // decorator
@@ -32,17 +22,18 @@ export class ControlsProductDetailComponent implements OnInit {
     @Output() QuantityChange: EventEmitter<any> = new EventEmitter<any>();
     // pagination count
     public count = 1;
-    public align = 'center center';
+    public align = "center center";
     // whislist
     public quantity: any = 1;
     public isWish: any = {};
     public products: any;
 
-    constructor(public snackBar: MatSnackBar,
-                public controlSandbox: ProductControlSandbox,
-                public listSandbox: ListsSandbox,
-                private router: Router) {
-    }
+    constructor(
+        public snackBar: MatSnackBar,
+        public controlSandbox: ProductControlSandbox,
+        public listSandbox: ListsSandbox,
+        private router: Router
+    ) {}
 
     // intially get the cart data and calls layoutAlign
     ngOnInit() {
@@ -56,38 +47,38 @@ export class ControlsProductDetailComponent implements OnInit {
 
     // align layout based on condition type
     public layoutAlign() {
-        if (this.type === 'all') {
-            this.align = 'space-between center';
-        } else if (this.type === 'wish') {
-            this.align = 'start center';
-        } else if (this.type === 'detail') {
-            this.align = 'start center';
-        } else if (this.type === 'home') {
-            this.align = 'start center';
+        if (this.type === "all") {
+            this.align = "space-between center";
+        } else if (this.type === "wish") {
+            this.align = "start center";
+        } else if (this.type === "detail") {
+            this.align = "start center";
+        } else if (this.type === "home") {
+            this.align = "start center";
         } else {
-            this.align = 'center center';
+            this.align = "center center";
         }
     }
 
     // change quantity of the product
     public changeCount(operation) {
         const product: any = {};
-        if (operation === 'remove' && (this.quantity > 1)) {
+        if (operation === "remove" && this.quantity > 1) {
             this.quantity -= 1;
-        } else if (operation === 'add') {
+        } else if (operation === "add") {
             this.quantity += 1;
         }
     }
 
     // add product to wishlist
     public addToWishList(product) {
-        const currentUser = JSON.parse(localStorage.getItem('user'));
+        const currentUser = JSON.parse(localStorage.getItem("user"));
         if (currentUser) {
             const params: any = {};
             params.productId = product.productId;
             this.controlSandbox.addToWishlist(params);
         } else {
-            this.router.navigate(['/auth']);
+            this.router.navigate(["/auth"]);
         }
     }
 
@@ -113,7 +104,7 @@ export class ControlsProductDetailComponent implements OnInit {
 
     // clear the decorator optionValueArray value in the product detail component
     public emptyData() {
-        this.emptyDecorator.emit('clear');
+        this.emptyDecorator.emit("clear");
     }
 
     // emit the data from open product dialoug component
@@ -125,5 +116,4 @@ export class ControlsProductDetailComponent implements OnInit {
     public changeQuantity(value) {
         this.QuantityChange.emit(value);
     }
-
 }

@@ -1,28 +1,17 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-
-import {Component, OnInit, ElementRef, ViewChild, OnDestroy} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {MatSnackBar} from '@angular/material';
-import {emailValidator} from '../../../theme/utils/app-validators';
-import {ConfigService} from '../../../../core/service/config.service';
-import {CommonSandbox} from '../../../../core/common/common.sandbox';
-import {AccountSandbox} from '../../../../core/account/account.sandbox';
-import {ListsSandbox} from '../../../../core/lists/lists.sandbox';
-import { Subscription } from 'rxjs';
-
+import { Component, OnInit, ElementRef, ViewChild, OnDestroy } from "@angular/core";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { MatSnackBar } from "@angular/material";
+import { emailValidator } from "../../../theme/utils/app-validators";
+import { ConfigService } from "../../../../core/service/config.service";
+import { CommonSandbox } from "../../../../core/common/common.sandbox";
+import { AccountSandbox } from "../../../../core/account/account.sandbox";
+import { ListsSandbox } from "../../../../core/lists/lists.sandbox";
+import { Subscription } from "rxjs";
 
 @Component({
-    selector: 'app-information',
-    templateUrl: './information.component.html',
-    styleUrls: ['./information.component.scss']
+    selector: "app-information",
+    templateUrl: "./information.component.html",
+    styleUrls: ["./information.component.scss"]
 })
 export class InformationComponent implements OnInit, OnDestroy {
     // reactive form
@@ -40,15 +29,16 @@ export class InformationComponent implements OnInit, OnDestroy {
     // subscription
     private subscriptions: Array<Subscription> = [];
 
-    @ViewChild('filePath') filePath: ElementRef;
+    @ViewChild("filePath") filePath: ElementRef;
 
-    constructor(public formBuilder: FormBuilder,
-                public configService: ConfigService,
-                public snackBar: MatSnackBar,
-                public commonSandbox: CommonSandbox,
-                public listsSandbox: ListsSandbox,
-                public accountSandbox: AccountSandbox) {
-    }
+    constructor(
+        public formBuilder: FormBuilder,
+        public configService: ConfigService,
+        public snackBar: MatSnackBar,
+        public commonSandbox: CommonSandbox,
+        public listsSandbox: ListsSandbox,
+        public accountSandbox: AccountSandbox
+    ) {}
 
     // Initially calls initInfoForm,initPasswordForm,setProfile
     ngOnInit() {
@@ -62,14 +52,14 @@ export class InformationComponent implements OnInit, OnDestroy {
     // build a form for info  by gouping the form control
     initInfoForm() {
         this.infoForm = this.formBuilder.group({
-            'firstName': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-            'lastName': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            'email': ['', Validators.compose([Validators.required, emailValidator])],
-            'address': ['', Validators.compose([Validators.required])],
-            'country': ['', Validators.compose([Validators.required])],
-            'zoneId': ['', Validators.compose([Validators.required])],
-            'pincode': ['', Validators.compose([Validators.required])],
-            'phoneNumber': [''],
+            firstName: ["", Validators.compose([Validators.required, Validators.minLength(3)])],
+            lastName: ["", Validators.compose([Validators.required, Validators.minLength(1)])],
+            email: ["", Validators.compose([Validators.required, emailValidator])],
+            address: ["", Validators.compose([Validators.required])],
+            country: ["", Validators.compose([Validators.required])],
+            zoneId: ["", Validators.compose([Validators.required])],
+            pincode: ["", Validators.compose([Validators.required])],
+            phoneNumber: [""]
         });
     }
 
@@ -77,36 +67,38 @@ export class InformationComponent implements OnInit, OnDestroy {
 
     initPasswordForm() {
         this.passwordForm = this.formBuilder.group({
-                'currentPassword': ['', Validators.compose([ Validators.required])],
-                'newPassword': ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-            }
-        );
+            currentPassword: ["", Validators.compose([Validators.required])],
+            newPassword: ["", Validators.compose([Validators.required, Validators.minLength(5)])]
+        });
     }
-
 
     // set the user details to the form by fetching the profile details from sandbox
     setProfile() {
-        this.subscriptions.push(this.commonSandbox.getProfile$.subscribe(profile => {
-            if (profile) {
-                this.infoForm.controls['firstName'].setValue(profile.firstName);
-                this.infoForm.controls['lastName'].setValue(profile.lastName);
-                this.infoForm.controls['email'].setValue(profile.email);
-                this.infoForm.controls['address'].setValue(profile.address);
-                this.infoForm.controls['country'].setValue(profile.countryId);
-                this.infoForm.controls['zoneId'].setValue(profile.zoneId);
-                this.infoForm.controls['pincode'].setValue(profile.pincode);
-                this.infoForm.controls['phoneNumber'].setValue(profile.mobileNumber);
-                this.imageUrl = this.imagePath + '?width=60&height=60&name=' + profile.avatar + '&path=' + profile.avatarPath;
-                this.ifImageAvailable = profile.avatarPath;
-            }
-        }));
+        this.subscriptions.push(
+            this.commonSandbox.getProfile$.subscribe(profile => {
+                if (profile) {
+                    this.infoForm.controls["firstName"].setValue(profile.firstName);
+                    this.infoForm.controls["lastName"].setValue(profile.lastName);
+                    this.infoForm.controls["email"].setValue(profile.email);
+                    this.infoForm.controls["address"].setValue(profile.address);
+                    this.infoForm.controls["country"].setValue(profile.countryId);
+                    this.infoForm.controls["zoneId"].setValue(profile.zoneId);
+                    this.infoForm.controls["pincode"].setValue(profile.pincode);
+                    this.infoForm.controls["phoneNumber"].setValue(profile.mobileNumber);
+                    this.imageUrl =
+                        this.imagePath +
+                        "?width=60&height=60&name=" +
+                        profile.avatar +
+                        "&path=" +
+                        profile.avatarPath;
+                    this.ifImageAvailable = profile.avatarPath;
+                }
+            })
+        );
     }
 
-    onSelectCountry(countryid: number) {
-    }
-    onSelectZone(zoneid: number) {
-
-    }
+    onSelectCountry(countryid: number) {}
+    onSelectZone(zoneid: number) {}
     /**
      * upload new user image
      *
@@ -120,7 +112,7 @@ export class InformationComponent implements OnInit, OnDestroy {
 
     // calls convertBase64 to convert data into base64 formt
     uploadChange($event): void {
-        this.ifImageAvailable = 'avatar';
+        this.ifImageAvailable = "avatar";
         this.convertBase64($event.target);
     }
 
@@ -129,7 +121,7 @@ export class InformationComponent implements OnInit, OnDestroy {
         const file: File = inputValue.files[0];
         const myReader: FileReader = new FileReader();
 
-        myReader.onloadend = (e) => {
+        myReader.onloadend = e => {
             this.imageUrl = myReader.result;
             this.userImage = myReader.result;
         };
@@ -144,7 +136,7 @@ export class InformationComponent implements OnInit, OnDestroy {
             params.image = this.userImage;
             this.accountSandbox.doEditProfile(params);
             this.ifSubmitted = false;
-            this.imageUrl = '';
+            this.imageUrl = "";
             this.infoForm.reset();
             this.infoForm.clearValidators();
         } else {
@@ -154,7 +146,6 @@ export class InformationComponent implements OnInit, OnDestroy {
 
     // call change password functionality if the password form is valid
     public onPasswordFormSubmit(): void {
-
         if (this.passwordForm.valid) {
             this.accountSandbox.doChangepassword(this.passwordForm.value);
             this.ifPasswordForm = false;
@@ -185,5 +176,4 @@ export class InformationComponent implements OnInit, OnDestroy {
             each.unsubscribe();
         });
     }
-
 }

@@ -1,28 +1,20 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {Store} from '@ngrx/store';
-import {Subscription} from 'rxjs';
-import * as commonAction from './action/common.action';
-import * as store from '../state.interface';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
+import { Subscription } from "rxjs";
+import * as commonAction from "./action/common.action";
+import * as store from "../state.interface";
 import {
     getLanguage,
-    getProfile, profileFailed, profileLoaded,
-    profileLoading, wishlistCount,
-    wishlistCountFailed, wishlistCountLoaded,
+    getProfile,
+    profileFailed,
+    profileLoaded,
+    profileLoading,
+    wishlistCount,
+    wishlistCountFailed,
+    wishlistCountLoaded,
     wishlistCountLoading
-} from './reducer/common.selector';
-
-
-
+} from "./reducer/common.selector";
 
 @Injectable()
 export class CommonSandbox {
@@ -40,9 +32,7 @@ export class CommonSandbox {
     public getLanguageList$ = this.appState$.select(getLanguage);
 
     private subscriptions: Array<Subscription> = [];
-    constructor(private router: Router,
-                protected appState$: Store<store.AppState>,
-               ) {
+    constructor(private router: Router, protected appState$: Store<store.AppState>) {
         this.registerEvents();
     }
 
@@ -58,8 +48,5 @@ export class CommonSandbox {
     public getLanguageList(params) {
         this.appState$.dispatch(new commonAction.GetLanguage(params));
     }
-    public registerEvents() {
-
-
-    }
+    public registerEvents() {}
 }

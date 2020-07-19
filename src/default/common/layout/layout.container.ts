@@ -1,22 +1,13 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import {Component, OnInit, HostListener} from '@angular/core';
-import {Router, NavigationEnd} from '@angular/router';
-import {Settings, AppSettings} from '../../app.settings';
-import {ListsSandbox} from '../../../core/lists/lists.sandbox';
-import {Subscription} from 'rxjs';
+import { Component, OnInit, HostListener } from "@angular/core";
+import { Router, NavigationEnd } from "@angular/router";
+import { Settings, AppSettings } from "../../app.settings";
+import { ListsSandbox } from "../../../core/lists/lists.sandbox";
+import { Subscription } from "rxjs";
 
 @Component({
-    selector: 'app-layout',
-    templateUrl: './layout.container.html',
-    styleUrls: ['./layout.container.scss'],
+    selector: "app-layout",
+    templateUrl: "./layout.container.html",
+    styleUrls: ["./layout.container.scss"]
 })
 export class LayoutContainerComponent implements OnInit {
     // go back event
@@ -26,20 +17,24 @@ export class LayoutContainerComponent implements OnInit {
     public settings: Settings;
     private subscriptions: Array<Subscription> = [];
 
-    constructor(public appSettings: AppSettings,
-                public router: Router, public listSandBox: ListsSandbox) {
+    constructor(
+        public appSettings: AppSettings,
+        public router: Router,
+        public listSandBox: ListsSandbox
+    ) {
         this.settings = this.appSettings.settings;
     }
 
     ngOnInit() {
         this.getCategories();
         this.getSettings();
-
     }
 
-    @HostListener('window:scroll', ['$event'])
+    @HostListener("window:scroll", ["$event"])
     onWindowScroll($event) {
-        ($event.target.documentElement.scrollTop > 300) ? this.showBackToTop = true : this.showBackToTop = false;
+        $event.target.documentElement.scrollTop > 300
+            ? (this.showBackToTop = true)
+            : (this.showBackToTop = false);
     }
 
     /**
@@ -52,10 +47,10 @@ export class LayoutContainerComponent implements OnInit {
      */
     public getCategories() {
         const params: any = {};
-        params.limit = '';
+        params.limit = "";
         params.offset = 0;
-        params.keyword = '';
-        params.sortOrder = '';
+        params.keyword = "";
+        params.sortOrder = "";
         this.listSandBox.getCategoryList(params);
     }
 
@@ -77,7 +72,6 @@ export class LayoutContainerComponent implements OnInit {
         }
     }
 
-
     // getSetting
 
     /**
@@ -86,13 +80,15 @@ export class LayoutContainerComponent implements OnInit {
      */
     getSettings() {
         this.listSandBox.getSettings();
-        this.subscriptions.push(this.listSandBox.settingDetail$.subscribe(data => {
-            if (data && data.maintenanceMode === 1) {
-                sessionStorage.setItem('maintenanceMode', 'true');
-                this.router.navigate(['/underdeveloping']);
-            } else {
-                sessionStorage.setItem('maintenanceMode', 'false');
-            }
-        }));
+        this.subscriptions.push(
+            this.listSandBox.settingDetail$.subscribe(data => {
+                if (data && data.maintenanceMode === 1) {
+                    sessionStorage.setItem("maintenanceMode", "true");
+                    this.router.navigate(["/underdeveloping"]);
+                } else {
+                    sessionStorage.setItem("maintenanceMode", "false");
+                }
+            })
+        );
     }
 }

@@ -1,28 +1,15 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import * as actions from '../action/auth.action';
+import * as actions from "../action/auth.action";
 import construct = Reflect.construct;
-import {AuthState, authrecord} from './auth.state';
+import { AuthState, authrecord } from "./auth.state";
 
-export const initialState: AuthState = new authrecord() as unknown as AuthState;
+export const initialState: AuthState = (new authrecord() as unknown) as AuthState;
 
-
-export function reducer(state = initialState, {type, payload}: any): AuthState {
-
+export function reducer(state = initialState, { type, payload }: any): AuthState {
     if (!type) {
-
         return state;
     }
     switch (type) {
         case actions.ActionTypes.DO_LOGIN: {
-
             return Object.assign({}, state, {
                 loginLoading: true,
                 loginLoaded: false,
@@ -47,7 +34,6 @@ export function reducer(state = initialState, {type, payload}: any): AuthState {
         }
 
         case actions.ActionTypes.DO_REGISTER: {
-
             return Object.assign({}, state, {
                 registerLoading: true,
                 registerLoaded: false,
@@ -72,7 +58,6 @@ export function reducer(state = initialState, {type, payload}: any): AuthState {
         }
 
         case actions.ActionTypes.DO_RECOVER: {
-
             return Object.assign({}, state, {
                 recoverLoading: true,
                 recoverLoaded: false,
@@ -114,5 +99,3 @@ export const getRegisterFailed = (state: AuthState) => state.registerFailed;
 export const getRecoverLoading = (state: AuthState) => state.recoverLoading;
 export const getRecoverLoaded = (state: AuthState) => state.recoverLoaded;
 export const getRecoverFailed = (state: AuthState) => state.recoverFailed;
-
-

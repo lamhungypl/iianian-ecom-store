@@ -1,33 +1,21 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import * as actions from '../action/product-control.action';
-import {productControlRecord, ProductControlState} from './product-control.state';
-import * as cloneDeep from 'lodash/cloneDeep';
+import * as actions from "../action/product-control.action";
+import { productControlRecord, ProductControlState } from "./product-control.state";
+import * as cloneDeep from "lodash/cloneDeep";
 
-export const initialState: ProductControlState = new productControlRecord() as unknown as ProductControlState;
+export const initialState: ProductControlState = (new productControlRecord() as unknown) as ProductControlState;
 
-
-export function reducer(state = initialState, {type, payload}: any): ProductControlState {
+export function reducer(state = initialState, { type, payload }: any): ProductControlState {
     if (!type) {
         return state;
     }
     switch (type) {
         case actions.ActionTypes.ADD_TO_WISHLIST: {
-
             return Object.assign({}, state, {
                 checkedOut: {}
             });
         }
 
         case actions.ActionTypes.ADD_TO_WISHLIST_SUCCESS: {
-
             return Object.assign({}, state, {
                 checkedOut: {}
             });
@@ -35,7 +23,6 @@ export function reducer(state = initialState, {type, payload}: any): ProductCont
         case actions.ActionTypes.ADD_TO_WISHLIST_FAIL: {
             return Object.assign({}, state, {
                 checkedOut: {}
-
             });
         }
         case actions.ActionTypes.CART_HANDLE_ACTION: {
@@ -57,14 +44,37 @@ export function reducer(state = initialState, {type, payload}: any): ProductCont
                                 for (let w = 0; w < arrayProductDetail.length; w++) {
                                     if (arrayProductDetail[w]) {
                                         if (arrayProductDetail[w].productOption) {
-                                            for (let y = 0; y < arrayProductDetail[w].productOption.length; y++) {
-                                                if (arrayProductDetail[w].productOption[y].optionValue) {
-                                                    const tempOptionValueArray: any = arrayProductDetail[w].productOption[y].optionValue;
-                                                    for (let p = 0; p < tempOptionValueArray.length; p++) {
-                                                        if (tempOptionValueArray[p].optionValueName === clonedPayload[i]._optionValueArray[hh]) {
+                                            for (
+                                                let y = 0;
+                                                y < arrayProductDetail[w].productOption.length;
+                                                y++
+                                            ) {
+                                                if (
+                                                    arrayProductDetail[w].productOption[y]
+                                                        .optionValue
+                                                ) {
+                                                    const tempOptionValueArray: any =
+                                                        arrayProductDetail[w].productOption[y]
+                                                            .optionValue;
+                                                    for (
+                                                        let p = 0;
+                                                        p < tempOptionValueArray.length;
+                                                        p++
+                                                    ) {
+                                                        if (
+                                                            tempOptionValueArray[p]
+                                                                .optionValueName ===
+                                                            clonedPayload[i]._optionValueArray[hh]
+                                                        ) {
                                                             const object: any = {};
-                                                            object.name = arrayProductDetail[w].productOption[y].optionname;
-                                                            object.value = clonedPayload[i]._optionValueArray[hh];
+                                                            object.name =
+                                                                arrayProductDetail[w].productOption[
+                                                                    y
+                                                                ].optionname;
+                                                            object.value =
+                                                                clonedPayload[i]._optionValueArray[
+                                                                    hh
+                                                                ];
                                                             tempArray.push(object);
                                                         }
                                                     }
@@ -75,32 +85,38 @@ export function reducer(state = initialState, {type, payload}: any): ProductCont
                                 }
                             }
 
-
                             // re-assign array with option name and option values
                             const tempProductOptionsArray: any = [];
                             if (clonedPayload[i].productOption) {
                                 for (let gg = 0; gg < clonedPayload[i].productOption.length; gg++) {
                                     const productOption = clonedPayload[i].productOption;
-                                    if (clonedPayload[i].productOption[gg]['optionValue']) {
-                                        const optionValue = productOption[gg]['optionValue'];
+                                    if (clonedPayload[i].productOption[gg]["optionValue"]) {
+                                        const optionValue = productOption[gg]["optionValue"];
                                         for (let h = 0; h < optionValue.length; h++) {
                                             const param: any = {};
-                                            param.productOptionId = productOption[gg].productOptionId;
-                                            param.productOptionValueId = productOption[gg].optionValue[h].productOptionValueId;
+                                            param.productOptionId =
+                                                productOption[gg].productOptionId;
+                                            param.productOptionValueId =
+                                                productOption[gg].optionValue[
+                                                    h
+                                                ].productOptionValueId;
                                             param.name = productOption[gg].optionname;
-                                            param.value = productOption[gg].optionValue[h].optionValueName;
+                                            param.value =
+                                                productOption[gg].optionValue[h].optionValueName;
                                             param.type = productOption[gg].optiontype;
                                             tempProductOptionsArray.push(param);
                                         }
                                     }
-
                                 }
                             }
                             clonedPayload[i].productOption = tempProductOptionsArray;
                             let tempOptionsArray: any = [];
                             for (let j = 0; j < clonedPayload[i].productOption.length; j++) {
                                 for (let k = 0; k < optionsSelected.length; k++) {
-                                    if (clonedPayload[i].productOption[j].value === optionsSelected[k]) {
+                                    if (
+                                        clonedPayload[i].productOption[j].value ===
+                                        optionsSelected[k]
+                                    ) {
                                         tempOptionsArray.push(clonedPayload[i].productOption[j]);
                                     }
                                 }
@@ -108,21 +124,19 @@ export function reducer(state = initialState, {type, payload}: any): ProductCont
                             clonedPayload[i].productOption = tempOptionsArray;
                             tempOptionsArray = [];
                             // end
-
-
                         } else {
                             const emptyValue: any = {};
-                            emptyValue.name = '';
-                            emptyValue.value = '';
+                            emptyValue.name = "";
+                            emptyValue.value = "";
                             tempArray.push(emptyValue);
                         }
                         if (payload.products[i]._optionValueArray.length > 0) {
                             for (let k = 0; k < tempArray.length; k++) {
-                                if (tempArray[k] && tempArray[k]['name']) {
+                                if (tempArray[k] && tempArray[k]["name"]) {
                                     for (let l = k + 1; l < tempArray.length; l++) {
-                                        if (tempArray[l]['name'] && tempArray[k]['name']) {
+                                        if (tempArray[l]["name"] && tempArray[k]["name"]) {
                                             if (tempArray[k].name === tempArray[l].name) {
-                                                tempArray[k].value += ',' + tempArray[l].value;
+                                                tempArray[k].value += "," + tempArray[l].value;
                                                 tempArray.splice(l, 1);
                                                 k--;
                                                 l--;
@@ -140,7 +154,6 @@ export function reducer(state = initialState, {type, payload}: any): ProductCont
             }
             if (clonedPayload[0]) {
                 for (let j = 0; j < clonedPayload.length; j++) {
-
                     if (clonedPayload[j].pricerefer) {
                         const tempPricePrefer = parseInt(clonedPayload[j].pricerefer, 10);
                         clonedPayload[j].pricerefer = tempPricePrefer;
@@ -163,7 +176,6 @@ export function reducer(state = initialState, {type, payload}: any): ProductCont
                 cartCount: payload.productTotal,
                 totalCartPrice: payload.totalPrice,
                 checkedOut: {}
-
             });
         }
 
@@ -173,7 +185,7 @@ export function reducer(state = initialState, {type, payload}: any): ProductCont
                 checkedOut: {},
                 checkoutLoading: true,
                 checkoutLoaded: false,
-                checkoutFailed: false,
+                checkoutFailed: false
             });
         }
         case actions.ActionTypes.DO_CHECKOUT_SUCCESS: {
@@ -181,7 +193,7 @@ export function reducer(state = initialState, {type, payload}: any): ProductCont
                 checkedOut: payload.data,
                 checkoutLoading: false,
                 checkoutLoaded: true,
-                checkoutFailed: false,
+                checkoutFailed: false
             });
         }
         case actions.ActionTypes.DO_CHECKOUT_FAIL: {
@@ -189,7 +201,7 @@ export function reducer(state = initialState, {type, payload}: any): ProductCont
                 checkedOut: {},
                 checkoutLoading: false,
                 checkoutLoaded: true,
-                checkoutFailed: true,
+                checkoutFailed: true
             });
         }
         // selected options
@@ -197,7 +209,7 @@ export function reducer(state = initialState, {type, payload}: any): ProductCont
             const tempArray: any = [];
             tempArray.push(payload._optionValueArray);
             return Object.assign({}, state, {
-                selectedOptions: tempArray,
+                selectedOptions: tempArray
             });
         }
         // available options
@@ -207,7 +219,7 @@ export function reducer(state = initialState, {type, payload}: any): ProductCont
 
         case actions.ActionTypes.DO_AVAILABLE_OPTIONS_SUCCESS: {
             return Object.assign({}, state, {
-                optionsAvailable: payload,
+                optionsAvailable: payload
             });
         }
         default: {
@@ -226,6 +238,3 @@ export const getCheckoutLoaded = (state: ProductControlState) => state.checkoutL
 export const getCheckoutFailed = (state: ProductControlState) => state.checkoutFailed;
 
 export const getOptionsAvailable = (state: ProductControlState) => state.optionsAvailable;
-
-
-

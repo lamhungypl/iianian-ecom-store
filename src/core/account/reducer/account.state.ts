@@ -1,14 +1,5 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import {Map, Record} from 'immutable';
-import {OrderHistoryResponseModel} from '../models/order-history-response.model';
+import { Map, Record } from "immutable";
+import { OrderHistoryResponseModel } from "../models/order-history-response.model";
 
 export interface AccountState extends Map<string, any> {
     newPassword: any;
@@ -64,50 +55,47 @@ export interface AccountState extends Map<string, any> {
 }
 
 export const accountrecord = Record({
-        newPassword: {},
-        orderHistory: [],
-        orderHistoryCount: 0,
-        orderHistoryDetail: {},
-        addresslist: {},
-        updateCustomerAddress: {},
-        deleteCustomerAddress: {},
+    newPassword: {},
+    orderHistory: [],
+    orderHistoryCount: 0,
+    orderHistoryDetail: {},
+    addresslist: {},
+    updateCustomerAddress: {},
+    deleteCustomerAddress: {},
 
-        orderHistoryDetailLoading: false,
-        orderHistoryDetailLoaded: false,
-        orderHistoryDetailFailed: false,
+    orderHistoryDetailLoading: false,
+    orderHistoryDetailLoaded: false,
+    orderHistoryDetailFailed: false,
 
-        historyListLoading: false,
-        historyListLoaded: false,
-        historyListFailed: false,
+    historyListLoading: false,
+    historyListLoaded: false,
+    historyListFailed: false,
 
-        changepasswordLoading: false,
-        changepasswordLoaded: false,
-        changepasswordFailed: false,
+    changepasswordLoading: false,
+    changepasswordLoaded: false,
+    changepasswordFailed: false,
 
-        editProfileLoading: false,
-        editProfileLoaded: false,
-        editProfileFailed: false,
+    editProfileLoading: false,
+    editProfileLoaded: false,
+    editProfileFailed: false,
 
-        addresslistLoading: false,
-        addresslistLoaded: false,
-        addresslistFailed: false,
+    addresslistLoading: false,
+    addresslistLoaded: false,
+    addresslistFailed: false,
 
-        updateCustomerAddressLoading: false,
-        updateCustomerAddressLoaded: false,
-        updateCustomerAddressFailed: false,
+    updateCustomerAddressLoading: false,
+    updateCustomerAddressLoaded: false,
+    updateCustomerAddressFailed: false,
 
-        deleteCustomerAddressLoading: false,
-        deleteCustomerAddressLoaded: false,
-        deleteCustomerAddressFailed: false,
+    deleteCustomerAddressLoading: false,
+    deleteCustomerAddressLoaded: false,
+    deleteCustomerAddressFailed: false,
 
-        reviewLoading: false,
-        reviewLoaded: false,
-        reviewFailed: false,
+    reviewLoading: false,
+    reviewLoaded: false,
+    reviewFailed: false,
 
-        ratingLoading: false,
-        ratingLoaded: false,
-        ratingFailed: false,
-
-
-    })
-;
+    ratingLoading: false,
+    ratingLoaded: false,
+    ratingFailed: false
+});

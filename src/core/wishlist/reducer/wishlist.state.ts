@@ -1,13 +1,4 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import {Map, Record} from 'immutable';
+import { Map, Record } from "immutable";
 
 export interface WishlistState extends Map<string, any> {
     newPassword: any;
@@ -22,5 +13,5 @@ export const wishlistRecord = Record({
     wishlist: [],
     wishlistLoading: false,
     wishlistLoaded: false,
-    wishlistFailed: false,
+    wishlistFailed: false
 });

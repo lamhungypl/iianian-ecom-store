@@ -1,13 +1,4 @@
-/*
- * spurtcommerce
- * version 2.2
- * http://www.spurtcommerce.com
- *
- * Copyright (c) 2019 piccosoft ltd
- * Author piccosoft ltd <support@piccosoft.com>
- * Licensed under the MIT license.
- */
-import {Map, Record} from 'immutable';
+import { Map, Record } from "immutable";
 
 export interface AuthState extends Map<string, any> {
     token: any;
@@ -25,7 +16,7 @@ export interface AuthState extends Map<string, any> {
 }
 
 export const authrecord = Record({
-    token: '',
+    token: "",
     loginLoading: false,
     loginLoaded: false,
     loginFailed: false,
@@ -36,5 +27,5 @@ export const authrecord = Record({
 
     recoverLoading: false,
     recoverLoaded: false,
-    recoverFailed: false,
+    recoverFailed: false
 });
