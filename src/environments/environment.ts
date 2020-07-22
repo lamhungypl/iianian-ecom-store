@@ -1,17 +1,11 @@
-/*
- * spurtcommerce
- * version 2.1
- * http://www.spurtcommerce.com
-
-
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    production: false,
-    storeUrl: "http://localhost:8000/api/",
-    imageUrl: "http://localhost:8000/api/media/image-resize"
+  production: false,
+  storeUrl: 'http://localhost:8000/api/',
+  imageUrl: 'http://localhost:8000/api/media/image-resize',
 };
 
 /*
