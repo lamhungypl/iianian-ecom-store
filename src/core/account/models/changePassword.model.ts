@@ -1,9 +1,9 @@
 export class ChangePasswordModel {
-    public oldPassword: any;
-    public newPassword: any;
+  public oldPassword: any;
+  public newPassword: any;
 
-    constructor(loginRequest: any) {
-        this.oldPassword = loginRequest.currentPassword || "";
-        this.newPassword = loginRequest.newPassword || "";
-    }
+  constructor(loginRequest: any) {
+    this.oldPassword = loginRequest.currentPassword || '';
+    this.newPassword = loginRequest.newPassword || '';
+  }
 }

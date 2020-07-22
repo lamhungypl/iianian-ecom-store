@@ -24,7 +24,7 @@
 }
 
 .order-top a {
-  background: #46B032;
+  background: #46b032;
   border-radius: 5px;
   font-size: 16px;
   color: #fff;
@@ -76,11 +76,11 @@
   width: 150px;
   vertical-align: middle;
   font-size: 14px;
-  color: #A7A7A7;
+  color: #a7a7a7;
 }
 
 .order-lft-detail h4 span.process {
-  color: #46B032;
+  color: #46b032;
   font-size: 16px;
 }
 
@@ -117,7 +117,7 @@
 }
 
 .order-table table th {
-  background: #F6F6F6;
+  background: #f6f6f6;
   font-weight: 500;
 }
 
@@ -131,7 +131,8 @@
   margin-right: 10px;
 }
 
-.order-table table th, .order-table table td {
+.order-table table th,
+.order-table table td {
   //vertical-align: middle !important;
   padding: 8px;
 }
@@ -180,7 +181,7 @@
 }
 
 .order-btn a.dload {
-  background: #46B032;
+  background: #46b032;
   color: #fff;
 }
 
@@ -248,7 +249,6 @@
 }
 
 .change-log-row h4 {
-
 }
 
 .change-log-row ul {
@@ -267,7 +267,7 @@
 }
 
 .change-log-row ul li:before {
-  content: "";
+  content: '';
   position: absolute;
   width: 5px;
   height: 5px;
@@ -279,7 +279,7 @@
 
 .close-div {
   display: block;
-  background: #FFB732;
+  background: #ffb732;
   text-align: center;
   font-size: 12px;
   color: #fff;
@@ -309,9 +309,9 @@
   font-size: 10px;
 }
 
-  td {
-    padding: 8px;
-    vertical-align: top;
+td {
+  padding: 8px;
+  vertical-align: top;
 }
 // review design
 .add-content {
@@ -390,8 +390,9 @@ a.edit {
   font-weight: bold;
   z-index: 2;
   position: relative;
-  -webkit-transition: border-radius .1s linear, background .1s linear, z-index 0s linear;
-  -webkit-transition-delay: .8s;
+  -webkit-transition: border-radius 0.1s linear, background 0.1s linear,
+    z-index 0s linear;
+  -webkit-transition-delay: 0.8s;
   text-align: center;
 }
 
@@ -414,8 +415,8 @@ a.edit {
   height: 0;
   width: 250px;
   padding-top: 30px;
-  -webkit-transition: height .5s ease;
-  -webkit-transition-delay: .4s;
+  -webkit-transition: height 0.5s ease;
+  -webkit-transition-delay: 0.4s;
   border-radius: 5px;
 }
 
@@ -439,7 +440,8 @@ a.edit {
   height: 100%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   textarea {
     padding: 5px;
     width: 90%;
@@ -489,7 +491,6 @@ a.edit {
   border-bottom-right-radius: 5px;
 }
 
-
 .star {
   font-size: 1.5rem;
   color: #b0c4de;
@@ -503,22 +504,19 @@ a.edit {
 .filled.bad {
   color: #ff1e1e;
 }
-textarea.disabled{
+textarea.disabled {
   background-color: green;
 }
-
 
 textarea {
   background-color: white;
   border-color: black;
   outline: none;
 }
-textarea:disabled{
+textarea:disabled {
   border: none;
-
-
 }
-.color{
+.color {
   width: 115px;
   background: rgb(103, 152, 227);
   display: inline-block;

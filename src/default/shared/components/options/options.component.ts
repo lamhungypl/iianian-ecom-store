@@ -1,21 +1,21 @@
-import { Component } from "@angular/core";
-import { Settings, AppSettings } from "../../../app.settings";
+import { Component } from '@angular/core';
+import { Settings, AppSettings } from '../../../app.settings';
 
 @Component({
-    selector: "app-options",
-    templateUrl: "./options.component.html",
-    styleUrls: ["./options.component.scss"]
+  selector: 'app-options',
+  templateUrl: './options.component.html',
+  styleUrls: ['./options.component.scss'],
 })
 export class OptionsComponent {
-    // colors
-    public showOptions = false;
-    public settings: Settings;
+  // colors
+  public showOptions = false;
+  public settings: Settings;
 
-    constructor(public appSettings: AppSettings) {
-        this.settings = this.appSettings.settings;
-    }
-    // change the color theme of the page
-    public changeTheme(theme) {
-        this.settings.theme = theme;
-    }
+  constructor(public appSettings: AppSettings) {
+    this.settings = this.appSettings.settings;
+  }
+  // change the color theme of the page
+  public changeTheme(theme) {
+    this.settings.theme = theme;
+  }
 }

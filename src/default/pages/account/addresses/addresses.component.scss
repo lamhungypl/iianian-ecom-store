@@ -22,7 +22,8 @@
     .address-col {
       border: solid thin #ddd;
       width: 49%;
-      box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+      box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
       h4 {
         padding: 10px;
         span.hd-top {
@@ -74,18 +75,20 @@
   height: 30px;
   border-radius: 5px;
   background: #ffffff;
-  border: 0px solid #AAA;
+  border: 0px solid #aaa;
   border-bottom: 0px solid #777;
-  color: #282D31;
+  color: #282d31;
   font-weight: bold;
   z-index: 2;
   position: relative;
-  -webkit-transition: border-radius .1s linear, background .1s linear, z-index 0s linear;
-  -webkit-transition-delay: .8s;
+  -webkit-transition: border-radius 0.1s linear, background 0.1s linear,
+    z-index 0s linear;
+  -webkit-transition-delay: 0.8s;
   text-align: center;
 }
 
-.parent:hover, .content:hover ~ .parent {
+.parent:hover,
+.content:hover ~ .parent {
   background: #fff;
   -webkit-transition-delay: 0s, 0s, 0s;
 }
@@ -105,8 +108,8 @@
   height: 0;
   width: 80px;
   padding-top: 30px;
-  -webkit-transition: height .5s ease;
-  -webkit-transition-delay: .4s;
+  -webkit-transition: height 0.5s ease;
+  -webkit-transition-delay: 0.4s;
   border: 0px solid #777;
   border-radius: 5px;
 }
@@ -157,5 +160,4 @@
 }
 
 .content li:last-of-type {
-
 }

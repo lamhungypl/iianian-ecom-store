@@ -1,28 +1,30 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-import { Api } from "../providers/api/api";
+import { Api } from '../providers/api/api';
 
 @Injectable()
 export class CommonService extends Api {
-    // private base: string = this.getBaseUrl();
-    private base: string;
+  // private base: string = this.getBaseUrl();
+  private base: string;
 
-    /* get wishlist count api*/
-    public getWishlistCount(params: any): Observable<any> {
-        this.base = this.getBaseUrl();
-        return this.http.get(this.base + "customer/wishlist-product-list", { params: params });
-    }
+  /* get wishlist count api*/
+  public getWishlistCount(params: any): Observable<any> {
+    this.base = this.getBaseUrl();
+    return this.http.get(this.base + 'customer/wishlist-product-list', {
+      params: params,
+    });
+  }
 
-    /* get profile api*/
-    public doGetProfile(params: any): Observable<any> {
-        this.base = this.getBaseUrl();
-        return this.http.get(this.base + "customer/get-profile");
-    }
+  /* get profile api*/
+  public doGetProfile(params: any): Observable<any> {
+    this.base = this.getBaseUrl();
+    return this.http.get(this.base + 'customer/get-profile');
+  }
 
-    /* get language api*/
-    public getLanguage(params: any): Observable<any> {
-        this.base = this.getBaseUrl();
-        return this.http.get(this.base + "list/language-list", { params: params });
-    }
+  /* get language api*/
+  public getLanguage(params: any): Observable<any> {
+    this.base = this.getBaseUrl();
+    return this.http.get(this.base + 'list/language-list', { params: params });
+  }
 }

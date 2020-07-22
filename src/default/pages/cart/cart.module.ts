@@ -1,32 +1,34 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 // shared modules
-import { SharedModule } from "../../shared/shared.module";
-import { ComponentsModule } from "../../shared/components/index";
+import { SharedModule } from '../../shared/shared.module';
+import { ComponentsModule } from '../../shared/components/index';
 
 // components
-import { CartComponent } from "./cart.component";
+import { CartComponent } from './cart.component';
 
 // store
-import { EffectsModule } from "@ngrx/effects";
-import { ProductControlEffect } from "../../../core/product-control/effects/product-control.effect";
-import { ProductControlService } from "../../../core/product-control/product-control.service";
-import { ProductControlSandbox } from "../../../core/product-control/product-control.sandbox";
-import { TranslateModule } from "@ngx-translate/core";
-export const routes = [{ path: "", component: CartComponent, pathMatch: "full" }];
+import { EffectsModule } from '@ngrx/effects';
+import { ProductControlEffect } from '../../../core/product-control/effects/product-control.effect';
+import { ProductControlService } from '../../../core/product-control/product-control.service';
+import { ProductControlSandbox } from '../../../core/product-control/product-control.sandbox';
+import { TranslateModule } from '@ngx-translate/core';
+export const routes = [
+  { path: '', component: CartComponent, pathMatch: 'full' },
+];
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        SharedModule,
-        ComponentsModule,
-        EffectsModule.forFeature([ProductControlEffect]),
-        TranslateModule.forChild()
-    ],
-    declarations: [CartComponent],
-    providers: [ProductControlService, ProductControlSandbox]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    SharedModule,
+    ComponentsModule,
+    EffectsModule.forFeature([ProductControlEffect]),
+    TranslateModule.forChild(),
+  ],
+  declarations: [CartComponent],
+  providers: [ProductControlService, ProductControlSandbox],
 })
 export class CartModule {}
