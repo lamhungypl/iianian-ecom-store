@@ -5,24 +5,38 @@
                 <mat-icon>fullscreen</mat-icon>
             </button>
             <img
-                    *ngIf="image"
-                    [src]="image"
-                    (mousemove)="onMouseMove($event)"
-                    (mouseleave)="onMouseLeave($event)"/>
+                *ngIf="image"
+                [src]="image"
+                (mousemove)="onMouseMove($event)"
+                (mouseleave)="onMouseLeave($event)"
+            />
         </mat-card>
 
         <div class="small-carousel">
             <div class="swiper-container" [swiper]="config">
                 <div class="swiper-wrapper">
-                    <div *ngFor="let image of (productDetail.productDetails$ | async)?.productImage"
-                         class="swiper-slide">
+                    <div
+                        *ngFor="let image of (productDetail.productDetails$ | async)?.productImage"
+                        class="swiper-slide"
+                    >
                         <mat-card
-                                (click)="selectImage(image)"
-                                class=" p-1 card-hover"
-                                [ngClass]="{'changeShadowColor' : productImageId == image. productImageId }">
-                            <img [attr.data-src]="imagePath + '?width=60&height=60&path=' + image.containerName + '&name=' + image.image"
-                                 class="swiper-lazy"/>
-                            <div class=" swiper-lazy-preloader"></div>
+                            (click)="selectImage(image)"
+                            class="p-1 card-hover"
+                            [ngClass]="{
+                                changeShadowColor: productImageId == image.productImageId
+                            }"
+                        >
+                            <img
+                                [attr.data-src]="
+                                    imagePath +
+                                    '?width=60&height=60&path=' +
+                                    image.containerName +
+                                    '&name=' +
+                                    image.image
+                                "
+                                class="swiper-lazy"
+                            />
+                            <div class="swiper-lazy-preloader"></div>
                         </mat-card>
                     </div>
                 </div>
@@ -35,43 +49,75 @@
             </div>
         </div>
     </div>
-    <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="55" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
+    <div
+        fxFlex="100"
+        fxFlex.gt-md="45"
+        fxFlex.md="55"
+        ngClass.gt-sm="px-3 m-0"
+        ngClass.sm="mt-2"
+        ngClass.xs="mt-2"
+    >
         <div #zoomViewer fxShow="false" fxShow.gt-md *ngIf="zoomImage">
             <mat-card
-                    *ngIf="zoomImage"
-                    class="zoom-viewer mat-elevation-z18"
-                    [ngStyle]="{'background-image': 'url(' + zoomImage + ')'}">
+                *ngIf="zoomImage"
+                class="zoom-viewer mat-elevation-z18"
+                [ngStyle]="{ 'background-image': 'url(' + zoomImage + ')' }"
+            >
             </mat-card>
         </div>
 
-        <h2>{{(productDetail.productDetails$ | async)?.name}}</h2>
+        <h2>{{ (productDetail.productDetails$ | async)?.name }}</h2>
         <div class="py-1 lh">
-            <p><span class="text-muted fw-500">Category: </span><span
-                    *ngIf="(productDetail.productDetails$ | async)?.Category[0]">{{(productDetail.productDetails$ | async)?.Category[0].categoryName}}</span>
+            <p>
+                <span class="text-muted fw-500">Category: </span
+                ><span *ngIf="((productDetail.productDetails$ | async)?.Category)[0]">{{
+                    ((productDetail.productDetails$ | async)?.Category)[0].categoryName
+                }}</span>
             </p>
             <p><span class="text-muted fw-500">Availibility: </span><span>Available</span></p>
         </div>
-        <div class="py-1">
-        </div>
+        <div class="py-1"></div>
         <div class="divider mt-1"></div>
         <h2 class="py-2 new-price">
-
             <ng-container
-                    *ngIf="(((productDetail.productDetails$ | async)?.flag)=='')&&(((productDetail.productDetails$ | async)?.pricerefer) =='')">
-                {{((productDetail.productDetails$ | async)?.price) | currency:'INR':'symbol-narrow'}}
+                *ngIf="
+                    (productDetail.productDetails$ | async)?.flag == '' &&
+                    (productDetail.productDetails$ | async)?.pricerefer == ''
+                "
+            >
+                {{
+                    (productDetail.productDetails$ | async)?.price | currency: "VND":"symbol-narrow"
+                }}
             </ng-container>
-            <ng-container *ngIf="((productDetail.productDetails$ | async)?.flag)==0;else one">
-                {{((productDetail.productDetails$ | async)?.pricerefer) | currency:'INR':'symbol-narrow'}}
+            <ng-container *ngIf="(productDetail.productDetails$ | async)?.flag == 0; else one">
+                {{
+                    (productDetail.productDetails$ | async)?.pricerefer
+                        | currency: "VND":"symbol-narrow"
+                }}
             </ng-container>
             <ng-template #one>
-                <span><del class="del">{{((productDetail.productDetails$ | async)?.price) | currency:'INR':'symbol-narrow'}}</del> {{((productDetail.productDetails$ | async)?.pricerefer)  | currency:'INR':'symbol-narrow'}}</span>
+                <span
+                    ><del class="del">{{
+                        (productDetail.productDetails$ | async)?.price
+                            | currency: "VND":"symbol-narrow"
+                    }}</del>
+                    {{
+                        (productDetail.productDetails$ | async)?.pricerefer
+                            | currency: "VND":"symbol-narrow"
+                    }}</span
+                >
             </ng-template>
         </h2>
         <div class="py-1">
-            <app-controls-product-detail [product]="productDetail.productDetails$ | async" [type]="'detail'" [totalPrice]=totalPrice
-                          [optionValueArray]=optionValueArray [optionNameSelected]=optionNameSelected
-                          [cartOptionValueArray]=cartOptionValueArray
-                          (emptyDecorator)='emptyOutputDecorator($event)'></app-controls-product-detail>
+            <app-controls-product-detail
+                [product]="productDetail.productDetails$ | async"
+                [type]="'detail'"
+                [totalPrice]="totalPrice"
+                [optionValueArray]="optionValueArray"
+                [optionNameSelected]="optionNameSelected"
+                [cartOptionValueArray]="cartOptionValueArray"
+                (emptyDecorator)="emptyOutputDecorator($event)"
+            ></app-controls-product-detail>
         </div>
 
         <div class="divider"></div>
@@ -85,7 +131,6 @@
                 <mat-icon>share</mat-icon>
             </button>
         </div>
-
     </div>
     <div fxFlex="100" fxFlex.gt-md="20" fxHide fxShow.gt-md>
         <div fxLayout="row wrap" class="info-bar product-right" ngClass.gt-md="m-0">
@@ -126,7 +171,6 @@
                 </mat-card>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -136,25 +180,35 @@
             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
                 <mat-tab label="Description">
                     <div class="full-desc lh">
-                        <p [innerHtml]='(productDetail.productDetails$ | async)?.description'></p>
+                        <p [innerHtml]="(productDetail.productDetails$ | async)?.description"></p>
                     </div>
                 </mat-tab>
             </mat-tab-group>
         </mat-card>
     </div>
     <div fxFlex="100" fxFlex.gt-md="22" fxFlex.md="26" ngClass.gt-sm="pl-3" fxHide fxShow.gt-sm>
-        <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%201" alt="" class="mw-100 d-block">
-        <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%202" alt=""
-             class="mw-100 d-block mt-3">
-        <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%203" alt=""
-             class="mw-100 d-block mt-3">
+        <img
+            src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%201"
+            alt=""
+            class="mw-100 d-block"
+        />
+        <img
+            src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%202"
+            alt=""
+            class="mw-100 d-block mt-3"
+        />
+        <img
+            src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%203"
+            alt=""
+            class="mw-100 d-block mt-3"
+        />
     </div>
 </div>
 
-<div class="py-2 mt-2" *ngIf='(productDetail.relatedProducts$|async) as data'>
-    <h2 *ngIf='data.length > 0'>Related Products</h2>
+<div class="py-2 mt-2" *ngIf="productDetail.relatedProducts$ | async as data">
+    <h2 *ngIf="data.length > 0">Related Products</h2>
     <div class="divider"></div>
-    <app-products-carousel [products]="productDetail.relatedProducts$ | async"></app-products-carousel>
+    <app-products-carousel
+        [products]="productDetail.relatedProducts$ | async"
+    ></app-products-carousel>
 </div>
-
-
