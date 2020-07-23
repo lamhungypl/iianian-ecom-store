@@ -50,6 +50,7 @@ export class AuthSandbox {
   }
 
   public doLogin(params): void {
+    console.log('doLogin', params);
     this.appState$.dispatch(new authAction.DoLogin(new LoginModel(params)));
   }
   public doRegister(params): void {

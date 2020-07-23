@@ -36,7 +36,7 @@ export function reducer(
     }
 
     case actions.ActionTypes.PRODUCT_LIST_SUCCESS: {
-      const tempProduct = payload.data.productList.map(product => {
+      const tempProduct = payload.data.map(product => {
         const productLists = new ProductsResponseModel(product);
         return productLists;
       });

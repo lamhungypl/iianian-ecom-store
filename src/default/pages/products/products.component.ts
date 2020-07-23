@@ -150,6 +150,8 @@ export class ProductsComponent implements OnInit {
     params.price = price;
     params.priceFrom = this.priceFrom;
     params.priceTo = this.priceTo;
+    console.log('got here', params);
+
     this.listSandbox.getProductList(params);
     params.count = true;
     this.listSandbox.getProductCount(params);

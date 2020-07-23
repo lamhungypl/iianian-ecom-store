@@ -15,6 +15,8 @@ import { AppSettings } from './app.settings';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 import { ConfigService } from '../core/service/config.service';
 import { RequestInterceptor } from '../core/service/request.interceptor';
 import { AuthGuard } from '../core/service/auth.guard';
@@ -66,6 +68,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     EffectsModule.forRoot([ListsEffect]),
     StoreModule.forRoot(reducers, { metaReducers }),
     DefaultRoutingModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
   declarations: [
     DefaultComponent,
