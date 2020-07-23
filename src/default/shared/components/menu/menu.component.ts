@@ -81,6 +81,7 @@ export class MenuComponent implements OnInit {
     this.listSandbox.getProductCount(param);
     this.listSandbox.getSettings();
     localStorage.setItem('clearBrandKey', this.clearBrand);
+    this.router.navigate(['/products']);
   }
 
   // calls listSandbox getSettings,navigate to home page
