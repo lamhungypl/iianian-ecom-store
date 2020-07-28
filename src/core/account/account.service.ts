@@ -31,14 +31,14 @@ export class AccountService extends Api {
 
   /* get customer address list api*/
   public getCustomerAddressList(params: any): Observable<any> {
-    return this.http.get(this.base + 'CustomerAddress/get-address-list', {
+    return this.http.get(this.base + 'address/get-address-list', {
       params: params,
     });
   }
 
   /* add customer address api*/
   public addCustomerAddress(params: any): Observable<any> {
-    return this.http.post(this.base + 'CustomerAddress/add-address', params);
+    return this.http.post(this.base + 'address/add-address', params);
   }
   /* set customer address details */
   public setCustomerAddress(addressDetails) {
@@ -54,7 +54,7 @@ export class AccountService extends Api {
 
   public updateCustomerAddress(params): Observable<any> {
     return this.http.put(
-      this.base + 'CustomerAddress/update-address/' + params.addressId,
+      this.base + 'address/update-address/' + params.addressId,
       params
     );
   }
@@ -75,7 +75,7 @@ export class AccountService extends Api {
     };
 
     return this.http.delete(
-      this.base + 'CustomerAddress/delete-address/' + params.addressId,
+      this.base + 'address/delete-address/' + params.addressId,
       httpOptions
     );
   }
