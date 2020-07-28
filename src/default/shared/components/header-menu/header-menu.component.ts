@@ -21,11 +21,11 @@ export class HeaderMenuComponent implements OnInit {
   }
 
   // send the search value to product through navigation.If no value send 1 as default value.
-  public searchData(value) {
+  public onChange(value) {
     this.searchValue = value;
     if (!value) {
-      this.searchValue = 'empty';
+      this.searchValue = '';
     }
-    this.router.navigate(['/products/', { keyword: this.searchValue }]);
+    // this.router.navigate(['/products/', { keyword: this.searchValue }]);
   }
 }

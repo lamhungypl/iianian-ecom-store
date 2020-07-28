@@ -22,7 +22,7 @@
         type="text"
         placeholder="{{ 'Shared.TypeToSearch' | translate }}"
         fxFlex
-        (keyup)="searchData($event.target.value)"
+        (keyup)="onChange($event.target.value)"
       />
       <button
         mat-mini-fab
