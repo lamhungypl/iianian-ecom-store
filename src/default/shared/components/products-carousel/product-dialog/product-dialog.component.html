@@ -64,7 +64,7 @@
         </p>
       </div>
       <div class="py-1"></div>
-      <p class="py-1 text-muted lh">{{ product.description }}</p>
+      <p class="py-1 text-muted lh" [innerHTML]="product.description"></p>
       <div fxLayoutAlign="end center" class="text-muted">
         <button
           [mat-dialog-close]="product"
