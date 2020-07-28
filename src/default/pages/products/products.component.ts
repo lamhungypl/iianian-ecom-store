@@ -163,6 +163,7 @@ export class ProductsComponent implements OnInit {
    * @param data passing selected product detail to dialog
    */
   public openProductDialog(product) {
+    console.log({ product });
     const dialogRef = this.dialog.open(ProductDialogComponent, {
       panelClass: 'product-dialog',
       data: product,

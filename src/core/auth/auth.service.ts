@@ -8,6 +8,7 @@ export class AuthApiService extends Api {
 
   /* call login api*/
   public doLogin(params: any): Observable<any> {
+    // console.log({ params });
     return this.http.post(this.base + 'customer/login', params);
   }
   /* call register api*/

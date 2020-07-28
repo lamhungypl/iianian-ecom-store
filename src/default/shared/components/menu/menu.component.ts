@@ -116,6 +116,7 @@ export class MenuComponent implements OnInit {
 
   // getcategoryId value
   getCategory(id) {
+    console.log('category id', id);
     const params: any = {};
     params.CategoryId = id;
     this.listSandbox.getCategory(params);

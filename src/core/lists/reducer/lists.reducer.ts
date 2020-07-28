@@ -40,7 +40,9 @@ export function reducer(
         const productLists = new ProductsResponseModel(product);
         return productLists;
       });
-      const tempMaxProductPrice = payload.data;
+      const tempMaxProductPrice = payload.data.map(prod =>
+        parseInt(prod.price)
+      );
 
       return Object.assign({}, state, {
         productLoading: false,
