@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
 
   public getFeaturedList() {
     const params: any = {};
-    params.limit = '';
+    params.limit = 10;
     params.offset = 0;
     params.keyword = '';
     params.sku = '';

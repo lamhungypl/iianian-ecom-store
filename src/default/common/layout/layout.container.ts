@@ -47,7 +47,7 @@ export class LayoutContainerComponent implements OnInit {
    */
   public getCategories() {
     const params: any = {};
-    params.limit = '';
+    params.limit = 10;
     params.offset = 0;
     params.keyword = '';
     params.sortOrder = '';

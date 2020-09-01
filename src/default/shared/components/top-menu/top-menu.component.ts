@@ -45,7 +45,7 @@ export class TopMenuComponent implements OnInit {
       if (localStorage.getItem('userToken')) {
         this.commonSandbox.doGetProfile();
         const params: any = {};
-        params.limit = '';
+        params.limit = 10;
         params.offset = 0;
         params.count = true;
         this.commonSandbox.getWishlistCounts(params);
@@ -87,7 +87,7 @@ export class TopMenuComponent implements OnInit {
    * */
   getLanguageList() {
     const params: any = {};
-    params.limit = '';
+    params.limit = 10;
     params.offset = 0;
     params.keyword = '';
     params.count = '';

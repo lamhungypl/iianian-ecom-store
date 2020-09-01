@@ -45,7 +45,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
     params.limit = this.pageSize;
     params.offset = offset;
     this.accountSandbox.getOrderHistory(params);
-    params.limit = '';
+    params.limit = 10;
     params.offset = 0;
     params.count = 1;
     this.accountSandbox.getOrderHistoryCount(params);

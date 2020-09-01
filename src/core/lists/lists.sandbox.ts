@@ -203,13 +203,13 @@ export class ListsSandbox {
     this.registerEvents();
     this.getSettings();
     const params: any = {};
-    params.limit = '';
+    params.limit = 10;
     params.offset = 0;
     params.keyword = '';
     this.getCountryList(params);
-    params.limit = '';
-    params.offset = '';
-    params.count = '';
+    params.limit = 10;
+    params.offset = 0;
+    params.count = false;
     this.getZoneList(params);
     this.getSetting();
   }

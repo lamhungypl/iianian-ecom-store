@@ -11,7 +11,7 @@ export class FooterComponent implements OnInit {
   // initially calls listSandbox getPageList
   ngOnInit() {
     const params: any = {};
-    params.limit = '';
+    params.limit = 10;
     params.offset = 0;
     params.keyword = '';
     this.listSandbox.getPageList(params);

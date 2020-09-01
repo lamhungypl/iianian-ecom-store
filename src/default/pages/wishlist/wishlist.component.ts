@@ -30,7 +30,7 @@ export class WishlistComponent implements OnInit {
     this.imagePath = this.configService.getImageUrl();
     const params: any = {};
     params.limit = 10;
-    params.offset = '';
+    params.offset = 0;
     this.wishlistSandbox.getWishlist(params);
   }
 

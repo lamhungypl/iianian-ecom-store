@@ -83,7 +83,7 @@ export class ProductFilterComponent implements OnInit {
   // calls listSandbox getManufacturerList for getting brand list
   public getBrands() {
     const params: any = {};
-    params.limit = '';
+    params.limit = 10;
     params.offset = 0;
     params.keyword = '';
     this.listSandbox.getManufacturerList(params);
@@ -120,7 +120,7 @@ export class ProductFilterComponent implements OnInit {
   // calls listSandbox getCategoryList with default param values
   public getCategories() {
     const params: any = {};
-    params.limit = '';
+    params.limit = 10;
     params.offset = 0;
     params.keyword = '';
     params.sortOrder = '';
