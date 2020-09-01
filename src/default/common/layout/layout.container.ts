@@ -50,7 +50,7 @@ export class LayoutContainerComponent implements OnInit {
     params.limit = 10;
     params.offset = 0;
     params.keyword = '';
-    params.sortOrder = '';
+    params.sortOrder = 1;
     this.listSandBox.getCategoryList(params);
   }
 

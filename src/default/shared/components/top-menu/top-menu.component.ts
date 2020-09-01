@@ -90,7 +90,7 @@ export class TopMenuComponent implements OnInit {
     params.limit = 10;
     params.offset = 0;
     params.keyword = '';
-    params.count = '';
+    params.count = false;
     this.commonSandbox.getLanguageList(params);
     this.listSandbox.getSettings();
   }

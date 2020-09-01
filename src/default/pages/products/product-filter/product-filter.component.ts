@@ -123,7 +123,7 @@ export class ProductFilterComponent implements OnInit {
     params.limit = 10;
     params.offset = 0;
     params.keyword = '';
-    params.sortOrder = '';
+    params.sortOrder = 1;
     this.listSandbox.getCategoryList(params);
   }
 

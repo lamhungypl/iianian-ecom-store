@@ -73,7 +73,7 @@ export class MenuComponent implements OnInit {
     param.manufacturerId = '';
     param.categoryId = '';
     param.keyword = '';
-    param.price = '';
+    param.price = 1 / 2;
     param.priceFrom = '';
     param.priceTo = '';
     this.listSandbox.getProductList(param);
