@@ -39,7 +39,7 @@ export class WishlistEffect {
     map((action: actions.GetWishlist) => action.payload),
     switchMap(state => {
       return this.authApi.getWishlist(state).pipe(
-        map(wishlish => new actions.GetWishlistSuccess(wishlish)),
+        map(wishlist => new actions.GetWishlistSuccess(wishlist)),
         catchError(error => of(new actions.GetWishlistFail(error)))
       );
     })

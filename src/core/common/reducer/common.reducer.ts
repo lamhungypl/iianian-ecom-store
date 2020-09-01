@@ -69,7 +69,7 @@ export function reducer(
         profile: {},
       });
     }
-    case actions.ActionTypes.GET_LANGUAGELIST: {
+    case actions.ActionTypes.GET_LANGUAGE_LIST: {
       return Object.assign({}, state, {
         getlanguageLoading: true,
         getlanguageLoaded: false,
@@ -77,7 +77,7 @@ export function reducer(
       });
     }
 
-    case actions.ActionTypes.GET_LANGUAGELIST_SUCCESS: {
+    case actions.ActionTypes.GET_LANGUAGE_LIST_SUCCESS: {
       return Object.assign({}, state, {
         languageList: payload.data,
         getlanguageLoading: false,
@@ -85,7 +85,7 @@ export function reducer(
         getlanguageFailed: false,
       });
     }
-    case actions.ActionTypes.GET_LANGUAGELIST_FAIL: {
+    case actions.ActionTypes.GET_LANGUAGE_LIST_FAIL: {
       return Object.assign({}, state, {
         getlanguageLoading: false,
         getlanguageLoaded: true,

@@ -135,8 +135,8 @@
     "TotalAmount": "Total Amount",
     "City": "City"
   },
-  "whishlist": {
-    "YOUHAVENOITEMS": "YOU HAVE NO ITEMS IN WISH LIST.",
+  "wishlist": {
+    "NoItems": "YOU HAVE NO ITEMS IN WISH LIST.",
     "Product": "Product",
     "Name": "Name",
     "Price": "Price",

@@ -135,8 +135,8 @@
     "TotalAmount":"Montant total",
     "City":"Ville"
   },
-  "whishlist":{
-    "YOUHAVENOITEMS":"VOUS N'AVEZ AUCUN OBJET DANS LA LISTE DE SOUHAITS.",
+  "wishlist":{
+    "NoItems":"VOUS N'AVEZ AUCUN OBJET DANS LA LISTE DE SOUHAITS.",
     "Product":"Produit",
     "Name":"prénom",
     "Price":"Prix",

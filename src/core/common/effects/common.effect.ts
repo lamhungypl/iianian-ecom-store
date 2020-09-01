@@ -19,7 +19,7 @@ export class CommonEffect {
     map((action: actions.GetWishlistCount) => action.payload),
     switchMap(state => {
       return this.authApi.getWishlistCount(state).pipe(
-        map(wishlish => new actions.GetWishlistCountSuccess(wishlish)),
+        map(wishlist => new actions.GetWishlistCountSuccess(wishlist)),
         catchError(error => of(new actions.GetWishlistCountFail(error)))
       );
     })
@@ -38,11 +38,11 @@ export class CommonEffect {
 
   @Effect()
   getLanguage$: Observable<Action> = this.actions$.pipe(
-    ofType(actions.ActionTypes.GET_LANGUAGELIST),
+    ofType(actions.ActionTypes.GET_LANGUAGE_LIST),
     map((action: actions.GetLanguage) => action.payload),
     switchMap(state => {
       return this.authApi.getLanguage(state).pipe(
-        map(wishlish => new actions.GetLanguageSuccess(wishlish)),
+        map(wishlist => new actions.GetLanguageSuccess(wishlist)),
         catchError(error => of(new actions.GetLanguageFail(error)))
       );
     })

@@ -290,7 +290,7 @@ export class ListsSandbox {
     this.appState$.dispatch(new authAction.GetSubCategoryList(params));
   }
 
-  // add whishlist items to cart
+  // add wishlist items to cart
   public whishLists(param) {
     this.oneTimeSubscribe = true;
     this.getProductDetails(param);

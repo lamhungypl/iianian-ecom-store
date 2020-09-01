@@ -11,9 +11,9 @@ export const ActionTypes = {
   GET_WISHLIST_COUNT_FAIL: type('[count] wishlist count fail'),
   DO_SIGN_OUT: type('[signout] sign out'),
 
-  GET_LANGUAGELIST: type('[language] get language'),
-  GET_LANGUAGELIST_SUCCESS: type('[language] get language success'),
-  GET_LANGUAGELIST_FAIL: type('[language] get language fail'),
+  GET_LANGUAGE_LIST: type('[language] get language'),
+  GET_LANGUAGE_LIST_SUCCESS: type('[language] get language success'),
+  GET_LANGUAGE_LIST_FAIL: type('[language] get language fail'),
 };
 
 /* get wishlist count action*/
@@ -66,19 +66,19 @@ export class DoSignOut implements Action {
 /* get language action*/
 
 export class GetLanguage implements Action {
-  type = ActionTypes.GET_LANGUAGELIST;
+  type = ActionTypes.GET_LANGUAGE_LIST;
 
   constructor(public payload: any) {}
 }
 
 export class GetLanguageSuccess implements Action {
-  type = ActionTypes.GET_LANGUAGELIST_SUCCESS;
+  type = ActionTypes.GET_LANGUAGE_LIST_SUCCESS;
 
   constructor(public payload: any) {}
 }
 
 export class GetLanguageFail implements Action {
-  type = ActionTypes.GET_LANGUAGELIST_FAIL;
+  type = ActionTypes.GET_LANGUAGE_LIST_FAIL;
 
   constructor(public payload: any) {}
 }

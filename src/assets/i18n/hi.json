@@ -134,8 +134,8 @@
     "TotalAmount": "कुल रकम",
     "City": "शहर"
   },
-  "whishlist": {
-    "YOUHAVENOITEMS": "आप सूची में कोई आइटम नहीं है.",
+  "wishlist": {
+    "NoItems": "आप सूची में कोई आइटम नहीं है.",
     "Product": "उत्पाद",
     "Name": "नाम",
     "Price": "मूल्य",
