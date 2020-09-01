@@ -4,8 +4,8 @@ export class OrderHistoryRequestModel {
   public count: number;
 
   constructor(historyRequest: any) {
-    this.limit = historyRequest.limit || '';
-    this.offset = historyRequest.offset || '';
+    this.limit = historyRequest.limit || 10;
+    this.offset = historyRequest.offset || 0;
     this.count = historyRequest.count || 0;
   }
 }

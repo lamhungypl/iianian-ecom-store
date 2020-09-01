@@ -12,8 +12,8 @@ import * as countActions from '../../common/action/common.action';
 
 @Injectable()
 export class WishlistEffect {
-  parameter: any = { limit: '', offser: 0 };
-  countParameter: any = { limit: '', offser: 0, count: true };
+  parameter: any = { limit: 10, offset: 0 };
+  countParameter: any = { limit: 10, offset: 0, count: true };
 
   /* handle delete product action*/
   @Effect()
