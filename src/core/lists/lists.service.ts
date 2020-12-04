@@ -120,7 +120,7 @@ export class ListsService extends Api {
   public getProductDetail(params: any): Observable<any> {
     this.base = this.getBaseUrl();
     return this.http.get(
-      this.base + 'product-store/productdetail/' + params.id
+      this.base + 'product-store/product-detail/' + params.id
     );
   }
   /* get  product detail mandatory api*/
@@ -128,7 +128,7 @@ export class ListsService extends Api {
   public getProductDetailMandatory(params: any): Observable<any> {
     this.base = this.getBaseUrl();
     return this.http.get(
-      this.base + 'product-store/productdetail/' + params.id
+      this.base + 'product-store/product-detail/' + params.id
     );
   }
 
