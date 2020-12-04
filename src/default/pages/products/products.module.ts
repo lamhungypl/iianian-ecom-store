@@ -18,7 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 export const routes = [
   { path: '', component: ProductsComponent, pathMatch: 'full' },
   {
-    path: 'productdetails/:id',
+    path: 'product-detail/:id',
     component: ProductComponent,
     pathMatch: 'full',
   },

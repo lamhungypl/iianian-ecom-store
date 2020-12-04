@@ -170,7 +170,7 @@ export class ProductsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(products => {
       if (products) {
-        this.router.navigate(['/products/productdetails', products.productId]);
+        this.router.navigate(['/products/product-detail', products.productId]);
       }
     });
   }

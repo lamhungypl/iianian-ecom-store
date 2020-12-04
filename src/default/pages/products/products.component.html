@@ -88,7 +88,7 @@
             >
           </mat-chip-list>
           <a
-            [routerLink]="['/products/productdetails', product.productId]"
+            [routerLink]="['/products/product-detail', product.productId]"
             class="image-link"
           >
             <img
@@ -106,7 +106,7 @@
           </a>
           <!-- <h4 class="category text-muted text-truncate ">{{product.metaTagTitle }}</h4> -->
           <a
-            [routerLink]="['/products/productdetails', product.productId]"
+            [routerLink]="['/products/product-detail', product.productId]"
             class="title text-truncate"
           >
             {{ product.name }}
@@ -175,7 +175,7 @@
                 >
               </mat-chip-list>
               <a
-                [routerLink]="['/products/productdetails', product.productId]"
+                [routerLink]="['/products/product-detail', product.productId]"
                 class="image-link"
               >
                 <img
@@ -194,7 +194,7 @@
             <div fxFlex="100" fxFlex.gt-xs="60" class="p-2">
               <h4 class="category text-muted">{{ product.metaTagTitle }}</h4>
               <a
-                [routerLink]="['/products/productdetails', product.productId]"
+                [routerLink]="['/products/product-detail', product.productId]"
                 class="title"
               >
                 {{ product.name }}

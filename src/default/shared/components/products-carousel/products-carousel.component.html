@@ -13,7 +13,7 @@
         </mat-chip-list>
 
         <a
-          [routerLink]="['/products/productdetails', product.productId]"
+          [routerLink]="['/products/product-detail', product.productId]"
           class="image-link"
         >
           <img
@@ -32,7 +32,7 @@
           <div class="swiper-lazy-preloader"></div>
         </a>
         <a
-          [routerLink]="['/products/productdetails', product.productId]"
+          [routerLink]="['/products/product-detail', product.productId]"
           class="title text-truncate"
         >
           {{ product.name }}

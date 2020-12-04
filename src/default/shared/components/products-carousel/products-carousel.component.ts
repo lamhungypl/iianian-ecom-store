@@ -74,7 +74,7 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(products => {
       if (products) {
-        this.router.navigate(['/products/productdetails', products.id]);
+        this.router.navigate(['/products/product-detail', products.id]);
       }
     });
   }
