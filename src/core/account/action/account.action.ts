@@ -50,9 +50,7 @@ export const ActionTypes = {
 
   // Delete customer address
   DELETE_CUSTOMER_ADDRESS: type('[delete address] delete address '),
-  DELETE_CUSTOMER_ADDRESS_SUCCESS: type(
-    '[delete address] delete address success'
-  ),
+  DELETE_CUSTOMER_ADDRESS_SUCCESS: type('[delete address] delete address success'),
   DELETE_CUSTOMER_ADDRESS_FAIL: type('[delete address] delete address  fail'),
   // get review
   GET_RATING_DETAIL: type('[RATING_DETAIL] rating detail'),

@@ -5,17 +5,12 @@
     (click)="
       changeCategory(category.categoryId, category.name);
       isClicked = [];
-      isClicked[category.categoryId] = isClicked[category.categoryId]
-        ? false
-        : true
+      isClicked[category.categoryId] = isClicked[category.categoryId] ? false : true
     "
   >
     <span>{{ category.name }}</span>
   </button>
-  <div
-    *ngIf="category.children && category.children.length > 0"
-    class="sub-category"
-  >
+  <div *ngIf="category.children && category.children.length > 0" class="sub-category">
     <div class="category" *ngFor="let caty of category.children; let i = index">
       <button
         mat-menu-item
@@ -28,10 +23,7 @@
       >
         <span>{{ caty.name }}</span>
       </button>
-      <div
-        *ngIf="caty.children && caty.children.length > 0"
-        class="sub-category"
-      >
+      <div *ngIf="caty.children && caty.children.length > 0" class="sub-category">
         <div class="category" *ngFor="let sub of caty.children; let i = index">
           <button
             mat-menu-item
@@ -39,9 +31,7 @@
             (click)="
               changeCategory(sub.categoryId, sub.name);
               isClicked = [];
-              isClicked[sub.categoryId] = isClicked[sub.categoryId]
-                ? false
-                : true
+              isClicked[sub.categoryId] = isClicked[sub.categoryId] ? false : true
             "
           >
             <span>{{ sub.name }}</span>

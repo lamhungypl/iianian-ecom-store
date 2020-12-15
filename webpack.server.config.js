@@ -23,10 +23,6 @@ module.exports = {
       path.join(__dirname, 'src'), // location of your src
       {} // a map of your routes
     ),
-    new webpack.ContextReplacementPlugin(
-      /(.+)?express(\\|\/)(.+)?/,
-      path.join(__dirname, 'src'),
-      {}
-    ),
+    new webpack.ContextReplacementPlugin(/(.+)?express(\\|\/)(.+)?/, path.join(__dirname, 'src'), {}),
   ],
 };

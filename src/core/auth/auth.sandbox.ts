@@ -54,9 +54,7 @@ export class AuthSandbox {
     this.appState$.dispatch(new authAction.DoLogin(new LoginModel(params)));
   }
   public doRegister(params): void {
-    this.appState$.dispatch(
-      new authAction.DoRegister(new RegisterModel(params))
-    );
+    this.appState$.dispatch(new authAction.DoRegister(new RegisterModel(params)));
   }
   public doRecover(params): void {
     this.appState$.dispatch(new authAction.RecoverAccount(params));

@@ -7,10 +7,7 @@ export function emailValidator(control: FormControl): { [key: string]: any } {
   }
 }
 
-export function matchingPasswords(
-  passwordKey: string,
-  passwordConfirmationKey: string
-) {
+export function matchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
   return (group: FormGroup) => {
     const password = group.controls[passwordKey];
     const passwordConfirmation = group.controls[passwordConfirmationKey];

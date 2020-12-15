@@ -1,10 +1,4 @@
-import {
-  Component,
-  HostListener,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { ListsSandbox } from '../../../../core/lists/lists.sandbox';
 import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material';

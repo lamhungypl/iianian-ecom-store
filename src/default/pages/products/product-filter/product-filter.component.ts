@@ -96,10 +96,7 @@ export class ProductFilterComponent implements OnInit {
    *  remove brandSelectionKey local storage.
    *  **/
   public selectBrand(brandId) {
-    if (
-      this.brandId !== brandId &&
-      !localStorage.getItem('brandSelectionKey')
-    ) {
+    if (this.brandId !== brandId && !localStorage.getItem('brandSelectionKey')) {
       this.brandId = brandId;
       localStorage.setItem('brandKey', this.brandId);
       this.getProduct();
@@ -176,11 +173,7 @@ export class ProductFilterComponent implements OnInit {
     /**  during removing local storage it assigns null string
      * this condition will handle that.**/
     this.keyword = localStorage.getItem('keywordData');
-    if (
-      this.keyword === 'null' ||
-      this.keyword === 'empty' ||
-      this.keyword == null
-    ) {
+    if (this.keyword === 'null' || this.keyword === 'empty' || this.keyword == null) {
       this.keyword = '';
       params.keyword = this.keyword;
     } else {

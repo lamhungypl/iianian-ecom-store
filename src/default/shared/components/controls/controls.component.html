@@ -1,9 +1,4 @@
-<div
-  fxLayout="row"
-  fxLayout.xs="column"
-  [fxLayoutAlign]="align"
-  class="text-muted"
->
+<div fxLayout="row" fxLayout.xs="column" [fxLayoutAlign]="align" class="text-muted">
   <div *ngIf="type === 'detail'">
     <span>Quantity:</span>
     <button mat-icon-button matTooltip="Remove" (click)="changeCount('remove')">
@@ -15,18 +10,10 @@
     </button>
   </div>
   <div class="prod-icon">
-    <button
-      mat-icon-button
-      matTooltip="Add to wishlist"
-      (click)="addToWishList(product); isWish[product] = 'warn'"
-    >
+    <button mat-icon-button matTooltip="Add to wishlist" (click)="addToWishList(product); isWish[product] = 'warn'">
       <mat-icon color="isWish[product]">favorite</mat-icon>
     </button>
-    <button
-      mat-icon-button
-      matTooltip="Quick view"
-      (click)="openProductDialog(product)"
-    >
+    <button mat-icon-button matTooltip="Quick view" (click)="openProductDialog(product)">
       <mat-icon>remove_red_eye</mat-icon>
     </button>
     <button
@@ -43,10 +30,7 @@
     </span>
   </div>
 </div>
-<div
-  *ngIf="product?.availibilityCount == 0 && type == 'all'"
-  class="bg-warn p-1 mt-2"
->
+<div *ngIf="product?.availibilityCount == 0 && type == 'all'" class="bg-warn p-1 mt-2">
   Sorry, this item is unavailable. Please choose a different one.
 </div>
 <!-- *ngIf="type==='all'" -->

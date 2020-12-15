@@ -1,9 +1,4 @@
-﻿import {
-  HttpInterceptor,
-  HttpRequest,
-  HttpHandler,
-  HttpResponse,
-} from '@angular/common/http';
+﻿import { HttpInterceptor, HttpRequest, HttpHandler, HttpResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -42,11 +37,7 @@ export class RequestInterceptor implements HttpInterceptor {
       map((user: any) => {
         if (user instanceof HttpResponse) {
           const response = user.body;
-          if (
-            response.message &&
-            response.message !== '' &&
-            req.method !== 'GET'
-          ) {
+          if (response.message && response.message !== '' && req.method !== 'GET') {
             this.showSuccess(user.body.message);
           }
         }

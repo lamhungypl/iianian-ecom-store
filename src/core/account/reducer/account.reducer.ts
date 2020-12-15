@@ -5,10 +5,7 @@ import { AddresslistResponseModel } from '../models/addresslist-response.model';
 
 export const initialState: AccountState = (new accountrecord() as unknown) as AccountState;
 
-export function reducer(
-  state = initialState,
-  { type, payload }: any
-): AccountState {
+export function reducer(state = initialState, { type, payload }: any): AccountState {
   if (!type) {
     return state;
   }
@@ -284,74 +281,45 @@ export function reducer(
 
 export const getNewPassword = (state: AccountState) => state.newPassword;
 export const getorderHistoryList = (state: AccountState) => state.orderHistory;
-export const getorderHistoryCount = (state: AccountState) =>
-  state.orderHistoryCount;
+export const getorderHistoryCount = (state: AccountState) => state.orderHistoryCount;
 
-export const getorderHistoryDetail = (state: AccountState) =>
-  state.orderHistoryDetail;
-export const getOrderHistoryDetailLoading = (state: AccountState) =>
-  state.orderHistoryDetailLoading;
-export const getOrderHistoryDetailLoaded = (state: AccountState) =>
-  state.orderHistoryDetailLoaded;
-export const getOrderHistoryDetailFailed = (state: AccountState) =>
-  state.orderHistoryDetailFailed;
+export const getorderHistoryDetail = (state: AccountState) => state.orderHistoryDetail;
+export const getOrderHistoryDetailLoading = (state: AccountState) => state.orderHistoryDetailLoading;
+export const getOrderHistoryDetailLoaded = (state: AccountState) => state.orderHistoryDetailLoaded;
+export const getOrderHistoryDetailFailed = (state: AccountState) => state.orderHistoryDetailFailed;
 
-export const getHistoryListLoading = (state: AccountState) =>
-  state.historyListLoading;
-export const getHistoryListLoaded = (state: AccountState) =>
-  state.historyListLoaded;
-export const getHistoryListFailed = (state: AccountState) =>
-  state.historyListFailed;
+export const getHistoryListLoading = (state: AccountState) => state.historyListLoading;
+export const getHistoryListLoaded = (state: AccountState) => state.historyListLoaded;
+export const getHistoryListFailed = (state: AccountState) => state.historyListFailed;
 
-export const getChangepasswordLoading = (state: AccountState) =>
-  state.changepasswordLoading;
-export const getChangepasswordLoaded = (state: AccountState) =>
-  state.changepasswordLoaded;
-export const getChangepasswordFailed = (state: AccountState) =>
-  state.changepasswordFailed;
+export const getChangepasswordLoading = (state: AccountState) => state.changepasswordLoading;
+export const getChangepasswordLoaded = (state: AccountState) => state.changepasswordLoaded;
+export const getChangepasswordFailed = (state: AccountState) => state.changepasswordFailed;
 
 export const getEdittedStatus = (state: AccountState) => state.edited;
-export const getEditProfileLoading = (state: AccountState) =>
-  state.editProfileLoading;
-export const getEditProfileLoaded = (state: AccountState) =>
-  state.editProfileLoaded;
-export const getEditProfileFailed = (state: AccountState) =>
-  state.editProfileFailed;
+export const getEditProfileLoading = (state: AccountState) => state.editProfileLoading;
+export const getEditProfileLoaded = (state: AccountState) => state.editProfileLoaded;
+export const getEditProfileFailed = (state: AccountState) => state.editProfileFailed;
 
-export const getCustomerAddressList = (state: AccountState) =>
-  state.addresslist;
-export const getCustomerAddressListLoading = (state: AccountState) =>
-  state.addresslistLoading;
-export const getCustomerAddressListLoaded = (state: AccountState) =>
-  state.addresslistLoaded;
-export const getCustomerAddressListFailed = (state: AccountState) =>
-  state.addresslistFailed;
+export const getCustomerAddressList = (state: AccountState) => state.addresslist;
+export const getCustomerAddressListLoading = (state: AccountState) => state.addresslistLoading;
+export const getCustomerAddressListLoaded = (state: AccountState) => state.addresslistLoaded;
+export const getCustomerAddressListFailed = (state: AccountState) => state.addresslistFailed;
 
 export const addCustomerAddress = (state: AccountState) => state.addaddress;
-export const addCustomerAddressLoading = (state: AccountState) =>
-  state.addaddressLoading;
-export const addCustomerAddressLoaded = (state: AccountState) =>
-  state.addaddressLoaded;
-export const addCustomerAddressFailed = (state: AccountState) =>
-  state.addaddressFailed;
+export const addCustomerAddressLoading = (state: AccountState) => state.addaddressLoading;
+export const addCustomerAddressLoaded = (state: AccountState) => state.addaddressLoaded;
+export const addCustomerAddressFailed = (state: AccountState) => state.addaddressFailed;
 
-export const updateCustomerAddress = (state: AccountState) =>
-  state.updateCustomerAddress;
-export const updateCustomerAddressLoading = (state: AccountState) =>
-  state.updateCustomerAddressLoading;
-export const updateCustomerAddressLoaded = (state: AccountState) =>
-  state.updateCustomerAddressLoaded;
-export const updateCustomerAddressFailed = (state: AccountState) =>
-  state.updateCustomerAddressFailed;
+export const updateCustomerAddress = (state: AccountState) => state.updateCustomerAddress;
+export const updateCustomerAddressLoading = (state: AccountState) => state.updateCustomerAddressLoading;
+export const updateCustomerAddressLoaded = (state: AccountState) => state.updateCustomerAddressLoaded;
+export const updateCustomerAddressFailed = (state: AccountState) => state.updateCustomerAddressFailed;
 
-export const deleteCustomerAddress = (state: AccountState) =>
-  state.deleteCustomerAddress;
-export const deleteCustomerAddressLoading = (state: AccountState) =>
-  state.deleteCustomerAddressLoading;
-export const deleteCustomerAddressLoaded = (state: AccountState) =>
-  state.deleteCustomerAddressLoaded;
-export const deleteCustomerAddressFailed = (state: AccountState) =>
-  state.deleteCustomerAddressFailed;
+export const deleteCustomerAddress = (state: AccountState) => state.deleteCustomerAddress;
+export const deleteCustomerAddressLoading = (state: AccountState) => state.deleteCustomerAddressLoading;
+export const deleteCustomerAddressLoaded = (state: AccountState) => state.deleteCustomerAddressLoaded;
+export const deleteCustomerAddressFailed = (state: AccountState) => state.deleteCustomerAddressFailed;
 
 export const getReview = (state: AccountState) => state.review;
 export const getReviewLoading = (state: AccountState) => state.reviewLoading;

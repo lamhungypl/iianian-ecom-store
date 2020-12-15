@@ -40,10 +40,7 @@ import {
 // component
 import { SpinnerComponent } from './spinner/spinner.component';
 import { BannersComponent } from './components/banners/banners.component';
-import {
-  PERFECT_SCROLLBAR_CONFIG,
-  PerfectScrollbarConfigInterface,
-} from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: true,

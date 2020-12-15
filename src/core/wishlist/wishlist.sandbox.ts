@@ -4,12 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import * as authAction from './action/wishlist.action';
 import * as store from '../state.interface';
-import {
-  getWishlist,
-  wishlistFailed,
-  wishlistLoaded,
-  wishlistLoading,
-} from './reducer/wishlist.selector';
+import { getWishlist, wishlistFailed, wishlistLoaded, wishlistLoading } from './reducer/wishlist.selector';
 
 @Injectable()
 export class WishlistSandbox {
@@ -19,10 +14,7 @@ export class WishlistSandbox {
   public wishlistFailed$ = this.appState$.select(wishlistFailed);
   private subscriptions: Array<Subscription> = [];
 
-  constructor(
-    private router: Router,
-    protected appState$: Store<store.AppState>
-  ) {}
+  constructor(private router: Router, protected appState$: Store<store.AppState>) {}
 
   /* trigger get wish list action*/
 

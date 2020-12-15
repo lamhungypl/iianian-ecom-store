@@ -21,11 +21,6 @@ export class WishlistService extends Api {
       }),
       body: { wishlistProductId: params.wishlistProductId },
     };
-    return this.http.delete(
-      this.base +
-        'customer/wishlist-product-delete/' +
-        params.wishlistProductId,
-      httpOptions
-    );
+    return this.http.delete(this.base + 'customer/wishlist-product-delete/' + params.wishlistProductId, httpOptions);
   }
 }

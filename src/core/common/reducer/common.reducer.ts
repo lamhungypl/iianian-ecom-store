@@ -4,10 +4,7 @@ import { ProfileModel } from '../models/profile.model';
 
 export const initialState: CommonState = (new CommonRecord() as unknown) as CommonState;
 
-export function reducer(
-  state = initialState,
-  { type, payload }: any
-): CommonState {
+export function reducer(state = initialState, { type, payload }: any): CommonState {
   if (!type) {
     return state;
   }
@@ -102,21 +99,14 @@ export const getWishlistCount = (state: CommonState) => state.wishlistCount;
 export const getProfile = (state: CommonState) => state.profile;
 export const getLanguages = (state: CommonState) => state.languageList;
 
-export const getWishlistCountLoading = (state: CommonState) =>
-  state.wishlistCountLoading;
-export const getWishlistCountLoaded = (state: CommonState) =>
-  state.wishlistCountLoaded;
-export const getWishlistCountFailed = (state: CommonState) =>
-  state.wishlistCountFailed;
+export const getWishlistCountLoading = (state: CommonState) => state.wishlistCountLoading;
+export const getWishlistCountLoaded = (state: CommonState) => state.wishlistCountLoaded;
+export const getWishlistCountFailed = (state: CommonState) => state.wishlistCountFailed;
 
-export const getProfileLoading = (state: CommonState) =>
-  state.getProfileLoading;
+export const getProfileLoading = (state: CommonState) => state.getProfileLoading;
 export const getProfileLoaded = (state: CommonState) => state.getProfileLoaded;
 export const getProfileFailed = (state: CommonState) => state.getProfileFailed;
 
-export const getLanguageLoading = (state: CommonState) =>
-  state.getlanguageLoading;
-export const getLanguageLoaded = (state: CommonState) =>
-  state.getlanguageLoaded;
-export const getLanguageFailed = (state: CommonState) =>
-  state.getlanguageFailed;
+export const getLanguageLoading = (state: CommonState) => state.getlanguageLoading;
+export const getLanguageLoaded = (state: CommonState) => state.getlanguageLoaded;
+export const getLanguageFailed = (state: CommonState) => state.getlanguageFailed;

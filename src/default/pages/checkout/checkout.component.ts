@@ -1,16 +1,5 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatStepper } from '@angular/material';
 import { emailValidator } from '../../theme/utils/app-validators';
 import { ProductControlSandbox } from '../../../core/product-control/product-control.sandbox';
@@ -100,10 +89,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.firstName = new FormControl('', Validators.required);
     this.lastName = new FormControl('', Validators.required);
     this.country = new FormControl('', Validators.required);
-    this.email = new FormControl(
-      '',
-      Validators.compose([Validators.required, emailValidator])
-    );
+    this.email = new FormControl('', Validators.compose([Validators.required, emailValidator]));
     this.phone = new FormControl('', Validators.compose([Validators.required]));
     this.city = new FormControl('', Validators.required);
     this.state = new FormControl('', Validators.required);

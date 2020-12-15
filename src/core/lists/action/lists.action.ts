@@ -30,52 +30,32 @@ export const ActionTypes = {
   CATEGORY_LIST_FAIL: type('[category] get category list fail'),
 
   GET_RELATED_PRODUCT_LIST: type('[RELATED_product] get RELATED_product list'),
-  RELATED_PRODUCT_LIST_SUCCESS: type(
-    '[RELATED_product] get RELATED_product list success'
-  ),
-  RELATED_PRODUCT_LIST_FAIL: type(
-    '[RELATED_product] get RELATED_product list fail'
-  ),
+  RELATED_PRODUCT_LIST_SUCCESS: type('[RELATED_product] get RELATED_product list success'),
+  RELATED_PRODUCT_LIST_FAIL: type('[RELATED_product] get RELATED_product list fail'),
 
   GET_MANUFACTURER_LIST: type('[manufacturer] get manufacturer list'),
-  MANUFACTURER_LIST_SUCCESS: type(
-    '[manufacturer] get manufacturer list success'
-  ),
+  MANUFACTURER_LIST_SUCCESS: type('[manufacturer] get manufacturer list success'),
   MANUFACTURER_LIST_FAIL: type('[manufacturer] get manufacturer list fail'),
 
   GET_PRODUCT_DETAIL: type('[product detail] get product detail'),
   PRODUCT_DETAIL_SUCCESS: type('[product detail] get product detail success'),
   PRODUCT_DETAIL_FAIL: type('[product detail] get product detail fail'),
 
-  GET_PRODUCT_DETAIL_MANDATORY: type(
-    '[product detail mandatory] get product detail mandatory'
-  ),
-  PRODUCT_DETAIL_MANDATORY_SUCCESS: type(
-    '[product detail mandatory] get product detail mandatory success'
-  ),
-  PRODUCT_DETAIL_MANDATORY_FAIL: type(
-    '[product detail mandatory] get product detail mandatory fail'
-  ),
+  GET_PRODUCT_DETAIL_MANDATORY: type('[product detail mandatory] get product detail mandatory'),
+  PRODUCT_DETAIL_MANDATORY_SUCCESS: type('[product detail mandatory] get product detail mandatory success'),
+  PRODUCT_DETAIL_MANDATORY_FAIL: type('[product detail mandatory] get product detail mandatory fail'),
 
   GET_BANNER_LIST: type('[banner] get banner list'),
   GET_BANNER_LIST_SUCCESS: type('[banner] get banner list success'),
   GET_BANNER_LIST_FAIL: type('[banner] get banner list fail'),
 
   GET_BANNER_LIST_COUNT: type('[banner_count] get banner list count'),
-  GET_BANNER_LIST_COUNT_SUCCESS: type(
-    '[banner_count] get banner list count success'
-  ),
+  GET_BANNER_LIST_COUNT_SUCCESS: type('[banner_count] get banner list count success'),
   GET_BANNER_LIST_COUNT_FAIL: type('[banner_count] get banner list count fail'),
 
-  GET_FEATURED_PRODUCT_LIST: type(
-    '[featured_product] get featured product list '
-  ),
-  GET_FEATURED_PRODUCT_LIST_SUCCESS: type(
-    '[featured_product] get featured product list success'
-  ),
-  GET_FEATURED_PRODUCT_LIST_FAIL: type(
-    '[featured_product] get featured product list fail'
-  ),
+  GET_FEATURED_PRODUCT_LIST: type('[featured_product] get featured product list '),
+  GET_FEATURED_PRODUCT_LIST_SUCCESS: type('[featured_product] get featured product list success'),
+  GET_FEATURED_PRODUCT_LIST_FAIL: type('[featured_product] get featured product list fail'),
 
   GET_PAGE_LIST: type('[page_list] get page list '),
   GET_PAGE_LIST_SUCCESS: type('[page_list] get page list success'),

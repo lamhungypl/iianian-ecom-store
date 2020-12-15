@@ -11,11 +11,7 @@ import { AccountService } from '../account.service';
 
 @Injectable()
 export class AccountEffect {
-  constructor(
-    private actions$: Actions,
-    private authApi: AccountService,
-    private appState$: Store<store.AppState>
-  ) {}
+  constructor(private actions$: Actions, private authApi: AccountService, private appState$: Store<store.AppState>) {}
 
   @Effect()
   changePassword$: Observable<Action> = this.actions$.pipe(

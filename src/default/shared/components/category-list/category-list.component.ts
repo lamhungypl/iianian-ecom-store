@@ -1,12 +1,4 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  DoCheck,
-  OnInit,
-  OnDestroy,
-} from '@angular/core';
+import { Component, Input, Output, EventEmitter, DoCheck, OnInit, OnDestroy } from '@angular/core';
 import { ListsSandbox } from '../../../../core/lists/lists.sandbox';
 import { Subscription } from 'rxjs';
 
@@ -35,9 +27,7 @@ export class CategoryListComponent implements DoCheck, OnInit, OnDestroy {
   // filter the  category parentId from categories  data
   public ngDoCheck() {
     if (this.categories && !this.mainCategories) {
-      this.mainCategories = this.categories.filter(
-        category => category.parentId === this.categoryParentId
-      );
+      this.mainCategories = this.categories.filter(category => category.parentId === this.categoryParentId);
     }
   }
 

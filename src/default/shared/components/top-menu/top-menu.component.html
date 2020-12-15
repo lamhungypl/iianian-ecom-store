@@ -1,47 +1,20 @@
 <div class="top-menu">
-  <a
-    mat-button
-    [matMenuTriggerFor]="langMenu"
-    #langMenuTrigger="matMenuTrigger"
-  >
+  <a mat-button [matMenuTriggerFor]="langMenu" #langMenuTrigger="matMenuTrigger">
     <ng-container *ngIf="languageList && languageList.length > 0">
       <img
         [src]="
-          imagePath +
-          '?width=20&height=20&path=' +
-          languageList[index].imagePath +
-          '&name=' +
-          languageList[index].image
+          imagePath + '?width=20&height=20&path=' + languageList[index].imagePath + '&name=' + languageList[index].image
         "
       />
     </ng-container>
-    <span fxShow="false" fxShow.gt-sm class="flag-menu-title blackStyle">{{
-      language
-    }}</span>
+    <span fxShow="false" fxShow.gt-sm class="flag-menu-title blackStyle">{{ language }}</span>
     <mat-icon class="mat-icon-sm caret blackStyle">arrow_drop_down</mat-icon>
   </a>
-  <mat-menu
-    #langMenu="matMenu"
-    [overlapTrigger]="false"
-    xPosition="before"
-    class="app-dropdown blackStyle"
-  >
+  <mat-menu #langMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown blackStyle">
     <span (mouseleave)="langMenuTrigger.closeMenu()">
-      <button
-        mat-menu-item
-        *ngFor="let datas of languageList"
-        (click)="changeLanguage(datas.name)"
-      >
+      <button mat-menu-item *ngFor="let datas of languageList" (click)="changeLanguage(datas.name)">
         <span>
-          <img
-            [src]="
-              imagePath +
-              '?width=20&height=20&path=' +
-              datas.imagePath +
-              '&name=' +
-              datas.image
-            "
-          />
+          <img [src]="imagePath + '?width=20&height=20&path=' + datas.imagePath + '&name=' + datas.image" />
         </span>
         {{ datas.name }}
       </button>
@@ -52,9 +25,7 @@
     <a mat-button routerLink="/wishlist"
       ><span class="blackStyle"
         >{{ 'Shared.Wishlist' | translate }}
-        <ng-container
-          *ngIf="commonSandbox.wishlistCount$ | async; else noWhishListCount"
-        >
+        <ng-container *ngIf="commonSandbox.wishlistCount$ | async; else noWhishListCount">
           ({{ commonSandbox.wishlistCount$ | async }})
         </ng-container>
         <ng-template #noWhishListCount>
@@ -72,30 +43,15 @@
     *ngIf="(commonSandbox.getProfile$ | async)?.firstName"
   >
     <mat-icon class="mat-icon-sm account-icon blackStyle">person</mat-icon>
-    <span fxShow="false" fxShow.gt-sm class="blackStyle">{{
-      'Shared.account' | translate
-    }}</span>
+    <span fxShow="false" fxShow.gt-sm class="blackStyle">{{ 'Shared.account' | translate }}</span>
     <mat-icon class="mat-icon-sm caret blackStyle">arrow_drop_down</mat-icon>
   </a>
-  <a
-    mat-button
-    routerLink="/auth"
-    *ngIf="!(commonSandbox.getProfile$ | async)?.firstName"
-  >
-    <mat-icon routerLink="/auth" class="mat-icon-sm account-icon blackStyle"
-      >person</mat-icon
-    >
-    <span fxShow="false" fxShow.gt-sm class="blackStyle">{{
-      'Shared.sign' | translate
-    }}</span>
+  <a mat-button routerLink="/auth" *ngIf="!(commonSandbox.getProfile$ | async)?.firstName">
+    <mat-icon routerLink="/auth" class="mat-icon-sm account-icon blackStyle">person</mat-icon>
+    <span fxShow="false" fxShow.gt-sm class="blackStyle">{{ 'Shared.sign' | translate }}</span>
   </a>
 
-  <mat-menu
-    #accountMenu="matMenu"
-    [overlapTrigger]="false"
-    xPosition="before"
-    class="app-dropdown account"
-  >
+  <mat-menu #accountMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown account">
     <span>
       <div
         fxLayout="row"
@@ -133,11 +89,7 @@
       </a>
       <a mat-menu-item routerLink="/wishlist" fxHide="false" fxHide.gt-sm>
         <mat-icon class="mat-icon-sm">favorite</mat-icon>
-        <span
-          >{{ 'Shared.Wishlist' | translate }} ({{
-            commonSandbox.wishlistCount$ | async
-          }})</span
-        >
+        <span>{{ 'Shared.Wishlist' | translate }} ({{ commonSandbox.wishlistCount$ | async }})</span>
       </a>
       <a mat-menu-item routerLink="/">
         <mat-icon class="mat-icon-sm">lock</mat-icon>

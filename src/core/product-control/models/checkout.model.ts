@@ -53,8 +53,6 @@ export class CheckoutModel {
     this.phoneNumber = checkoutRequest.phone || '';
     this.shippingAddressFormat = '';
     this.emailId = checkoutRequest.email || '';
-    this.productDetails = new CheckoutProductModel(
-      checkoutRequest.productDetail
-    );
+    this.productDetails = new CheckoutProductModel(checkoutRequest.productDetail);
   }
 }

@@ -1,29 +1,16 @@
-<div
-  *ngIf="products && products.length > 0"
-  class="swiper-container"
-  [swiper]="config"
->
+<div *ngIf="products && products.length > 0" class="swiper-container" [swiper]="config">
   <div class="swiper-wrapper h-100">
     <div *ngFor="let product of products" class="swiper-slide">
       <mat-card class="product-item" *ngIf="product">
         <mat-chip-list *ngIf="product.discount">
-          <mat-chip color="warn" selected="true"
-            >{{ product.discount }}% OFF</mat-chip
-          >
+          <mat-chip color="warn" selected="true">{{ product.discount }}% OFF</mat-chip>
         </mat-chip-list>
 
-        <a
-          [routerLink]="['/products/product-detail', product.productId]"
-          class="image-link"
-        >
+        <a [routerLink]="['/products/product-detail', product.productId]" class="image-link">
           <img
             *ngIf="product.image"
             [attr.data-src]="
-              imagePath +
-              '?width=260&height=260&path=' +
-              product.image.containerName +
-              '&name=' +
-              product.image.image
+              imagePath + '?width=260&height=260&path=' + product.image.containerName + '&name=' + product.image.image
             "
             style="height: 200px;"
             class="swiper-lazy"
@@ -31,32 +18,22 @@
           />
           <div class="swiper-lazy-preloader"></div>
         </a>
-        <a
-          [routerLink]="['/products/product-detail', product.productId]"
-          class="title text-truncate"
-        >
+        <a [routerLink]="['/products/product-detail', product.productId]" class="title text-truncate">
           {{ product.name }}
         </a>
         <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
           <div fxLayout="column" fxLayoutAlign="center start">
             <p class="new-price">
-              <ng-container
-                *ngIf="product.flag == '' && product.pricerefer == ''"
-                >{{
-                  product.price | currency: 'VND':'symbol-narrow'
-                }}</ng-container
-              >
+              <ng-container *ngIf="product.flag == '' && product.pricerefer == ''">{{
+                product.price | currency: 'VND':'symbol-narrow'
+              }}</ng-container>
               <ng-container *ngIf="product.flag == 0; else one">
                 {{ product.pricerefer | currency: 'VND':'symbol-narrow' }}
               </ng-container>
               <ng-template #one>
                 <span
-                  ><del class="del">{{
-                    product.price | currency: 'VND':'symbol-narrow'
-                  }}</del>
-                  {{
-                    product.pricerefer | currency: 'VND':'symbol-narrow'
-                  }}</span
+                  ><del class="del">{{ product.price | currency: 'VND':'symbol-narrow' }}</del>
+                  {{ product.pricerefer | currency: 'VND':'symbol-narrow' }}</span
                 >
               </ng-template>
             </p>

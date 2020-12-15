@@ -11,9 +11,7 @@ import { WishlistSandbox } from '../../../core/wishlist/wishlist.sandbox';
 import { WishlistService } from '../../../core/wishlist/wishlist.service';
 import { TranslateModule } from '@ngx-translate/core';
 
-export const routes = [
-  { path: '', component: WishlistComponent, pathMatch: 'full' },
-];
+export const routes = [{ path: '', component: WishlistComponent, pathMatch: 'full' }];
 
 @NgModule({
   imports: [

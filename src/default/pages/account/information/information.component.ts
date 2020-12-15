@@ -1,16 +1,5 @@
-import {
-  Component,
-  OnInit,
-  ElementRef,
-  ViewChild,
-  OnDestroy,
-} from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, OnInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { emailValidator } from '../../../theme/utils/app-validators';
 import { ConfigService } from '../../../../core/service/config.service';
@@ -63,14 +52,8 @@ export class InformationComponent implements OnInit, OnDestroy {
   // build a form for info  by gouping the form control
   initInfoForm() {
     this.infoForm = this.formBuilder.group({
-      firstName: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(3)]),
-      ],
-      lastName: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(1)]),
-      ],
+      firstName: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
+      lastName: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       email: ['', Validators.compose([Validators.required, emailValidator])],
       address: ['', Validators.compose([Validators.required])],
       country: ['', Validators.compose([Validators.required])],
@@ -85,10 +68,7 @@ export class InformationComponent implements OnInit, OnDestroy {
   initPasswordForm() {
     this.passwordForm = this.formBuilder.group({
       currentPassword: ['', Validators.compose([Validators.required])],
-      newPassword: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(5)]),
-      ],
+      newPassword: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
     });
   }
 
@@ -105,12 +85,7 @@ export class InformationComponent implements OnInit, OnDestroy {
           this.infoForm.controls['zoneId'].setValue(profile.zoneId);
           this.infoForm.controls['pincode'].setValue(profile.pincode);
           this.infoForm.controls['phoneNumber'].setValue(profile.mobileNumber);
-          this.imageUrl =
-            this.imagePath +
-            '?width=60&height=60&name=' +
-            profile.avatar +
-            '&path=' +
-            profile.avatarPath;
+          this.imageUrl = this.imagePath + '?width=60&height=60&name=' + profile.avatar + '&path=' + profile.avatarPath;
           this.ifImageAvailable = profile.avatarPath;
         }
       })

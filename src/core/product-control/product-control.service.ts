@@ -10,10 +10,7 @@ export class ProductControlService extends Api {
 
   public addToWishlist(params: any): Observable<any> {
     this.base = this.getBaseUrl();
-    return this.http.post(
-      this.base + 'customer/add-product-to-wishlist',
-      params
-    );
+    return this.http.post(this.base + 'customer/add-product-to-wishlist', params);
   }
 
   /* call checkout api*/

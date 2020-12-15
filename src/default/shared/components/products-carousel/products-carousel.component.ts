@@ -18,11 +18,7 @@ export class ProductsCarouselComponent implements OnInit, AfterViewInit {
   // path of the image
   public imagePath: string;
 
-  constructor(
-    public dialog: MatDialog,
-    private router: Router,
-    private configService: ConfigService
-  ) {}
+  constructor(public dialog: MatDialog, private router: Router, private configService: ConfigService) {}
 
   // initially get data from config service
   ngOnInit() {

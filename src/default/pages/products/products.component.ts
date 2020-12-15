@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  HostListener,
-  ChangeDetectorRef,
-  PLATFORM_ID,
-  Inject,
-} from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, ChangeDetectorRef, PLATFORM_ID, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { ProductDialogComponent } from '../../shared/components/products-carousel/product-dialog/product-dialog.component';
@@ -178,9 +170,7 @@ export class ProductsComponent implements OnInit {
   // sidebar open close based on the window size
   @HostListener('window:resize')
   public onWindowResize(): void {
-    window.innerWidth < 960
-      ? (this.sidenavOpen = false)
-      : (this.sidenavOpen = true);
+    window.innerWidth < 960 ? (this.sidenavOpen = false) : (this.sidenavOpen = true);
     window.innerWidth < 1280 ? (this.viewCol = 33.3) : (this.viewCol = 25);
   }
 

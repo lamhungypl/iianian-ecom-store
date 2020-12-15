@@ -88,9 +88,7 @@ export class ListsEffect {
         tap(res => {
           if (res) {
             this.title.setTitle(res.data[0].metaTagTitle);
-            this.meta.addTags([
-              { name: 'description', content: res.data[0].metaTagDescription },
-            ]);
+            this.meta.addTags([{ name: 'description', content: res.data[0].metaTagDescription }]);
             const description = this.meta.getTags('name=description');
           }
         }),
@@ -106,13 +104,8 @@ export class ListsEffect {
     map((action: actions.GetProductDetailMandatory) => action.payload),
     switchMap(state => {
       return this.authApi.getProductDetailMandatory(state).pipe(
-        map(
-          manufacturer =>
-            new actions.GetProductDetailMandatorySuccess(manufacturer)
-        ),
-        catchError(error =>
-          of(new actions.GetProductDetailMandatoryFail(error))
-        )
+        map(manufacturer => new actions.GetProductDetailMandatorySuccess(manufacturer)),
+        catchError(error => of(new actions.GetProductDetailMandatoryFail(error)))
       );
     })
   );
@@ -172,9 +165,7 @@ export class ListsEffect {
           if (res) {
             this.title.setTitle(res.data[0].metaTagTitle);
 
-            this.meta.addTags([
-              { name: 'description', content: res.data[0].metaTagDescription },
-            ]);
+            this.meta.addTags([{ name: 'description', content: res.data[0].metaTagDescription }]);
             const description = this.meta.getTags('name=description');
           }
         }),

@@ -15,9 +15,7 @@ import { ProductControlEffect } from '../../../core/product-control/effects/prod
 import { ProductControlService } from '../../../core/product-control/product-control.service';
 import { ProductControlSandbox } from '../../../core/product-control/product-control.sandbox';
 import { TranslateModule } from '@ngx-translate/core';
-export const routes = [
-  { path: '', component: CartComponent, pathMatch: 'full' },
-];
+export const routes = [{ path: '', component: CartComponent, pathMatch: 'full' }];
 
 @NgModule({
   imports: [

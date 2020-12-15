@@ -40,11 +40,6 @@ export const routes = [
     NumberAcceptModule,
   ],
   declarations: [CheckoutComponent, TruncatePipe, CheckoutSuccessComponent],
-  providers: [
-    ProductControlSandbox,
-    AccountSandbox,
-    ProductControlService,
-    AccountService,
-  ],
+  providers: [ProductControlSandbox, AccountSandbox, ProductControlService, AccountService],
 })
 export class CheckoutModule {}

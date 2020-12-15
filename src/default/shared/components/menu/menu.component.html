@@ -1,8 +1,4 @@
-<mat-toolbar
-  class="top-navbar mat-elevation-z2"
-  fxLayoutAlign=""
-  color="primary"
->
+<mat-toolbar class="top-navbar mat-elevation-z2" fxLayoutAlign="" color="primary">
   <a
     mat-button
     (click)="homePage()"
@@ -33,19 +29,10 @@
     >{{ category.name }}
     <mat-icon class="caret">arrow_drop_down</mat-icon>
   </a>
-  <mat-menu
-    #menu="matMenu"
-    [overlapTrigger]="false"
-    class="mega-menu app-dropdown"
-  >
+  <mat-menu #menu="matMenu" [overlapTrigger]="false" class="mega-menu app-dropdown">
     <span>
       <div fxLayout="row wrap" *ngIf="index || index === 0">
-        <div
-          fxFlex="20"
-          fxLayout="column"
-          class="p-1"
-          *ngFor="let subCategory of categories[index].children"
-        >
+        <div fxFlex="20" fxLayout="column" class="p-1" *ngFor="let subCategory of categories[index].children">
           <a
             mat-menu-item
             [routerLink]="['/products', subCategory.categoryId]"
@@ -57,19 +44,12 @@
           </a>
           <mat-divider></mat-divider>
           <div *ngIf="subCategory.children">
-            <div
-              *ngFor="
-                let grandsubCategory of subCategory.children;
-                let j = index
-              "
-            >
+            <div *ngFor="let grandsubCategory of subCategory.children; let j = index">
               <a
                 mat-menu-item
                 [routerLink]="['/products', grandsubCategory.categoryId]"
                 [routerLinkActiveOptions]="{ exact: true }"
-                (click)="
-                  linkActive(); getChildCategory(grandsubCategory.categoryId)
-                "
+                (click)="linkActive(); getChildCategory(grandsubCategory.categoryId)"
                 routerLinkActive="horizontal-active-link"
               >
                 {{ grandsubCategory.name }}</a

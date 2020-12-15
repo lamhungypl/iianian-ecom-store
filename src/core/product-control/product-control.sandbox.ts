@@ -35,11 +35,7 @@ export class ProductControlSandbox {
   changeCountTotalPrice = 0;
   private subscriptions: Array<Subscription> = [];
 
-  constructor(
-    private router: Router,
-    protected appState$: Store<store.AppState>,
-    public snackBar: MatSnackBar
-  ) {
+  constructor(private router: Router, protected appState$: Store<store.AppState>, public snackBar: MatSnackBar) {
     this.completeOrder();
   }
 
@@ -75,10 +71,7 @@ export class ProductControlSandbox {
       if (this.selectedProducts[i].productId === id) {
         if (this.selectedProducts[i].pricerefer !== '') {
           if (this.selectedProducts[i].productCount === 1) {
-            const tempPricerefer = parseInt(
-              this.selectedProducts[i].pricerefer,
-              10
-            );
+            const tempPricerefer = parseInt(this.selectedProducts[i].pricerefer, 10);
             this.productTotal = this.productTotal + tempPricerefer;
           }
         } else {
@@ -131,21 +124,14 @@ export class ProductControlSandbox {
     const availableData: any = {};
     availableData.options = param.totalOptions;
     cartParams.totalPrice = this.productTotal;
-    this.snackBar.open(
-      'Product ' + item.name + ' is successfully added to cart',
-      '×',
-      {
-        panelClass: 'success',
-        verticalPosition: 'top',
-        horizontalPosition: 'right',
-        duration: 3000,
-      }
-    );
+    this.snackBar.open('Product ' + item.name + ' is successfully added to cart', '×', {
+      panelClass: 'success',
+      verticalPosition: 'top',
+      horizontalPosition: 'right',
+      duration: 3000,
+    });
     this.changeCountTotalPrice = cartParams.totalPrice;
-    sessionStorage.setItem(
-      'changeCountTotalPrice',
-      JSON.stringify(this.changeCountTotalPrice)
-    );
+    sessionStorage.setItem('changeCountTotalPrice', JSON.stringify(this.changeCountTotalPrice));
     this.totalOptionsSelected(availableData);
     this.HandleCart(cartParams);
   }
@@ -242,10 +228,7 @@ export class ProductControlSandbox {
     cartParams.products = this.selectedProducts;
     cartParams.productTotal = this.cartTotal;
     cartParams.totalPrice = this.productTotal;
-    sessionStorage.setItem(
-      'changeCountTotalPrice',
-      JSON.stringify(cartParams.totalPrice)
-    );
+    sessionStorage.setItem('changeCountTotalPrice', JSON.stringify(cartParams.totalPrice));
     this.HandleCart(cartParams);
   }
 
@@ -253,9 +236,7 @@ export class ProductControlSandbox {
   public addItems(product) {
     this.productTotal = 0;
     if (product.pricerefer !== '') {
-      const _changeTotalPrice: any = sessionStorage.getItem(
-        'changeCountTotalPrice'
-      )
+      const _changeTotalPrice: any = sessionStorage.getItem('changeCountTotalPrice')
         ? parseFloat(sessionStorage.getItem('changeCountTotalPrice'))
         : 0;
       const numberPricerefer: any = parseInt(product.pricerefer, 10);
@@ -265,9 +246,7 @@ export class ProductControlSandbox {
       }
       this.productTotal = _changeTotalPrice + calculation;
     } else {
-      const _changeTotalPrice: any = sessionStorage.getItem(
-        'changeCountTotalPrice'
-      )
+      const _changeTotalPrice: any = sessionStorage.getItem('changeCountTotalPrice')
         ? parseFloat(sessionStorage.getItem('changeCountTotalPrice'))
         : 0;
       const numberPrice: any = parseInt(product.price, 10);
@@ -297,10 +276,7 @@ export class ProductControlSandbox {
   HandleCart(params) {
     sessionStorage.setItem('productTotal', JSON.stringify(params.totalPrice));
     sessionStorage.setItem('selectedProducts', JSON.stringify(params.products));
-    sessionStorage.setItem(
-      'selectedProductsCount',
-      JSON.stringify(params.productTotal)
-    );
+    sessionStorage.setItem('selectedProductsCount', JSON.stringify(params.productTotal));
     this.appState$.dispatch(new authAction.CartHandleAction(params));
   }
 
@@ -308,9 +284,7 @@ export class ProductControlSandbox {
    * do checkout products
    */
   PlaceOrder(params) {
-    this.appState$.dispatch(
-      new authAction.DoCheckoutAction(new CheckoutModel(params))
-    );
+    this.appState$.dispatch(new authAction.DoCheckoutAction(new CheckoutModel(params)));
   }
 
   /**

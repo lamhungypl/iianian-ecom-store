@@ -4,18 +4,8 @@
       {{ 'account.AccountDetails' | translate }}
     </h2>
     <div class="editImage">
-      <img
-        class="img"
-        *ngIf="!ifImageAvailable"
-        (click)="uploadButtonClick()"
-        src="./assets/images/others/user.jpg"
-      />
-      <img
-        class="img"
-        *ngIf="ifImageAvailable"
-        (click)="uploadButtonClick()"
-        [src]="imageUrl"
-      />
+      <img class="img" *ngIf="!ifImageAvailable" (click)="uploadButtonClick()" src="./assets/images/others/user.jpg" />
+      <img class="img" *ngIf="ifImageAvailable" (click)="uploadButtonClick()" [src]="imageUrl" />
 
       <input
         type="file"
@@ -25,121 +15,59 @@
         #filePath
         style="display: none;"
       />
-      <span
-        class="editProfile"
-        *ngIf="ifImageAvailable"
-        (click)="uploadButtonClick()"
-        >Change</span
-      >
+      <span class="editProfile" *ngIf="ifImageAvailable" (click)="uploadButtonClick()">Change</span>
     </div>
     <form [formGroup]="infoForm">
       <mat-form-field
         class="w-100 mt-2"
         [ngClass]="{
-          validationcolor:
-            infoForm.controls.firstName.errors?.required && ifSubmitted == true
+          validationcolor: infoForm.controls.firstName.errors?.required && ifSubmitted == true
         }"
       >
-        <input
-          matInput
-          placeholder="{{ 'account.FirstName' | translate }}"
-          formControlName="firstName"
-          required
-        />
-        <mat-error
-          *ngIf="
-            infoForm['controls'].firstName.errors?.required &&
-            ifSubmitted == true
-          "
-        >
+        <input matInput placeholder="{{ 'account.FirstName' | translate }}" formControlName="firstName" required />
+        <mat-error *ngIf="infoForm['controls'].firstName.errors?.required && ifSubmitted == true">
           {{ 'Error.FirstNameIsRequired' | translate }}
         </mat-error>
-        <mat-error
-          *ngIf="
-            infoForm['controls'].firstName.hasError('minlength') &&
-            ifSubmitted == true
-          "
-        >
+        <mat-error *ngIf="infoForm['controls'].firstName.hasError('minlength') && ifSubmitted == true">
           {{ 'Error.FirstNameLong' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field
         class="w-100 mt-1"
         [ngClass]="{
-          validationcolor:
-            infoForm.controls.lastName.errors?.required && ifSubmitted == true
+          validationcolor: infoForm.controls.lastName.errors?.required && ifSubmitted == true
         }"
       >
-        <input
-          matInput
-          placeholder="{{ 'account.LastName' | translate }}"
-          formControlName="lastName"
-          required
-        />
-        <mat-error
-          *ngIf="
-            infoForm['controls'].lastName.errors?.required &&
-            ifSubmitted == true
-          "
-        >
+        <input matInput placeholder="{{ 'account.LastName' | translate }}" formControlName="lastName" required />
+        <mat-error *ngIf="infoForm['controls'].lastName.errors?.required && ifSubmitted == true">
           {{ 'Error.LastNameIsRequired' | translate }}
         </mat-error>
-        <mat-error
-          *ngIf="
-            infoForm['controls'].lastName.hasError('minlength') &&
-            ifSubmitted == true
-          "
-        >
+        <mat-error *ngIf="infoForm['controls'].lastName.hasError('minlength') && ifSubmitted == true">
           {{ 'Error.LastNameLong' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field
         class="w-100 mt-1"
         [ngClass]="{
-          validationcolor:
-            infoForm.controls.email.errors?.required && ifSubmitted == true
+          validationcolor: infoForm.controls.email.errors?.required && ifSubmitted == true
         }"
       >
-        <input
-          matInput
-          placeholder="{{ 'account.Email' | translate }}"
-          formControlName="email"
-          required
-        />
-        <mat-error
-          *ngIf="
-            infoForm['controls'].email.errors?.required && ifSubmitted == true
-          "
-        >
+        <input matInput placeholder="{{ 'account.Email' | translate }}" formControlName="email" required />
+        <mat-error *ngIf="infoForm['controls'].email.errors?.required && ifSubmitted == true">
           {{ 'Error.EmailIsRequired' | translate }}
         </mat-error>
-        <mat-error
-          *ngIf="
-            infoForm['controls'].email.hasError('invalidEmail') &&
-            ifSubmitted == true
-          "
-        >
+        <mat-error *ngIf="infoForm['controls'].email.hasError('invalidEmail') && ifSubmitted == true">
           {{ 'Error.InvalidEmailAddress' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field
         class="w-100 mt-1"
         [ngClass]="{
-          validationcolor:
-            infoForm.controls.address.errors?.required && ifSubmitted == true
+          validationcolor: infoForm.controls.address.errors?.required && ifSubmitted == true
         }"
       >
-        <input
-          matInput
-          placeholder="{{ 'account.Address' | translate }}"
-          formControlName="address"
-          required
-        />
-        <mat-error
-          *ngIf="
-            infoForm['controls'].address.errors?.required && ifSubmitted == true
-          "
-        >
+        <input matInput placeholder="{{ 'account.Address' | translate }}" formControlName="address" required />
+        <mat-error *ngIf="infoForm['controls'].address.errors?.required && ifSubmitted == true">
           {{ 'Error.AddressIsRequired' | translate }}
         </mat-error>
       </mat-form-field>
@@ -150,18 +78,11 @@
           required
           (selectionChange)="onSelectCountry($event.value)"
         >
-          <mat-option
-            *ngFor="let list of listsSandbox.countryList$ | async"
-            [value]="list.countryId"
-          >
+          <mat-option *ngFor="let list of listsSandbox.countryList$ | async" [value]="list.countryId">
             {{ list.name }}
           </mat-option>
         </mat-select>
-        <mat-error
-          *ngIf="
-            infoForm.controls['country'].errors?.required && ifSubmitted == true
-          "
-        >
+        <mat-error *ngIf="infoForm.controls['country'].errors?.required && ifSubmitted == true">
           {{ 'Error.CountryIsRequired' | translate }}
         </mat-error>
       </mat-form-field>
@@ -173,18 +94,11 @@
           required
           (selectionChange)="onSelectZone($event.value)"
         >
-          <mat-option
-            *ngFor="let list of listsSandbox.zoneList$ | async"
-            [value]="list['zoneId']"
-          >
+          <mat-option *ngFor="let list of listsSandbox.zoneList$ | async" [value]="list['zoneId']">
             {{ list.name }}
           </mat-option>
         </mat-select>
-        <mat-error
-          *ngIf="
-            infoForm.controls['country'].errors?.required && ifSubmitted == true
-          "
-        >
+        <mat-error *ngIf="infoForm.controls['country'].errors?.required && ifSubmitted == true">
           {{ 'Error.StateIsRequired' | translate }}
         </mat-error>
       </mat-form-field>
@@ -192,21 +106,11 @@
       <mat-form-field
         class="w-100 mt-1"
         [ngClass]="{
-          validationcolor:
-            infoForm.controls.pincode.errors?.required && ifSubmitted == true
+          validationcolor: infoForm.controls.pincode.errors?.required && ifSubmitted == true
         }"
       >
-        <input
-          matInput
-          placeholder="{{ 'account.Pincode' | translate }}"
-          formControlName="pincode"
-          required
-        />
-        <mat-error
-          *ngIf="
-            infoForm.controls['pincode'].errors?.required && ifSubmitted == true
-          "
-        >
+        <input matInput placeholder="{{ 'account.Pincode' | translate }}" formControlName="pincode" required />
+        <mat-error *ngIf="infoForm.controls['pincode'].errors?.required && ifSubmitted == true">
           {{ 'Error.PincodeIsRequired' | translate }}
         </mat-error>
       </mat-form-field>
@@ -228,13 +132,7 @@
       </div>
     </form>
   </div>
-  <div
-    fxFlex="100"
-    fxFlex.gt-sm="50"
-    class="p-2"
-    ngClass.sm="mt-2"
-    ngClass.xs="mt-2"
-  >
+  <div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
     <h2 class="text-muted text-center">
       {{ 'account.PasswordChange' | translate }}
     </h2>
@@ -242,9 +140,7 @@
       <mat-form-field
         class="w-100 mt-2"
         [ngClass]="{
-          validationcolor:
-            passwordForm.controls.currentPassword.errors?.required &&
-            ifPasswordForm == true
+          validationcolor: passwordForm.controls.currentPassword.errors?.required && ifPasswordForm == true
         }"
       >
         <input
@@ -253,21 +149,14 @@
           formControlName="currentPassword"
           type="password"
         />
-        <mat-error
-          *ngIf="
-            passwordForm.controls['currentPassword'].errors?.required &&
-            ifPasswordForm == true
-          "
-        >
+        <mat-error *ngIf="passwordForm.controls['currentPassword'].errors?.required && ifPasswordForm == true">
           {{ 'Error.CurrentPasswordIsRequired' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field
         class="w-100 mt-1"
         [ngClass]="{
-          validationcolor:
-            passwordForm.controls.newPassword.errors?.required &&
-            ifPasswordForm == true
+          validationcolor: passwordForm.controls.newPassword.errors?.required && ifPasswordForm == true
         }"
       >
         <input
@@ -276,20 +165,10 @@
           formControlName="newPassword"
           type="text"
         />
-        <mat-error
-          *ngIf="
-            passwordForm.controls['newPassword'].errors?.required &&
-            ifPasswordForm == true
-          "
-        >
+        <mat-error *ngIf="passwordForm.controls['newPassword'].errors?.required && ifPasswordForm == true">
           {{ 'Error.NewPasswordIsRequired' | translate }}
         </mat-error>
-        <mat-error
-          *ngIf="
-            passwordForm.controls['newPassword'].hasError('minlength') &&
-            ifPasswordForm == true
-          "
-        >
+        <mat-error *ngIf="passwordForm.controls['newPassword'].hasError('minlength') && ifPasswordForm == true">
           {{ 'Error.NewPasswordLong' | translate }}
         </mat-error>
       </mat-form-field>

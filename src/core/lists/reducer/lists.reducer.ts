@@ -18,10 +18,7 @@ import { ProductDetailMandatoryResponseModel } from '../models/product-detail-ma
 
 export const initialState: ListsState = (new listsRecord() as unknown) as ListsState;
 
-export function reducer(
-  state = initialState,
-  { type, payload }: any
-): ListsState {
+export function reducer(state = initialState, { type, payload }: any): ListsState {
   if (!type) {
     return state;
   }
@@ -40,9 +37,7 @@ export function reducer(
         const productLists = new ProductsResponseModel(product);
         return productLists;
       });
-      const tempMaxProductPrice = payload.data.map(prod =>
-        parseInt(prod.price)
-      );
+      const tempMaxProductPrice = payload.data.map(prod => parseInt(prod.price));
 
       return Object.assign({}, state, {
         productLoading: false,
@@ -199,9 +194,7 @@ export function reducer(
     }
 
     case actions.ActionTypes.PRODUCT_DETAIL_MANDATORY_SUCCESS: {
-      const productdetailMandatory = new ProductDetailMandatoryResponseModel(
-        payload.data[0]
-      );
+      const productdetailMandatory = new ProductDetailMandatoryResponseModel(payload.data[0]);
       return Object.assign({}, state, {
         productDetailMandatory: productdetailMandatory,
         productDetailMandatoryLoading: false,
@@ -505,11 +498,9 @@ export const categoryList = (state: ListsState) => state.category;
 export const relatedProducts = (state: ListsState) => state.relatedProducts;
 export const manufacturer = (state: ListsState) => state.manufacturer;
 export const productDetail = (state: ListsState) => state.productDetail;
-export const productDetailMandatory = (state: ListsState) =>
-  state.productDetailMandatory;
+export const productDetailMandatory = (state: ListsState) => state.productDetailMandatory;
 
-export const getAvailableOptionsArray = (state: ListsState) =>
-  state.availableOptionsArray;
+export const getAvailableOptionsArray = (state: ListsState) => state.availableOptionsArray;
 
 export const getBannerList = (state: ListsState) => state.bannerList;
 export const getListLoading = (state: ListsState) => state.bannerLoading;
@@ -522,19 +513,13 @@ export const getCountLoaded = (state: ListsState) => state.countLoaded;
 export const getCountFailed = (state: ListsState) => state.countFailed;
 
 export const getFeaturedList = (state: ListsState) => state.featuredList;
-export const getFeaturedListLoading = (state: ListsState) =>
-  state.featuredListLoading;
-export const getFeaturedLisLoaded = (state: ListsState) =>
-  state.featuredListLoaded;
-export const getFeaturedLisFailed = (state: ListsState) =>
-  state.featuredListFailed;
+export const getFeaturedListLoading = (state: ListsState) => state.featuredListLoading;
+export const getFeaturedLisLoaded = (state: ListsState) => state.featuredListLoaded;
+export const getFeaturedLisFailed = (state: ListsState) => state.featuredListFailed;
 
-export const getRelatedProductLoading = (state: ListsState) =>
-  state.relatedProductLoading;
-export const getRelatedProductLoaded = (state: ListsState) =>
-  state.relatedProductLoaded;
-export const getRelatedProductFailed = (state: ListsState) =>
-  state.relatedProductFailed;
+export const getRelatedProductLoading = (state: ListsState) => state.relatedProductLoading;
+export const getRelatedProductLoaded = (state: ListsState) => state.relatedProductLoaded;
+export const getRelatedProductFailed = (state: ListsState) => state.relatedProductFailed;
 
 export const getPageList = (state: ListsState) => state.pageList;
 export const getPageListLoading = (state: ListsState) => state.pageListLoading;
@@ -542,33 +527,23 @@ export const getPageListLoaded = (state: ListsState) => state.pageListLoaded;
 export const getPageListFailed = (state: ListsState) => state.pageListFailed;
 export const getSettingDetail = (state: ListsState) => state.settingDetail;
 
-export const getContactUsLoading = (state: ListsState) =>
-  state.contactUsLoading;
+export const getContactUsLoading = (state: ListsState) => state.contactUsLoading;
 export const getContactUsLoaded = (state: ListsState) => state.contactusLoaded;
 export const getContactUsFailed = (state: ListsState) => state.contactusFailed;
 export const getContactDetail = (state: ListsState) => state.contactDetail;
 
-export const getPageDetailLoading = (state: ListsState) =>
-  state.pageDetailLoading;
-export const getPageDetailLoaded = (state: ListsState) =>
-  state.pageDetailLoaded;
-export const getPageDetailFailed = (state: ListsState) =>
-  state.pageDetailFailed;
+export const getPageDetailLoading = (state: ListsState) => state.pageDetailLoading;
+export const getPageDetailLoaded = (state: ListsState) => state.pageDetailLoaded;
+export const getPageDetailFailed = (state: ListsState) => state.pageDetailFailed;
 export const getPageDetail = (state: ListsState) => state.pageDetail;
 
-export const getManufacturerLoading = (state: ListsState) =>
-  state.manufacturerLoading;
-export const getManufacturerLoaded = (state: ListsState) =>
-  state.manufacturerLoaded;
-export const getManufacturerFailed = (state: ListsState) =>
-  state.manufacturerFailed;
+export const getManufacturerLoading = (state: ListsState) => state.manufacturerLoading;
+export const getManufacturerLoaded = (state: ListsState) => state.manufacturerLoaded;
+export const getManufacturerFailed = (state: ListsState) => state.manufacturerFailed;
 
-export const getProductDetailLoading = (state: ListsState) =>
-  state.productDetailLoading;
-export const getProductDetailLoaded = (state: ListsState) =>
-  state.productDetailLoaded;
-export const getProductDetailFailed = (state: ListsState) =>
-  state.productDetailFailed;
+export const getProductDetailLoading = (state: ListsState) => state.productDetailLoading;
+export const getProductDetailLoaded = (state: ListsState) => state.productDetailLoaded;
+export const getProductDetailFailed = (state: ListsState) => state.productDetailFailed;
 
 export const getCountryList = (state: ListsState) => state.countryList;
 export const getCountryLoading = (state: ListsState) => state.countryLoading;
@@ -581,16 +556,13 @@ export const getZoneLoaded = (state: ListsState) => state.zoneLoaded;
 export const getZoneFailed = (state: ListsState) => state.zoneFailed;
 
 export const getTodayDealList = (state: ListsState) => state.todayDeal;
-export const getTodayDealLoading = (state: ListsState) =>
-  state.todayDealLoading;
+export const getTodayDealLoading = (state: ListsState) => state.todayDealLoading;
 export const getTodayDealLoaded = (state: ListsState) => state.todayDealLoaded;
 export const getTodayDealFailed = (state: ListsState) => state.todayDealFailed;
 
 export const subCategoryList = (state: ListsState) => state.subcategory;
-export const subCategoryLoading = (state: ListsState) =>
-  state.subcategoryLoading;
+export const subCategoryLoading = (state: ListsState) => state.subcategoryLoading;
 export const subCategoryLoaded = (state: ListsState) => state.subcategoryLoaded;
 export const subCategoryFailed = (state: ListsState) => state.todayDealFailed;
 
-export const selectedCategoryId = (state: ListsState) =>
-  state.SelectedcategoryId;
+export const selectedCategoryId = (state: ListsState) => state.SelectedcategoryId;

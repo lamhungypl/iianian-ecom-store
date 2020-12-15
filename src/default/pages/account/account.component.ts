@@ -37,9 +37,7 @@ export class AccountComponent implements OnInit, AfterViewInit {
   }
   @HostListener('window:resize')
   public onWindowResize(): void {
-    window.innerWidth < 960
-      ? (this.sidenavOpen = false)
-      : (this.sidenavOpen = true);
+    window.innerWidth < 960 ? (this.sidenavOpen = false) : (this.sidenavOpen = true);
   }
   // subscribe the event  at finally
   ngAfterViewInit() {

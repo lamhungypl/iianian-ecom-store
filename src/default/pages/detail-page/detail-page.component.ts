@@ -11,11 +11,7 @@ export class DetailPageComponent implements OnInit {
   // page detail
   private pageId: any;
 
-  constructor(
-    public router: Router,
-    public activatedRoute: ActivatedRoute,
-    public listSandbox: ListsSandbox
-  ) {
+  constructor(public router: Router, public activatedRoute: ActivatedRoute, public listSandbox: ListsSandbox) {
     // subscribe route params and assign id to pageId (from footer component)
     this.activatedRoute.params.subscribe(param => {
       this.pageId = param['id'];

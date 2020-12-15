@@ -61,24 +61,16 @@ export class AccountSandbox {
   public orderHistoryList$ = this.appState$.select(getOrderHistoryList);
   public orderHistoryCount$ = this.appState$.select(getorderHistoryCount);
   public orderHistoryDetail$ = this.appState$.select(getOrderHistoryDetail);
-  public orderHistoryDetailLoaded$ = this.appState$.select(
-    getOrderHistoryDetailLoaded
-  );
-  public orderHistoryDetailLoading$ = this.appState$.select(
-    getOrderHistoryDetailLoading
-  );
-  public orderHistoryDetailFailed$ = this.appState$.select(
-    getOrderHistoryDetailFailed
-  );
+  public orderHistoryDetailLoaded$ = this.appState$.select(getOrderHistoryDetailLoaded);
+  public orderHistoryDetailLoading$ = this.appState$.select(getOrderHistoryDetailLoading);
+  public orderHistoryDetailFailed$ = this.appState$.select(getOrderHistoryDetailFailed);
   /* order history */
   public historyListLoaded$ = this.appState$.select(getHistoryListLoaded);
   public historyListLoading$ = this.appState$.select(getHistoryListLoading);
   public historyListFailed$ = this.appState$.select(getHistoryListFailed);
   /* change password */
   public newPassword$ = this.appState$.select(getNewPassword);
-  public changePasswordLoading$ = this.appState$.select(
-    getChangepasswordLoading
-  );
+  public changePasswordLoading$ = this.appState$.select(getChangepasswordLoading);
   public changePasswordLoaded$ = this.appState$.select(getChangepasswordLoaded);
   public changePasswordFailed$ = this.appState$.select(getChangepasswordFailed);
   /* edit profile */
@@ -89,15 +81,9 @@ export class AccountSandbox {
   /* Address List */
 
   public getCustAddressList$ = this.appState$.select(getAddressList);
-  public getCustAddressListLoaded$ = this.appState$.select(
-    getAddressListLoading
-  );
-  public getCustAddressListLoading$ = this.appState$.select(
-    getAddressListLoaded
-  );
-  public getCustAddressListFailed$ = this.appState$.select(
-    getAddressListFailed
-  );
+  public getCustAddressListLoaded$ = this.appState$.select(getAddressListLoading);
+  public getCustAddressListLoading$ = this.appState$.select(getAddressListLoaded);
+  public getCustAddressListFailed$ = this.appState$.select(getAddressListFailed);
 
   // add rating
   public getReview$ = this.appState$.select(getReview);
@@ -123,11 +109,7 @@ export class AccountSandbox {
   public getCustomerAddressList: any = {};
   profileImageData = new Subject<any>();
 
-  constructor(
-    private router: Router,
-    protected appState$: Store<store.AppState>,
-    public commonSandbox: CommonSandbox
-  ) {
+  constructor(private router: Router, protected appState$: Store<store.AppState>, public commonSandbox: CommonSandbox) {
     this.registerEvents();
   }
 
@@ -135,36 +117,28 @@ export class AccountSandbox {
    * trigger change password action
    */
   public doChangepassword(params): void {
-    this.appState$.dispatch(
-      new authAction.ChangePassword(new ChangePasswordModel(params))
-    );
+    this.appState$.dispatch(new authAction.ChangePassword(new ChangePasswordModel(params)));
   }
 
   /**
    * trigger edit profile action
    */
   public doEditProfile(params): void {
-    this.appState$.dispatch(
-      new authAction.EditProfile(new EditProfileModal(params))
-    );
+    this.appState$.dispatch(new authAction.EditProfile(new EditProfileModal(params)));
   }
 
   /**
    * trigger get order history action
    */
   public getOrderHistory(params): void {
-    this.appState$.dispatch(
-      new authAction.GetOrderHistory(new OrderHistoryRequestModel(params))
-    );
+    this.appState$.dispatch(new authAction.GetOrderHistory(new OrderHistoryRequestModel(params)));
   }
 
   /**
    * trigger get order history count action
    */
   public getOrderHistoryCount(params): void {
-    this.appState$.dispatch(
-      new authAction.GetOrderHistoryCount(new OrderHistoryRequestModel(params))
-    );
+    this.appState$.dispatch(new authAction.GetOrderHistoryCount(new OrderHistoryRequestModel(params)));
   }
 
   /**
@@ -200,9 +174,7 @@ export class AccountSandbox {
    * trigger Add customer address  action
    */
   public addCustomerAddress(params): void {
-    this.appState$.dispatch(
-      new authAction.AddCustomerAddress(new AddressModel(params))
-    );
+    this.appState$.dispatch(new authAction.AddCustomerAddress(new AddressModel(params)));
   }
 
   /**

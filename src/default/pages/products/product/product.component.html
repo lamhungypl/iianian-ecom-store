@@ -1,31 +1,16 @@
 <div fxLayout="row wrap">
   <div fxFlex="100" fxFlex.gt-md="35" fxFlex.md="45">
     <mat-card class="product-image">
-      <button
-        mat-icon-button
-        (click)="openZoomViewer()"
-        fxHide="false"
-        fxHide.gt-md
-      >
+      <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md>
         <mat-icon>fullscreen</mat-icon>
       </button>
-      <img
-        *ngIf="image"
-        [src]="image"
-        (mousemove)="onMouseMove($event)"
-        (mouseleave)="onMouseLeave($event)"
-      />
+      <img *ngIf="image" [src]="image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" />
     </mat-card>
 
     <div class="small-carousel">
       <div class="swiper-container" [swiper]="config">
         <div class="swiper-wrapper">
-          <div
-            *ngFor="
-              let image of (productDetail.productDetails$ | async)?.productImage
-            "
-            class="swiper-slide"
-          >
+          <div *ngFor="let image of (productDetail.productDetails$ | async)?.productImage" class="swiper-slide">
             <mat-card
               (click)="selectImage(image)"
               class="p-1 card-hover"
@@ -34,13 +19,7 @@
               }"
             >
               <img
-                [attr.data-src]="
-                  imagePath +
-                  '?width=60&height=60&path=' +
-                  image.containerName +
-                  '&name=' +
-                  image.image
-                "
+                [attr.data-src]="imagePath + '?width=60&height=60&path=' + image.containerName + '&name=' + image.image"
                 class="swiper-lazy"
               />
               <div class="swiper-lazy-preloader"></div>
@@ -56,14 +35,7 @@
       </div>
     </div>
   </div>
-  <div
-    fxFlex="100"
-    fxFlex.gt-md="45"
-    fxFlex.md="55"
-    ngClass.gt-sm="px-3 m-0"
-    ngClass.sm="mt-2"
-    ngClass.xs="mt-2"
-  >
+  <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="55" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
     <div #zoomViewer fxShow="false" fxShow.gt-md *ngIf="zoomImage">
       <mat-card
         *ngIf="zoomImage"
@@ -81,10 +53,7 @@
           ((productDetail.productDetails$ | async)?.Category)[0].categoryName
         }}</span>
       </p>
-      <p>
-        <span class="text-muted fw-500">Availibility: </span
-        ><span>Available</span>
-      </p>
+      <p><span class="text-muted fw-500">Availibility: </span><span>Available</span></p>
     </div>
     <div class="py-1"></div>
     <div class="divider mt-1"></div>
@@ -95,29 +64,15 @@
           (productDetail.productDetails$ | async)?.pricerefer == ''
         "
       >
-        {{
-          (productDetail.productDetails$ | async)?.price
-            | currency: 'VND':'symbol-narrow'
-        }}
+        {{ (productDetail.productDetails$ | async)?.price | currency: 'VND':'symbol-narrow' }}
       </ng-container>
-      <ng-container
-        *ngIf="(productDetail.productDetails$ | async)?.flag == 0; else one"
-      >
-        {{
-          (productDetail.productDetails$ | async)?.pricerefer
-            | currency: 'VND':'symbol-narrow'
-        }}
+      <ng-container *ngIf="(productDetail.productDetails$ | async)?.flag == 0; else one">
+        {{ (productDetail.productDetails$ | async)?.pricerefer | currency: 'VND':'symbol-narrow' }}
       </ng-container>
       <ng-template #one>
         <span
-          ><del class="del">{{
-            (productDetail.productDetails$ | async)?.price
-              | currency: 'VND':'symbol-narrow'
-          }}</del>
-          {{
-            (productDetail.productDetails$ | async)?.pricerefer
-              | currency: 'VND':'symbol-narrow'
-          }}</span
+          ><del class="del">{{ (productDetail.productDetails$ | async)?.price | currency: 'VND':'symbol-narrow' }}</del>
+          {{ (productDetail.productDetails$ | async)?.pricerefer | currency: 'VND':'symbol-narrow' }}</span
         >
       </ng-template>
     </h2>
@@ -135,11 +90,7 @@
 
     <div class="divider"></div>
 
-    <div
-      fxLayout="row"
-      fxLayoutAlign="space-between center"
-      class="text-muted py-1"
-    >
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted py-1">
       <button mat-button>
         <mat-icon>mail_outline</mat-icon>
         Email to a Friend
@@ -152,46 +103,26 @@
   <div fxFlex="100" fxFlex.gt-md="20" fxHide fxShow.gt-md>
     <div fxLayout="row wrap" class="info-bar product-right" ngClass.gt-md="m-0">
       <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
-        <mat-card
-          class="light-block"
-          fxLayout="row"
-          fxLayoutAlign="start center"
-        >
+        <mat-card class="light-block" fxLayout="row" fxLayoutAlign="start center">
           <mat-icon class="mat-icon-xlg text-muted m-0">card_giftcard</mat-icon>
           <div class="content">
             <p>BONUS PLUS</p>
-            <span class="text-muted m-0"
-              >Make fun of shopping and collect bonuses</span
-            >
+            <span class="text-muted m-0">Make fun of shopping and collect bonuses</span>
           </div>
         </mat-card>
       </div>
       <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16">
-        <mat-card
-          class="light-block"
-          fxLayout="row"
-          fxLayoutAlign="start center"
-        >
-          <mat-icon class="mat-icon-xlg text-muted m-0"
-            >local_shipping</mat-icon
-          >
+        <mat-card class="light-block" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="mat-icon-xlg text-muted m-0">local_shipping</mat-icon>
           <div class="content">
             <p>FREE SHIPPING</p>
-            <span class="text-muted m-0"
-              >Free shipping on all orders over $99</span
-            >
+            <span class="text-muted m-0">Free shipping on all orders over $99</span>
           </div>
         </mat-card>
       </div>
       <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16">
-        <mat-card
-          class="light-block"
-          fxLayout="row"
-          fxLayoutAlign="start center"
-        >
-          <mat-icon class="mat-icon-xlg text-muted m-0"
-            >monetization_on</mat-icon
-          >
+        <mat-card class="light-block" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="mat-icon-xlg text-muted m-0">monetization_on</mat-icon>
           <div class="content">
             <p>MONEY BACK GUARANTEE</p>
             <span class="text-muted m-0">30 Days money return guarantee</span>
@@ -199,11 +130,7 @@
         </mat-card>
       </div>
       <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16">
-        <mat-card
-          class="light-block"
-          fxLayout="row"
-          fxLayoutAlign="start center"
-        >
+        <mat-card class="light-block" fxLayout="row" fxLayoutAlign="start center">
           <mat-icon class="mat-icon-xlg text-muted m-0">history</mat-icon>
           <div class="content">
             <p>ONLINE SUPPORT 24/7</p>
@@ -221,44 +148,21 @@
       <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
         <mat-tab label="Description">
           <div class="full-desc lh">
-            <p
-              [innerHtml]="(productDetail.productDetails$ | async)?.description"
-            ></p>
+            <p [innerHtml]="(productDetail.productDetails$ | async)?.description"></p>
           </div>
         </mat-tab>
       </mat-tab-group>
     </mat-card>
   </div>
-  <div
-    fxFlex="100"
-    fxFlex.gt-md="22"
-    fxFlex.md="26"
-    ngClass.gt-sm="pl-3"
-    fxHide
-    fxShow.gt-sm
-  >
-    <img
-      src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%201"
-      alt=""
-      class="mw-100 d-block"
-    />
-    <img
-      src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%202"
-      alt=""
-      class="mw-100 d-block mt-3"
-    />
-    <img
-      src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%203"
-      alt=""
-      class="mw-100 d-block mt-3"
-    />
+  <div fxFlex="100" fxFlex.gt-md="22" fxFlex.md="26" ngClass.gt-sm="pl-3" fxHide fxShow.gt-sm>
+    <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%201" alt="" class="mw-100 d-block" />
+    <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%202" alt="" class="mw-100 d-block mt-3" />
+    <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%203" alt="" class="mw-100 d-block mt-3" />
   </div>
 </div>
 
 <div class="py-2 mt-2" *ngIf="productDetail.relatedProducts$ | async as data">
   <h2 *ngIf="data.length > 0">Related Products</h2>
   <div class="divider"></div>
-  <app-products-carousel
-    [products]="productDetail.relatedProducts$ | async"
-  ></app-products-carousel>
+  <app-products-carousel [products]="productDetail.relatedProducts$ | async"></app-products-carousel>
 </div>

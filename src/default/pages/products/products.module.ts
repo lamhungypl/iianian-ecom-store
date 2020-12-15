@@ -37,12 +37,7 @@ export const routes = [
     TranslateModule.forChild(),
     NgbModule,
   ],
-  declarations: [
-    ProductsComponent,
-    ProductComponent,
-    ProductZoomComponent,
-    ProductFilterComponent,
-  ],
+  declarations: [ProductsComponent, ProductComponent, ProductZoomComponent, ProductFilterComponent],
   entryComponents: [ProductZoomComponent],
   providers: [],
 })

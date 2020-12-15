@@ -1,16 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
-import {
-  emailValidator,
-  matchingPasswords,
-} from '../../../theme/utils/app-validators';
+import { emailValidator, matchingPasswords } from '../../../theme/utils/app-validators';
 import { AuthSandbox } from '../../../../core/auth/auth.sandbox';
 
 @Component({
@@ -35,15 +27,9 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group(
       {
-        name: [
-          '',
-          Validators.compose([Validators.required, Validators.minLength(3)]),
-        ],
+        name: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
         email: ['', Validators.compose([Validators.required, emailValidator])],
-        password: [
-          '',
-          Validators.compose([Validators.required, Validators.minLength(5)]),
-        ],
+        password: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
         confirmPassword: ['', Validators.compose([Validators.required])],
         phoneNumber: [''],
       },

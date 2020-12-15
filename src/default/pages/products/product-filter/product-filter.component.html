@@ -28,11 +28,7 @@
         >{{ 'products.To' | translate }} <b>{{ priceTo }}</b></span
       >
     </div>
-    <div
-      fxLayout="row"
-      fxLayoutAlign="space-between center"
-      class="filter-price"
-    >
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="filter-price">
       <mat-slider
         color="primary"
         max="1000"
@@ -79,11 +75,7 @@
         <h4>{{ 'products.Brands' | translate }}</h4>
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <div
-      fxLayout="row wrap"
-      fxLayoutAlign="space-between center"
-      class="filter-brands"
-    >
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="filter-brands">
       <button
         class="card-hover"
         mat-raised-button
@@ -91,15 +83,7 @@
         (click)="selectBrand(brand.manufacturerId)"
         [ngClass]="{ changeShadowColor: brandId == brand.manufacturerId }"
       >
-        <img
-          [src]="
-            imagePath +
-            '?width=80&height=80&path=' +
-            brand.imagePath +
-            '&name=' +
-            brand.image
-          "
-        />
+        <img [src]="imagePath + '?width=80&height=80&path=' + brand.imagePath + '&name=' + brand.image" />
       </button>
     </div>
   </mat-expansion-panel>

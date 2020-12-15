@@ -1,16 +1,10 @@
 import * as actions from '../action/product-control.action';
-import {
-  productControlRecord,
-  ProductControlState,
-} from './product-control.state';
+import { productControlRecord, ProductControlState } from './product-control.state';
 import * as cloneDeep from 'lodash/cloneDeep';
 
 export const initialState: ProductControlState = (new productControlRecord() as unknown) as ProductControlState;
 
-export function reducer(
-  state = initialState,
-  { type, payload }: any
-): ProductControlState {
+export function reducer(state = initialState, { type, payload }: any): ProductControlState {
   if (!type) {
     return state;
   }
@@ -46,40 +40,18 @@ export function reducer(
           const optionsSelected: any = payload.products[i]._optionValueArray;
           if (payload.products[i]._optionValueArray) {
             if (payload.products[i]._optionValueArray.length > 0) {
-              for (
-                let hh = 0;
-                hh < clonedPayload[i]._optionValueArray.length;
-                hh++
-              ) {
+              for (let hh = 0; hh < clonedPayload[i]._optionValueArray.length; hh++) {
                 for (let w = 0; w < arrayProductDetail.length; w++) {
                   if (arrayProductDetail[w]) {
                     if (arrayProductDetail[w].productOption) {
-                      for (
-                        let y = 0;
-                        y < arrayProductDetail[w].productOption.length;
-                        y++
-                      ) {
-                        if (
-                          arrayProductDetail[w].productOption[y].optionValue
-                        ) {
-                          const tempOptionValueArray: any =
-                            arrayProductDetail[w].productOption[y].optionValue;
-                          for (
-                            let p = 0;
-                            p < tempOptionValueArray.length;
-                            p++
-                          ) {
-                            if (
-                              tempOptionValueArray[p].optionValueName ===
-                              clonedPayload[i]._optionValueArray[hh]
-                            ) {
+                      for (let y = 0; y < arrayProductDetail[w].productOption.length; y++) {
+                        if (arrayProductDetail[w].productOption[y].optionValue) {
+                          const tempOptionValueArray: any = arrayProductDetail[w].productOption[y].optionValue;
+                          for (let p = 0; p < tempOptionValueArray.length; p++) {
+                            if (tempOptionValueArray[p].optionValueName === clonedPayload[i]._optionValueArray[hh]) {
                               const object: any = {};
-                              object.name =
-                                arrayProductDetail[w].productOption[
-                                  y
-                                ].optionname;
-                              object.value =
-                                clonedPayload[i]._optionValueArray[hh];
+                              object.name = arrayProductDetail[w].productOption[y].optionname;
+                              object.value = clonedPayload[i]._optionValueArray[hh];
                               tempArray.push(object);
                             }
                           }
@@ -93,22 +65,16 @@ export function reducer(
               // re-assign array with option name and option values
               const tempProductOptionsArray: any = [];
               if (clonedPayload[i].productOption) {
-                for (
-                  let gg = 0;
-                  gg < clonedPayload[i].productOption.length;
-                  gg++
-                ) {
+                for (let gg = 0; gg < clonedPayload[i].productOption.length; gg++) {
                   const productOption = clonedPayload[i].productOption;
                   if (clonedPayload[i].productOption[gg]['optionValue']) {
                     const optionValue = productOption[gg]['optionValue'];
                     for (let h = 0; h < optionValue.length; h++) {
                       const param: any = {};
                       param.productOptionId = productOption[gg].productOptionId;
-                      param.productOptionValueId =
-                        productOption[gg].optionValue[h].productOptionValueId;
+                      param.productOptionValueId = productOption[gg].optionValue[h].productOptionValueId;
                       param.name = productOption[gg].optionname;
-                      param.value =
-                        productOption[gg].optionValue[h].optionValueName;
+                      param.value = productOption[gg].optionValue[h].optionValueName;
                       param.type = productOption[gg].optiontype;
                       tempProductOptionsArray.push(param);
                     }
@@ -119,10 +85,7 @@ export function reducer(
               let tempOptionsArray: any = [];
               for (let j = 0; j < clonedPayload[i].productOption.length; j++) {
                 for (let k = 0; k < optionsSelected.length; k++) {
-                  if (
-                    clonedPayload[i].productOption[j].value ===
-                    optionsSelected[k]
-                  ) {
+                  if (clonedPayload[i].productOption[j].value === optionsSelected[k]) {
                     tempOptionsArray.push(clonedPayload[i].productOption[j]);
                   }
                 }
@@ -236,16 +199,11 @@ export function reducer(
 
 export const getCartList = (state: ProductControlState) => state.cartList;
 export const getCartListCount = (state: ProductControlState) => state.cartCount;
-export const getTotalCartPrice = (state: ProductControlState) =>
-  state.totalCartPrice;
+export const getTotalCartPrice = (state: ProductControlState) => state.totalCartPrice;
 export const getCheckedOut = (state: ProductControlState) => state.checkedOut;
 
-export const getCheckoutLoading = (state: ProductControlState) =>
-  state.checkoutLoading;
-export const getCheckoutLoaded = (state: ProductControlState) =>
-  state.checkoutLoaded;
-export const getCheckoutFailed = (state: ProductControlState) =>
-  state.checkoutFailed;
+export const getCheckoutLoading = (state: ProductControlState) => state.checkoutLoading;
+export const getCheckoutLoaded = (state: ProductControlState) => state.checkoutLoaded;
+export const getCheckoutFailed = (state: ProductControlState) => state.checkoutFailed;
 
-export const getOptionsAvailable = (state: ProductControlState) =>
-  state.optionsAvailable;
+export const getOptionsAvailable = (state: ProductControlState) => state.optionsAvailable;

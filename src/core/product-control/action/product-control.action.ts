@@ -13,9 +13,7 @@ export const ActionTypes = {
   DO_SELECTED_OPTIONS_SUCCESS: type('[checkout] do selected options success'),
   DO_CHECKOUT_FAIL: type('[checkout] do checkout fail'),
   DO_AVAILABLE_OPTIONS: type('[checkout] do available options '),
-  DO_AVAILABLE_OPTIONS_SUCCESS: type(
-    '[checkout] do available options success '
-  ),
+  DO_AVAILABLE_OPTIONS_SUCCESS: type('[checkout] do available options success '),
 };
 /* add to wishlist action*/
 

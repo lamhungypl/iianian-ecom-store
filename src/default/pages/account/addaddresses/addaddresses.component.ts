@@ -72,26 +72,16 @@ export class AddaddressesComponent implements OnInit {
   editAddressForm() {
     this.customerAddress.push(this.accountService.getCustomerAddress());
     if (this.customerAddress && this.customerAddress[0]) {
-      this.addAddressForm.controls['address1'].setValue(
-        this.customerAddress[0].address1
-      );
-      this.addAddressForm.controls['address2'].setValue(
-        this.customerAddress[0].address2
-      );
+      this.addAddressForm.controls['address1'].setValue(this.customerAddress[0].address1);
+      this.addAddressForm.controls['address2'].setValue(this.customerAddress[0].address2);
       if (this.customerAddress[0].addressType === 1) {
         this.addAddressForm.patchValue({ addresstype: '1', tc: true });
       } else if (this.customerAddress[0].addressType === 0) {
         this.addAddressForm.patchValue({ addresstype: '0', tc: true });
       }
-      this.addAddressForm.controls['city'].setValue(
-        this.customerAddress[0].city
-      );
-      this.addAddressForm.controls['state'].setValue(
-        this.customerAddress[0].state
-      );
-      this.addAddressForm.controls['postcode'].setValue(
-        this.customerAddress[0].postcode
-      );
+      this.addAddressForm.controls['city'].setValue(this.customerAddress[0].city);
+      this.addAddressForm.controls['state'].setValue(this.customerAddress[0].state);
+      this.addAddressForm.controls['postcode'].setValue(this.customerAddress[0].postcode);
     }
   }
 

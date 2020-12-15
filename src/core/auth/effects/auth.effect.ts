@@ -12,11 +12,7 @@ import * as actions from './../action/auth.action';
 
 @Injectable()
 export class AuthEffects {
-  constructor(
-    private actions$: Actions,
-    private authApi: AuthApiService,
-    private appState$: Store<store.AppState>
-  ) {}
+  constructor(private actions$: Actions, private authApi: AuthApiService, private appState$: Store<store.AppState>) {}
 
   @Effect()
   login$: Observable<Action> = this.actions$.pipe(
@@ -24,13 +20,8 @@ export class AuthEffects {
     map((action: actions.DoLogin) => action.payload),
     switchMap(state => {
       return this.authApi.doLogin(state).pipe(
-        map(
-          loggedin =>
-            new actions.DoLoginSuccess(new LoginResponseModel(loggedin))
-        ),
-        catchError(error =>
-          of(new actions.DoLoginFail(new LoginResponseModel(error)))
-        )
+        map(loggedin => new actions.DoLoginSuccess(new LoginResponseModel(loggedin))),
+        catchError(error => of(new actions.DoLoginFail(new LoginResponseModel(error))))
       );
     })
   );

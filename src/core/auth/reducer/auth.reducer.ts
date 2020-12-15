@@ -4,10 +4,7 @@ import { AuthState, authrecord } from './auth.state';
 
 export const initialState: AuthState = (new authrecord() as unknown) as AuthState;
 
-export function reducer(
-  state = initialState,
-  { type, payload }: any
-): AuthState {
+export function reducer(state = initialState, { type, payload }: any): AuthState {
   if (!type) {
     return state;
   }

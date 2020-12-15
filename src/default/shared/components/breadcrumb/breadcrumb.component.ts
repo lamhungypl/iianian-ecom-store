@@ -14,11 +14,7 @@ export class BreadcrumbComponent {
   // page title
   pageInfo;
 
-  constructor(
-    public router: Router,
-    public activatedRoute: ActivatedRoute,
-    public title: Title
-  ) {
+  constructor(public router: Router, public activatedRoute: ActivatedRoute, public title: Title) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .pipe(map(() => this.activatedRoute))

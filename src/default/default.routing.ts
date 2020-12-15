@@ -71,8 +71,7 @@ export const routes: Routes = [
       {
         path: 'auth',
         canActivate: [AuthGuard],
-        loadChildren:
-          './pages/Authentication/authentication.module#AuthenticationModule',
+        loadChildren: './pages/Authentication/authentication.module#AuthenticationModule',
         data: {
           urls: [{ title: 'Sign In', url: '' }],
         },

@@ -15,10 +15,7 @@ import 'rxjs/add/operator/do';
 export class AppInterceptor implements HttpInterceptor {
   constructor(private spinner: NgxSpinnerService) {}
 
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.spinner.show();
 
     return next.handle(req).do(

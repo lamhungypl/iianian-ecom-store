@@ -1,28 +1,16 @@
-<mat-chip-list
-  *ngIf="
-    (wishlistSandbox.wishlist$ | async)?.length == 0 &&
-    (wishlistSandbox.wishlistLoaded$ | async)
-  "
->
-  <mat-chip color="warn" selected="true">{{
-    'wishlist.NoItems' | translate
-  }}</mat-chip>
+<mat-chip-list *ngIf="(wishlistSandbox.wishlist$ | async)?.length == 0 && (wishlistSandbox.wishlistLoaded$ | async)">
+  <mat-chip color="warn" selected="true">{{ 'wishlist.NoItems' | translate }}</mat-chip>
 </mat-chip-list>
 
 <mat-card class="p-0">
   <div class="wrapper" *ngIf="wishlistSandbox.wishlistLoading$ | async">
     <div class="overlay">
       <div class="spinner-wrapper">
-        <app-spinner
-          [isShow]="wishlistSandbox.wishlistLoading$ | async"
-        ></app-spinner>
+        <app-spinner [isShow]="wishlistSandbox.wishlistLoading$ | async"></app-spinner>
       </div>
     </div>
   </div>
-  <div
-    class="mat-table wishlist-table"
-    *ngIf="(wishlistSandbox.wishlist$ | async)?.length > 0"
-  >
+  <div class="mat-table wishlist-table" *ngIf="(wishlistSandbox.wishlist$ | async)?.length > 0">
     <div class="mat-header-row">
       <div class="mat-header-cell">{{ 'wishlist.Product' | translate }}</div>
       <div class="mat-header-cell">{{ 'wishlist.Name' | translate }}</div>
@@ -34,10 +22,7 @@
         <div class="px-1">{{ 'wishlist.Action' | translate }}</div>
       </div>
     </div>
-    <div
-      *ngFor="let product of wishlistSandbox.wishlist$ | async"
-      class="mat-row"
-    >
+    <div *ngFor="let product of wishlistSandbox.wishlist$ | async" class="mat-row">
       <div class="mat-cell">
         <img
           *ngIf="product.productImage"
@@ -51,30 +36,21 @@
         />
       </div>
       <div class="mat-cell">
-        <a
-          [routerLink]="['/products/product-detail', product.productId]"
-          class="product-name"
-          >{{ product.product.name }}</a
-        >
+        <a [routerLink]="['/products/product-detail', product.productId]" class="product-name">{{
+          product.product.name
+        }}</a>
       </div>
       <div class="mat-cell">
-        <ng-container
-          *ngIf="product.product.flag == '' && product.product.pricerefer == ''"
-          >{{
-            product.product.price | currency: 'VND':'symbol-narrow'
-          }}</ng-container
-        >
+        <ng-container *ngIf="product.product.flag == '' && product.product.pricerefer == ''">{{
+          product.product.price | currency: 'VND':'symbol-narrow'
+        }}</ng-container>
         <ng-container *ngIf="product.product.flag == 0; else one">
           {{ product.product.pricerefer | currency: 'VND':'symbol-narrow' }}
         </ng-container>
         <ng-template #one>
           <span
-            ><del class="del">{{
-              product.product.price | currency: 'VND':'symbol-narrow'
-            }}</del>
-            {{
-              product.product.pricerefer | currency: 'VND':'symbol-narrow'
-            }}</span
+            ><del class="del">{{ product.product.price | currency: 'VND':'symbol-narrow' }}</del>
+            {{ product.product.pricerefer | currency: 'VND':'symbol-narrow' }}</span
           >
         </ng-template>
       </div>

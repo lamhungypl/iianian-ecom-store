@@ -1,18 +1,11 @@
 <footer class="bg-primary footer">
-  <div
-    fxLayout="row wrap"
-    fxLayoutAlign="space-between"
-    class="py-3 border-bottom-mute theme-container"
-  >
+  <div fxLayout="row wrap" fxLayoutAlign="space-between" class="py-3 border-bottom-mute theme-container">
     <div fxFlex="100" fxFlex.gt-sm="60" fxFlex.sm="50" class="useful-links">
       <h3 class="col-title">{{ 'Shared.USEFULLINKS' | translate }}</h3>
       <p class="mt-2" *ngFor="let links of listSandbox.pageList$ | async">
-        <a
-          href="javascript:void(0);"
-          [routerLink]="['/page-detail', links.pageId]"
-          class="link secondary-color"
-          >{{ links.title }}</a
-        >
+        <a href="javascript:void(0);" [routerLink]="['/page-detail', links.pageId]" class="link secondary-color">{{
+          links.title
+        }}</a>
       </p>
     </div>
     <div
@@ -23,53 +16,27 @@
       *ngIf="listSandbox.settingDetail$ | async as contact"
     >
       <h3 class="col-title">{{ 'Shared.CONTACTINFORMATION' | translate }}</h3>
-      <p
-        fxLayout="row"
-        fxLayoutAlign="start center"
-        class="mt-2 secondary-color"
-      >
+      <p fxLayout="row" fxLayoutAlign="start center" class="mt-2 secondary-color">
         <mat-icon class="mr-1">location_on</mat-icon>
         <span>{{ contact.storeAddress }}</span>
       </p>
-      <p
-        fxLayout="row"
-        fxLayoutAlign="start center"
-        class="mt-1 secondary-color"
-      >
+      <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
         <mat-icon class="mr-1">call</mat-icon>
         <span>{{ contact.storeTelephone }}</span>
       </p>
-      <p
-        fxLayout="row"
-        fxLayoutAlign="start center"
-        class="mt-1 secondary-color"
-      >
+      <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
         <mat-icon class="mr-1">mail_outline</mat-icon>
         <span>{{ contact.storeEmail }}</span>
       </p>
-      <p
-        fxLayout="row"
-        fxLayoutAlign="start center"
-        class="mt-1 secondary-color"
-      >
+      <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
         <mat-icon class="mr-1">schedule</mat-icon>
         <span>{{ 'Shared.DateTime' | translate }}</span>
       </p>
-      <p
-        fxLayout="row"
-        fxLayoutAlign="start center"
-        class="mt-1 secondary-color"
-      >
+      <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
         <mat-icon class="mr-1">directions</mat-icon>
-        <a href="javascript:void(0);" class="link secondary-color">{{
-          'Shared.Getdirections' | translate
-        }}</a>
+        <a href="javascript:void(0);" class="link secondary-color">{{ 'Shared.Getdirections' | translate }}</a>
       </p>
-      <p
-        fxLayout="row"
-        fxLayoutAlign="start center"
-        class="mt-1 secondary-color"
-      >
+      <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
         <mat-icon class="mr-1">directions_bus</mat-icon>
         <span>{{ 'Shared.RoutesToUs' | translate }}</span>
       </p>

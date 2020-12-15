@@ -1,12 +1,8 @@
 <div *ngIf="(productControl.cartlistCount$ | async) == 0">
   <mat-chip-list>
-    <mat-chip color="warn" selected="true">{{
-      'cart.YOUHAVENOITEMSCART' | translate
-    }}</mat-chip>
+    <mat-chip color="warn" selected="true">{{ 'cart.YOUHAVENOITEMSCART' | translate }}</mat-chip>
   </mat-chip-list>
-  <a [routerLink]="['/']" mat-raised-button color="primary" class="mt-2">{{
-    'cart.ContinueShopping' | translate
-  }}</a>
+  <a [routerLink]="['/']" mat-raised-button color="primary" class="mt-2">{{ 'cart.ContinueShopping' | translate }}</a>
 </div>
 
 <mat-card *ngIf="(productControl.cartlistCount$ | async) > 0" class="p-0">
@@ -25,20 +21,11 @@
         </div>
       </div>
     </div>
-    <div
-      *ngFor="let product of productControl.cartlist$ | async; let i = index"
-      class="mat-row"
-    >
+    <div *ngFor="let product of productControl.cartlist$ | async; let i = index" class="mat-row">
       <div class="mat-cell">
         <img
           *ngIf="product.image"
-          [src]="
-            imagePath +
-            '?width=60&height=60&path=' +
-            product.image.containerName +
-            '&name=' +
-            product.image.image
-          "
+          [src]="imagePath + '?width=60&height=60&path=' + product.image.containerName + '&name=' + product.image.image"
           alt=""
         />
         <img
@@ -78,18 +65,9 @@
         />
       </div>
       <div class="mat-cell">
-        <a
-          [routerLink]="['/products/product-detail', product.productId]"
-          class="product-name"
-          >{{ product.name }}</a
-        >
-        <div
-          class="availableData"
-          *ngFor="let data of product._optionValueArray"
-        >
-          <ng-container *ngIf="data.name != ''">
-            {{ data.name }}{{ semiColon }}{{ data.value }}
-          </ng-container>
+        <a [routerLink]="['/products/product-detail', product.productId]" class="product-name">{{ product.name }}</a>
+        <div class="availableData" *ngFor="let data of product._optionValueArray">
+          <ng-container *ngIf="data.name != ''"> {{ data.name }}{{ semiColon }}{{ data.value }} </ng-container>
         </div>
       </div>
       <div class="mat-cell">
@@ -101,9 +79,7 @@
         </ng-container>
         <ng-template #one>
           <span
-            ><del class="del">{{
-              product.price | currency: 'VND':'symbol-narrow'
-            }}</del>
+            ><del class="del">{{ product.price | currency: 'VND':'symbol-narrow' }}</del>
             {{ product.pricerefer | currency: 'VND':'symbol-narrow' }}</span
           >
         </ng-template>
@@ -119,16 +95,10 @@
       </div>
       <div class="mat-cell">
         <ng-container *ngIf="product.pricerefer != ''; else priceRefer">
-          {{
-            (product._totalOptions + product.pricerefer) * product.productCount
-              | currency: 'VND':'symbol-narrow'
-          }}
+          {{ (product._totalOptions + product.pricerefer) * product.productCount | currency: 'VND':'symbol-narrow' }}
         </ng-container>
         <ng-template #priceRefer>
-          {{
-            (product._totalOptions + product.price) * product.productCount
-              | currency: 'VND':'symbol-narrow'
-          }}
+          {{ (product._totalOptions + product.price) * product.productCount | currency: 'VND':'symbol-narrow' }}
         </ng-template>
       </div>
       <div class="mat-cell text-center">
@@ -146,34 +116,22 @@
     </div>
     <div class="mat-row">
       <div class="mat-cell">
-        <a [routerLink]="['/']" mat-raised-button color="primary">{{
-          'cart.ContinueShopping' | translate
-        }}</a>
+        <a [routerLink]="['/']" mat-raised-button color="primary">{{ 'cart.ContinueShopping' | translate }}</a>
       </div>
       <div class="mat-cell"></div>
       <div class="mat-cell"></div>
       <div class="mat-cell text-right">
-        <div
-          fxLayout="column"
-          fxLayoutAlign="center end"
-          class="grand-total px-2"
-        >
+        <div fxLayout="column" fxLayoutAlign="center end" class="grand-total px-2">
           <span class="new-price">{{ 'cart.GrandTotal' | translate }}</span>
         </div>
       </div>
       <div class="mat-cell">
         <div fxLayout="column" fxLayoutAlign="center start" class="grand-total">
-          <span class="new-price">{{
-            productControl.totalCartPrice$
-              | async
-              | currency: 'VND':'symbol-narrow'
-          }}</span>
+          <span class="new-price">{{ productControl.totalCartPrice$ | async | currency: 'VND':'symbol-narrow' }}</span>
         </div>
       </div>
       <div class="mat-cell text-center">
-        <a (click)="checkoutPage()" mat-raised-button color="primary">{{
-          'checkout.ProceedToCheckout' | translate
-        }}</a>
+        <a (click)="checkoutPage()" mat-raised-button color="primary">{{ 'checkout.ProceedToCheckout' | translate }}</a>
       </div>
     </div>
   </div>

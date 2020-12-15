@@ -4,10 +4,7 @@ import { WishlistState, wishlistRecord } from './wishlist.state';
 
 export const initialState: WishlistState = (new wishlistRecord() as unknown) as WishlistState;
 
-export function reducer(
-  state = initialState,
-  { type, payload }: any
-): WishlistState {
+export function reducer(state = initialState, { type, payload }: any): WishlistState {
   if (!type) {
     return state;
   }
@@ -44,7 +41,6 @@ export function reducer(
 }
 
 export const getWishlist = (state: WishlistState) => state.wishlist;
-export const getWishlistLoading = (state: WishlistState) =>
-  state.wishlistLoading;
+export const getWishlistLoading = (state: WishlistState) => state.wishlistLoading;
 export const getWishlistLoaded = (state: WishlistState) => state.wishlistLoaded;
 export const getWishlistFailed = (state: WishlistState) => state.wishlistFailed;

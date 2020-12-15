@@ -1,35 +1,20 @@
 <div class="order-wrap">
-  <div
-    class="flex order-top"
-    *ngIf="accountSandbox.orderHistoryDetail$ | async as detail"
-  >
-    <h3>
-      {{ 'account.OrderId#' | translate
-      }}{{ (accountSandbox.orderHistoryDetail$ | async).orderPrefixId }}
-    </h3>
+  <div class="flex order-top" *ngIf="accountSandbox.orderHistoryDetail$ | async as detail">
+    <h3>{{ 'account.OrderId#' | translate }}{{ (accountSandbox.orderHistoryDetail$ | async).orderPrefixId }}</h3>
   </div>
   <!-- Top -->
 
   <div class="order-content">
     <div
       class="flex order-row"
-      *ngIf="
-        (!accountSandbox.orderHistoryDetailLoading$ | async) &&
-        (accountSandbox.orderHistoryDetailLoaded$ | async)
-      "
+      *ngIf="(!accountSandbox.orderHistoryDetailLoading$ | async) && (accountSandbox.orderHistoryDetailLoaded$ | async)"
     >
       <div class="order-col">
-        <h3>
-          {{ 'account.OrderId#' | translate
-          }}{{ (accountSandbox.orderHistoryDetail$ | async).orderId }}
-        </h3>
+        <h3>{{ 'account.OrderId#' | translate }}{{ (accountSandbox.orderHistoryDetail$ | async).orderId }}</h3>
         <div class="order-lft-detail">
           <h4>
             <span>{{ 'account.OrderDate' | translate }} </span>
-            {{
-              (accountSandbox.orderHistoryDetail$ | async).createdDate
-                | date: 'dd/MMM/yyyy'
-            }}
+            {{ (accountSandbox.orderHistoryDetail$ | async).createdDate | date: 'dd/MMM/yyyy' }}
           </h4>
           <h4>
             <span>{{ 'account.OrderStatus' | translate }} </span>
@@ -53,9 +38,7 @@
           </h4>
           <h4>
             <span>{{ 'account.EmailId' | translate }} </span>
-            <a href="javascript:void(0)">{{
-              (accountSandbox.orderHistoryDetail$ | async).email
-            }}</a>
+            <a href="javascript:void(0)">{{ (accountSandbox.orderHistoryDetail$ | async).email }}</a>
           </h4>
         </div>
       </div>
@@ -81,9 +64,7 @@
           </p>
           <p class="phone">
             Phone :
-            <span>{{
-              (accountSandbox.orderHistoryDetail$ | async).telephone
-            }}</span>
+            <span>{{ (accountSandbox.orderHistoryDetail$ | async).telephone }}</span>
           </p>
         </div>
       </div>
@@ -106,9 +87,7 @@
           </p>
           <p class="phone">
             Phone :
-            <span>{{
-              (accountSandbox.orderHistoryDetail$ | async).telephone
-            }}</span>
+            <span>{{ (accountSandbox.orderHistoryDetail$ | async).telephone }}</span>
           </p>
         </div>
       </div>
@@ -132,13 +111,7 @@
           </th>
         </tr>
 
-        <tr
-          *ngFor="
-            let product of (accountSandbox.orderHistoryDetail$ | async)
-              ?.productList;
-            let i = index
-          "
-        >
+        <tr *ngFor="let product of (accountSandbox.orderHistoryDetail$ | async)?.productList; let i = index">
           <td style="width: 100%; padding: 0;" colspan="4">
             <table>
               <tr style="font-size: 16px;">
@@ -162,28 +135,16 @@
             {{ 'account.TotalAmount' | translate }}
           </td>
           <td class="text-right total-amount">
-            <b>{{
-              (accountSandbox.orderHistoryDetail$ | async).total
-                | currency: 'VND':'symbol-narrow'
-            }}</b>
+            <b>{{ (accountSandbox.orderHistoryDetail$ | async).total | currency: 'VND':'symbol-narrow' }}</b>
           </td>
         </tr>
       </table>
     </div>
     <!-- Table -->
 
-    <div
-      class="flex order-btn"
-      *ngIf="accountSandbox.orderHistoryDetail$ | async as detail"
-    >
-      <a href="javascript:void(0)" [routerLink]="['/account/orders']"
-        >{{ 'account.Cancel' | translate }}
-      </a>
-      <a
-        href="javascript:void(0)"
-        class="dload"
-        (click)="downloadInvoiceDetail(detail)"
-      >
+    <div class="flex order-btn" *ngIf="accountSandbox.orderHistoryDetail$ | async as detail">
+      <a href="javascript:void(0)" [routerLink]="['/account/orders']">{{ 'account.Cancel' | translate }} </a>
+      <a href="javascript:void(0)" class="dload" (click)="downloadInvoiceDetail(detail)">
         {{ 'account.DownloadInvoice' | translate }}
       </a>
     </div>

@@ -4,10 +4,7 @@ import { ConfigService } from '../../service/config.service';
 
 @Injectable()
 export class UtilService {
-  constructor(
-    private translateService: TranslateService,
-    private configService: ConfigService
-  ) {}
+  constructor(private translateService: TranslateService, private configService: ConfigService) {}
 
   /**
    * Translates given message code and title code and displays corresponding notification

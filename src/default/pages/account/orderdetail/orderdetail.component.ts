@@ -222,10 +222,7 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
                 { style: 'h2', text: '' },
                 {
                   style: 'invoice',
-                  text: this.datePipe.transform(
-                    this.invoiceDetail.createdDate,
-                    'dd/MM/yyyy'
-                  ),
+                  text: this.datePipe.transform(this.invoiceDetail.createdDate, 'dd/MM/yyyy'),
                 },
                 { style: 'h2', text: '' },
               ],

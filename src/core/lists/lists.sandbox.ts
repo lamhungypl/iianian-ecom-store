@@ -79,9 +79,7 @@ export class ListsSandbox {
   public relatedProducts$ = this.appState$.select(getRelatedProducts);
   public manufacturer$ = this.appState$.select(getManufacturer);
   public productDetails$ = this.appState$.select(getProductDetail);
-  public productDetailMandatory$ = this.appState$.select(
-    getproductDetailMandatory
-  );
+  public productDetailMandatory$ = this.appState$.select(getproductDetailMandatory);
   /* product status*/
   public productlist$ = this.appState$.select(getProductList);
   public maxProductPrice$ = this.appState$.select(getMaxProductPrice);
@@ -103,22 +101,14 @@ export class ListsSandbox {
   /* featured product status*/
 
   public featuredList$ = this.appState$.select(featuredList);
-  public featuredListLoading$ = this.appState$.select(
-    featuredListLoadingStatus
-  );
+  public featuredListLoading$ = this.appState$.select(featuredListLoadingStatus);
   public featuredListLoaded$ = this.appState$.select(featuredListLoadedStatus);
   public featuredListFailed$ = this.appState$.select(featuredListFailedStatus);
   /* related product status*/
 
-  public relatedProductLoadingStatus$ = this.appState$.select(
-    relatedProductLoadingStatus
-  );
-  public relatedProductLoadedStatus$ = this.appState$.select(
-    relatedProductLoadedStatus
-  );
-  public relatedProductFailedStatus$ = this.appState$.select(
-    relatedProductFailedStatus
-  );
+  public relatedProductLoadingStatus$ = this.appState$.select(relatedProductLoadingStatus);
+  public relatedProductLoadedStatus$ = this.appState$.select(relatedProductLoadedStatus);
+  public relatedProductFailedStatus$ = this.appState$.select(relatedProductFailedStatus);
   /* page list status*/
 
   public pageList$ = this.appState$.select(getPageList);
@@ -140,22 +130,14 @@ export class ListsSandbox {
   public pageDetail$ = this.appState$.select(pageDetail);
   /* brand status*/
 
-  public manufacturerLoading$ = this.appState$.select(
-    manufacturerLoadingStatus
-  );
+  public manufacturerLoading$ = this.appState$.select(manufacturerLoadingStatus);
   public manufacturerLoaded$ = this.appState$.select(manufacturerLoadedStatus);
   public manufacturerFailed$ = this.appState$.select(manufacturerFailedStatus);
   /* product detail status*/
 
-  public productDetailLoading$ = this.appState$.select(
-    productDetailLoadingStatus
-  );
-  public productDetailLoaded$ = this.appState$.select(
-    productDetailLoadedStatus
-  );
-  public productDetailFailed$ = this.appState$.select(
-    productDetailFailedStatus
-  );
+  public productDetailLoading$ = this.appState$.select(productDetailLoadingStatus);
+  public productDetailLoaded$ = this.appState$.select(productDetailLoadedStatus);
+  public productDetailFailed$ = this.appState$.select(productDetailFailedStatus);
   /* country list status*/
 
   public countryList$ = this.appState$.select(countryList);
@@ -178,9 +160,7 @@ export class ListsSandbox {
   public todayDealFailed$ = this.appState$.select(todayDealFailed);
 
   /* available options seleted */
-  public availableOptionsArray$ = this.appState$.select(
-    getAvailableOptionsArray
-  );
+  public availableOptionsArray$ = this.appState$.select(getAvailableOptionsArray);
 
   // subcategory list
 
@@ -247,9 +227,7 @@ export class ListsSandbox {
   }
 
   public getFeaturedList(params): void {
-    this.appState$.dispatch(
-      new authAction.GetFeaturedProductList(new FeaturedProductModel(params))
-    );
+    this.appState$.dispatch(new authAction.GetFeaturedProductList(new FeaturedProductModel(params)));
   }
 
   public getPageList(params): void {
@@ -261,9 +239,7 @@ export class ListsSandbox {
   }
 
   public contactUs(params): void {
-    this.appState$.dispatch(
-      new authAction.DoContactUsAction(new ContactUsRequestModel(params))
-    );
+    this.appState$.dispatch(new authAction.DoContactUsAction(new ContactUsRequestModel(params)));
   }
 
   public getPageDetail(params): void {
@@ -334,16 +310,9 @@ export class ListsSandbox {
             const param: any = {};
             for (let i = 0; i < tempData.productOption.length; i++) {
               if (tempData.productOption[i].required === 1) {
-                tempArray.push(
-                  tempData.productOption[i].optionValue[0].optionValueName
-                );
-                tempPrice = parseInt(
-                  tempData.productOption[i].optionValue[0].price,
-                  10
-                );
-                if (
-                  tempData.productOption[i].optionValue[0].pricePrefix === '0'
-                ) {
+                tempArray.push(tempData.productOption[i].optionValue[0].optionValueName);
+                tempPrice = parseInt(tempData.productOption[i].optionValue[0].price, 10);
+                if (tempData.productOption[i].optionValue[0].pricePrefix === '0') {
                   tempPrice = tempPrice * -1;
                 } else {
                   tempPrice = tempPrice * 1;

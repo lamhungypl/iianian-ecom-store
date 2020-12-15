@@ -169,18 +169,8 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
   // view the selected image
   public selectImage(image, i) {
     this.productImageId = image.productImageId;
-    this.image =
-      this.imagePath +
-      '?width=390&height=3900&path=' +
-      image.containerName +
-      '&name=' +
-      image.image;
-    this.zoomImage =
-      this.imagePath +
-      '?width=660&height=660&path=' +
-      image.containerName +
-      '&name=' +
-      image.image;
+    this.image = this.imagePath + '?width=390&height=3900&path=' + image.containerName + '&name=' + image.image;
+    this.zoomImage = this.imagePath + '?width=660&height=660&path=' + image.containerName + '&name=' + image.image;
   }
 
   // zoom the image when mouse got moved over the image

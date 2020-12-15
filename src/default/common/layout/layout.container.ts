@@ -17,11 +17,7 @@ export class LayoutContainerComponent implements OnInit {
   public settings: Settings;
   private subscriptions: Array<Subscription> = [];
 
-  constructor(
-    public appSettings: AppSettings,
-    public router: Router,
-    public listSandBox: ListsSandbox
-  ) {
+  constructor(public appSettings: AppSettings, public router: Router, public listSandBox: ListsSandbox) {
     this.settings = this.appSettings.settings;
   }
 
@@ -32,9 +28,7 @@ export class LayoutContainerComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll($event) {
-    $event.target.documentElement.scrollTop > 300
-      ? (this.showBackToTop = true)
-      : (this.showBackToTop = false);
+    $event.target.documentElement.scrollTop > 300 ? (this.showBackToTop = true) : (this.showBackToTop = false);
   }
 
   /**

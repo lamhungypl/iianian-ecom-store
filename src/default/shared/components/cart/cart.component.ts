@@ -14,11 +14,7 @@ export class CartNavComponent implements OnInit {
   // path of image
   public imagePath: string;
 
-  constructor(
-    public cartSandbox: ProductControlSandbox,
-    public router: Router,
-    private configService: ConfigService
-  ) {}
+  constructor(public cartSandbox: ProductControlSandbox, public router: Router, private configService: ConfigService) {}
 
   // data from configService
   ngOnInit() {

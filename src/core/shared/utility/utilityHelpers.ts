@@ -30,11 +30,7 @@ export function type<T>(label: T | ''): T {
  * @params newValues
  * @params conditions
  */
-export function distinctChanges(
-  oldValues: Array<any>,
-  newValues: Array<any>,
-  conditions: Predicate[]
-): boolean {
+export function distinctChanges(oldValues: Array<any>, newValues: Array<any>, conditions: Predicate[]): boolean {
   if (conditions.every(cond => cond(oldValues, newValues))) {
     return false;
   } else {
@@ -120,10 +116,7 @@ export function flattenObject(ob: any, preservePath: boolean = false): any {
  * @params dateString
  * @params culture
  */
-export function localeDateString(
-  dateString: string,
-  culture: string = 'en-EN'
-): string {
+export function localeDateString(dateString: string, culture: string = 'en-EN'): string {
   const date = new Date(dateString);
   return date.toLocaleDateString(culture);
 }

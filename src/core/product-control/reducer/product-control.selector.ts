@@ -5,33 +5,12 @@ import { AppState } from '../../state.interface';
 
 export const getState = (State: AppState) => State.productControl;
 export const getCartList = createSelector(getState, fromProduct.getCartList);
-export const getCartListCount = createSelector(
-  getState,
-  fromProduct.getCartListCount
-);
-export const getTotalCartPrice = createSelector(
-  getState,
-  fromProduct.getTotalCartPrice
-);
-export const getCheckedOutData = createSelector(
-  getState,
-  fromProduct.getCheckedOut
-);
+export const getCartListCount = createSelector(getState, fromProduct.getCartListCount);
+export const getTotalCartPrice = createSelector(getState, fromProduct.getTotalCartPrice);
+export const getCheckedOutData = createSelector(getState, fromProduct.getCheckedOut);
 
-export const getCheckoutLoading = createSelector(
-  getState,
-  fromProduct.getCheckoutLoading
-);
-export const getCheckoutLoaded = createSelector(
-  getState,
-  fromProduct.getCheckoutLoaded
-);
-export const getCheckoutFailed = createSelector(
-  getState,
-  fromProduct.getCheckoutFailed
-);
+export const getCheckoutLoading = createSelector(getState, fromProduct.getCheckoutLoading);
+export const getCheckoutLoaded = createSelector(getState, fromProduct.getCheckoutLoaded);
+export const getCheckoutFailed = createSelector(getState, fromProduct.getCheckoutFailed);
 
-export const getOptionsAvailable = createSelector(
-  getState,
-  fromProduct.getOptionsAvailable
-);
+export const getOptionsAvailable = createSelector(getState, fromProduct.getOptionsAvailable);

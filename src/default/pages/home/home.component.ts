@@ -9,10 +9,7 @@ import { ListsSandbox } from '../../../core/lists/lists.sandbox';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(
-    public listSandbox: ListsSandbox,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  constructor(public listSandbox: ListsSandbox, @Inject(PLATFORM_ID) private platformId: Object) {}
   // Initially calls getBannerList,getBransList,getFeaturedList
   ngOnInit() {
     this.getFeaturedList();

@@ -1,11 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  HttpClientModule,
-  HTTP_INTERCEPTORS,
-  HttpClient,
-} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { OverlayContainer, Overlay } from '@angular/cdk/overlay';
 import { MAT_MENU_SCROLL_STRATEGY } from '@angular/material';

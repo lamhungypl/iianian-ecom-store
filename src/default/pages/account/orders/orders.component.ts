@@ -25,11 +25,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
   public pageSize = 5;
   public index = 0;
 
-  constructor(
-    public accountSandbox: AccountSandbox,
-    public listSandbox: ListsSandbox,
-    public datePipe: DatePipe
-  ) {
+  constructor(public accountSandbox: AccountSandbox, public listSandbox: ListsSandbox, public datePipe: DatePipe) {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
     this.regSubscribeEvents();
   }
@@ -194,10 +190,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
                 { style: 'h2', text: '' },
                 {
                   style: 'invoice',
-                  text: this.datePipe.transform(
-                    this.invoiceDetail.createdDate,
-                    'dd/MM/yyyy'
-                  ),
+                  text: this.datePipe.transform(this.invoiceDetail.createdDate, 'dd/MM/yyyy'),
                 },
                 { style: 'h2', text: '' },
                 { style: 'invoice', text: '25/01/1995' },

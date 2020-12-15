@@ -1,13 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ChangeDetectionStrategy,
-} from '@angular/core';
-import {
-  SwiperConfigInterface,
-  SwiperPaginationInterface,
-} from 'ngx-swiper-wrapper';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { SwiperConfigInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 import { ConfigService } from '../../../../core/service/config.service';
 import { AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';

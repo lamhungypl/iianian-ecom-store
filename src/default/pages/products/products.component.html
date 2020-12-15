@@ -6,10 +6,7 @@
     class="filter-sidenav"
     perfectScrollbar
   >
-    <app-spurt-product-filter
-      (progressEmit)="receiveProgress($event)"
-      [isClickedData]="isClicked"
-    >
+    <app-spurt-product-filter (progressEmit)="receiveProgress($event)" [isClickedData]="isClicked">
     </app-spurt-product-filter>
   </mat-sidenav>
   <mat-sidenav-content class="all-products" ngClass.gt-sm="p-left">
@@ -23,26 +20,13 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <div>
-        <a
-          mat-button
-          [matMenuTriggerFor]="sortMenu"
-          #sortMenuTrigger="matMenuTrigger"
-        >
+        <a mat-button [matMenuTriggerFor]="sortMenu" #sortMenuTrigger="matMenuTrigger">
           {{ sortData }}
           <mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
         </a>
-        <mat-menu
-          #sortMenu="matMenu"
-          xPosition="before"
-          class="app-dropdown"
-          overlapTrigger="true"
-        >
+        <mat-menu #sortMenu="matMenu" xPosition="before" class="app-dropdown" overlapTrigger="true">
           <span (mouseleave)="sortMenuTrigger.closeMenu()">
-            <button
-              mat-menu-item
-              *ngFor="let sort of sortings"
-              (click)="changeSorting(sort)"
-            >
+            <button mat-menu-item *ngFor="let sort of sortings" (click)="changeSorting(sort)">
               <span>{{ sort.order }}</span>
             </button>
           </span>
@@ -60,17 +44,11 @@
         </button>
       </div>
     </div>
-    <div
-      *ngIf="viewType == 'grid'"
-      fxLayout="row wrap"
-      class="products-wrapper"
-    >
+    <div *ngIf="viewType == 'grid'" fxLayout="row wrap" class="products-wrapper">
       <div class="wrapper" *ngIf="listSandbox.productLoading$ | async">
         <div class="overlay">
           <div class="spinner-wrapper">
-            <app-spinner
-              [isShow]="listSandbox.productLoading$ | async"
-            ></app-spinner>
+            <app-spinner [isShow]="listSandbox.productLoading$ | async"></app-spinner>
           </div>
         </div>
       </div>
@@ -83,14 +61,9 @@
       >
         <mat-card class="product-item text-center card-hover">
           <mat-chip-list *ngIf="product.discount">
-            <mat-chip color="warn" selected="true"
-              >{{ product.discount }}% OFF</mat-chip
-            >
+            <mat-chip color="warn" selected="true">{{ product.discount }}% OFF</mat-chip>
           </mat-chip-list>
-          <a
-            [routerLink]="['/products/product-detail', product.productId]"
-            class="image-link"
-          >
+          <a [routerLink]="['/products/product-detail', product.productId]" class="image-link">
             <img
               *ngIf="product['Images'].defaultImage == 1"
               style="height: 200px;"
@@ -105,36 +78,22 @@
             />
           </a>
           <!-- <h4 class="category text-muted text-truncate ">{{product.metaTagTitle }}</h4> -->
-          <a
-            [routerLink]="['/products/product-detail', product.productId]"
-            class="title text-truncate"
-          >
+          <a [routerLink]="['/products/product-detail', product.productId]" class="title text-truncate">
             {{ product.name }}
           </a>
-          <div
-            fxLayout="row"
-            fxLayoutAlign="space-between center"
-            class="prices"
-          >
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
             <div fxLayout="column" fxLayoutAlign="center start">
               <p class="new-price">
-                <ng-container
-                  *ngIf="product.flag == '' && product.pricerefer == ''"
-                  >{{
-                    product.price | currency: 'VND':'symbol-narrow'
-                  }}</ng-container
-                >
+                <ng-container *ngIf="product.flag == '' && product.pricerefer == ''">{{
+                  product.price | currency: 'VND':'symbol-narrow'
+                }}</ng-container>
                 <ng-container *ngIf="product.flag == 0; else one">
                   {{ product.pricerefer | currency: 'VND':'symbol-narrow' }}
                 </ng-container>
                 <ng-template #one>
                   <span
-                    ><del class="del">{{
-                      product.price | currency: 'VND':'symbol-narrow'
-                    }}</del>
-                    {{
-                      product.pricerefer | currency: 'VND':'symbol-narrow'
-                    }}</span
+                    ><del class="del">{{ product.price | currency: 'VND':'symbol-narrow' }}</del>
+                    {{ product.pricerefer | currency: 'VND':'symbol-narrow' }}</span
                   >
                 </ng-template>
               </p>
@@ -152,17 +111,9 @@
       </div>
     </div>
 
-    <div
-      *ngIf="viewType == 'list'"
-      fxLayout="row wrap"
-      class="products-wrapper"
-    >
+    <div *ngIf="viewType == 'list'" fxLayout="row wrap" class="products-wrapper">
       <div
-        *ngFor="
-          let product of listSandbox.productlist$
-            | async
-            | paginate: { itemsPerPage: count, currentPage: page }
-        "
+        *ngFor="let product of listSandbox.productlist$ | async | paginate: { itemsPerPage: count, currentPage: page }"
         fxFlex="100"
         class="col"
       >
@@ -170,14 +121,9 @@
           <div fxLayout="row wrap">
             <div fxFlex="100" fxFlex.gt-xs="40" class="p-2">
               <mat-chip-list *ngIf="product.discount" class="list-view">
-                <mat-chip color="warn" selected="true"
-                  >{{ product.discount }}% OFF</mat-chip
-                >
+                <mat-chip color="warn" selected="true">{{ product.discount }}% OFF</mat-chip>
               </mat-chip-list>
-              <a
-                [routerLink]="['/products/product-detail', product.productId]"
-                class="image-link"
-              >
+              <a [routerLink]="['/products/product-detail', product.productId]" class="image-link">
                 <img
                   *ngIf="product.Images"
                   [src]="
@@ -193,36 +139,22 @@
             </div>
             <div fxFlex="100" fxFlex.gt-xs="60" class="p-2">
               <h4 class="category text-muted">{{ product.metaTagTitle }}</h4>
-              <a
-                [routerLink]="['/products/product-detail', product.productId]"
-                class="title"
-              >
+              <a [routerLink]="['/products/product-detail', product.productId]" class="title">
                 {{ product.name }}
               </a>
-              <div
-                fxLayout="row"
-                fxLayoutAlign="space-between center"
-                class="prices"
-              >
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
                 <div fxLayout="column" fxLayoutAlign="center start">
                   <p class="new-price">
-                    <ng-container
-                      *ngIf="product.flag == '' && product.pricerefer == ''"
-                      >{{
-                        product.price | currency: 'VND':'symbol-narrow'
-                      }}</ng-container
-                    >
+                    <ng-container *ngIf="product.flag == '' && product.pricerefer == ''">{{
+                      product.price | currency: 'VND':'symbol-narrow'
+                    }}</ng-container>
                     <ng-container *ngIf="product.flag == 0; else one">
                       {{ product.pricerefer | currency: 'VND':'symbol-narrow' }}
                     </ng-container>
                     <ng-template #one>
                       <span
-                        ><del class="del">{{
-                          product.price | currency: 'VND':'symbol-narrow'
-                        }}</del>
-                        {{
-                          product.pricerefer | currency: 'VND':'symbol-narrow'
-                        }}</span
+                        ><del class="del">{{ product.price | currency: 'VND':'symbol-narrow' }}</del>
+                        {{ product.pricerefer | currency: 'VND':'symbol-narrow' }}</span
                       >
                     </ng-template>
                   </p>
@@ -230,10 +162,7 @@
               </div>
               <div class="divider"></div>
               <div class="icons">
-                <app-controls
-                  [product]="product"
-                  (OpenProductDialog)="openProductDialog(product)"
-                ></app-controls>
+                <app-controls [product]="product" (OpenProductDialog)="openProductDialog(product)"></app-controls>
               </div>
             </div>
           </div>
@@ -241,10 +170,7 @@
       </div>
     </div>
     <div
-      *ngIf="
-        (listSandbox.productLoaded$ | async) &&
-        (listSandbox.productlist$ | async)?.length == 0
-      "
+      *ngIf="(listSandbox.productLoaded$ | async) && (listSandbox.productlist$ | async)?.length == 0"
       fxLayout="row wrap"
     >
       <div fxFlex="100" fxFlex.gt-xs="90" class="p-2">
@@ -253,10 +179,7 @@
         </p>
       </div>
     </div>
-    <div
-      *ngIf="(listSandbox.productlist$ | async)?.length > 0"
-      fxLayout="row wrap"
-    >
+    <div *ngIf="(listSandbox.productlist$ | async)?.length > 0" fxLayout="row wrap">
       <div fxFlex="100">
         <mat-card class="p-0 text-center">
           <mat-paginator

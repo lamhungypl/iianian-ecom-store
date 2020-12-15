@@ -13,10 +13,7 @@ export class ContactComponent implements OnInit {
   public contactForm: FormGroup;
   // validation
   public submitted = false;
-  constructor(
-    public formBuilder: FormBuilder,
-    public listSandbox: ListsSandbox
-  ) {}
+  constructor(public formBuilder: FormBuilder, public listSandbox: ListsSandbox) {}
 
   // Initially calls initContactForm
   ngOnInit() {

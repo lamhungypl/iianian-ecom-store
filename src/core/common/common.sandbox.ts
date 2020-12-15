@@ -32,10 +32,7 @@ export class CommonSandbox {
   public getLanguageList$ = this.appState$.select(getLanguage);
 
   private subscriptions: Array<Subscription> = [];
-  constructor(
-    private router: Router,
-    protected appState$: Store<store.AppState>
-  ) {
+  constructor(private router: Router, protected appState$: Store<store.AppState>) {
     this.registerEvents();
   }
 

@@ -20,11 +20,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="account-content" ngClass.gt-sm="p-left">
-    <div
-      fxLayout="row"
-      fxLayoutAlign="space-between center"
-      class="header-row mat-elevation-z1 text-muted"
-    >
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="header-row mat-elevation-z1 text-muted">
       <button *ngIf="!sidenavOpen" mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>more_vert</mat-icon>
       </button>

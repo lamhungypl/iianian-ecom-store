@@ -9,9 +9,7 @@ import { ContactComponent } from './contact.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NumberAcceptModule } from '../../shared/validation-directives/onlyNumber.module';
 
-export const routes = [
-  { path: '', component: ContactComponent, pathMatch: 'full' },
-];
+export const routes = [{ path: '', component: ContactComponent, pathMatch: 'full' }];
 
 @NgModule({
   imports: [

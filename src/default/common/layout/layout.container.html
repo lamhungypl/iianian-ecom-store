@@ -7,16 +7,9 @@
     <app-spurt-header class="head"></app-spurt-header>
   </mat-toolbar>
   <mat-toolbar>
-    <app-spurt-header-menu
-      [categories]="listSandBox.categoryList$ | async"
-      class="head"
-    ></app-spurt-header-menu>
+    <app-spurt-header-menu [categories]="listSandBox.categoryList$ | async" class="head"></app-spurt-header-menu>
   </mat-toolbar>
-  <app-menu
-    fxShow="false"
-    fxShow.gt-sm
-    [categories]="listSandBox.categoryList$ | async"
-  ></app-menu>
+  <app-menu fxShow="false" fxShow.gt-sm [categories]="listSandBox.categoryList$ | async"></app-menu>
 
   <div class="theme-container main">
     <app-breadcrumb></app-breadcrumb>

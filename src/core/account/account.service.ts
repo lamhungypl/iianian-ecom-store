@@ -53,10 +53,7 @@ export class AccountService extends Api {
   /* update customer address api*/
 
   public updateCustomerAddress(params): Observable<any> {
-    return this.http.put(
-      this.base + 'address/update-address/' + params.addressId,
-      params
-    );
+    return this.http.put(this.base + 'address/update-address/' + params.addressId, params);
   }
 
   /**
@@ -74,10 +71,7 @@ export class AccountService extends Api {
       body: { addressId: params.addressId },
     };
 
-    return this.http.delete(
-      this.base + 'address/delete-address/' + params.addressId,
-      httpOptions
-    );
+    return this.http.delete(this.base + 'address/delete-address/' + params.addressId, httpOptions);
   }
 
   /* get rating detail api*/

@@ -7,9 +7,7 @@ import { ComponentsModule } from '../../shared/components/index';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
-export const routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
-];
+export const routes = [{ path: '', component: HomeComponent, pathMatch: 'full' }];
 
 @NgModule({
   imports: [

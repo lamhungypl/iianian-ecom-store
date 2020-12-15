@@ -75,10 +75,7 @@ export class ListsService extends Api {
         }
       }
     }
-    return this.http.get(
-      this.base + 'product-store/featureproduct-list',
-      reqOpts
-    );
+    return this.http.get(this.base + 'product-store/featureproduct-list', reqOpts);
   }
 
   /* get related product list api*/
@@ -119,17 +116,13 @@ export class ListsService extends Api {
 
   public getProductDetail(params: any): Observable<any> {
     this.base = this.getBaseUrl();
-    return this.http.get(
-      this.base + 'product-store/product-detail/' + params.id
-    );
+    return this.http.get(this.base + 'product-store/product-detail/' + params.id);
   }
   /* get  product detail mandatory api*/
 
   public getProductDetailMandatory(params: any): Observable<any> {
     this.base = this.getBaseUrl();
-    return this.http.get(
-      this.base + 'product-store/product-detail/' + params.id
-    );
+    return this.http.get(this.base + 'product-store/product-detail/' + params.id);
   }
 
   /* get  page list api*/
