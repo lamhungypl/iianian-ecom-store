@@ -6,7 +6,12 @@
     class="filter-sidenav"
     perfectScrollbar
   >
-    <app-spurt-product-filter (progressEmit)="receiveProgress($event)" [isClickedData]="isClicked">
+    <app-spurt-product-filter
+      (progressEmit)="receiveProgress($event)"
+      [isClickedData]="isClicked"
+      [brandId]="brand"
+      [category]="categoryId"
+    >
     </app-spurt-product-filter>
   </mat-sidenav>
   <mat-sidenav-content class="all-products" ngClass.gt-sm="p-left">
@@ -52,6 +57,7 @@
           </div>
         </div>
       </div>
+      <!-- <div *ngIf="viewType == 'grid'" fxLayout="row wrap" class="products-wrapper"> -->
       <div
         *ngFor="let product of listSandbox.productlist$ | async"
         fxFlex="100"
@@ -75,6 +81,7 @@
                 product['Images'].image
               "
               alt=""
+              onError="this.src='/assets/images/default_image.png';"
             />
           </a>
           <!-- <h4 class="category text-muted text-truncate ">{{product.metaTagTitle }}</h4> -->
@@ -134,12 +141,13 @@
                     product.Images.image
                   "
                   alt=""
+                  onError="this.src='/assets/images/default_image.png';"
                 />
               </a>
             </div>
             <div fxFlex="100" fxFlex.gt-xs="60" class="p-2">
               <h4 class="category text-muted">{{ product.metaTagTitle }}</h4>
-              <a [routerLink]="['/products/product-detail', product.productId]" class="title">
+              <a [routerLink]="['/products/productsdetail', product.productId]" class="title">
                 {{ product.name }}
               </a>
               <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
@@ -162,7 +170,11 @@
               </div>
               <div class="divider"></div>
               <div class="icons">
-                <app-controls [product]="product" (OpenProductDialog)="openProductDialog(product)"></app-controls>
+                <app-controls
+                  [product]="product"
+                  [type]="'all'"
+                  (OpenProductDialog)="openProductDialog(product)"
+                ></app-controls>
               </div>
             </div>
           </div>

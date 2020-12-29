@@ -26,7 +26,7 @@ export class ListsService extends Api {
         }
       }
     }
-    return this.http.get(this.base + 'product/productlist', reqOpts);
+    return this.http.get(this.base + 'list/custom-product-list', reqOpts);
   }
 
   /* get category list api*/
