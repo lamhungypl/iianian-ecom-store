@@ -25,6 +25,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(SwiperDirective) directiveRef: SwiperDirective;
   // configuration
   public config: SwiperConfigInterface = {};
+  public configuration: SwiperConfigInterface = {};
   public product: any;
   // images
   public image: any;
@@ -36,6 +37,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
   // route params
   private sub: any;
   private id: any;
+
   public radioValue: any = 'jh';
   public totalPrice: number;
   public removeData: number;
@@ -44,6 +46,8 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
   private previousPrefix: number;
   private temptotalPrice: number;
   // available options
+  public templateHidden: number;
+
   public optionNameSelected: any = [];
   public cartOptionValueArray: any = [];
   public optionNames: any = [];
@@ -56,7 +60,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
   public modeSelect: string;
   // subcription
   private subscriptions: Array<Subscription> = [];
-
+  isActive = [];
   constructor(
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
@@ -90,6 +94,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
       this.id = params['id'];
       this.getProductdetail();
       this.getRelatedProducts();
+      this.getBannerList();
     });
   }
 
@@ -98,6 +103,14 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
     const params: any = {};
     params.productId = this.id;
     this.productDetail.getRelatedProducts(params);
+  }
+
+  // fetch banner list from sandbox
+  getBannerList() {
+    const params: any = {};
+    params.limit = 100;
+    params.offset = 0;
+    this.productDetail.getBannerList(params);
   }
 
   /**
@@ -114,6 +127,8 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
       this.productDetail.productDetails$.subscribe(detail => {
         if (detail && detail.productImage.length > 0) {
           const imageLength = detail.productImage.length;
+          this.isActive = [];
+          this.isActive[detail.productImage[0].productId] = true;
           for (let i = 0; i < imageLength; i++) {
             if (detail.productImage[i].defaultImage === 1) {
               this.productImageId = detail.productImage[i].productImageId;
@@ -144,6 +159,30 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit() {
     this.config = {
       observer: false,
+      direction: 'vertical',
+      autoHeight: true,
+      autoplay: true,
+      spaceBetween: 10,
+      keyboard: true,
+      navigation: true,
+      grabCursor: true,
+      pagination: false,
+      loop: false,
+      preloadImages: false,
+      lazy: true,
+      watchSlidesVisibility: true,
+      breakpoints: {
+        480: {
+          slidesPerView: 2,
+        },
+        600: {
+          slidesPerView: 3,
+        },
+      },
+    };
+
+    this.configuration = {
+      observer: false,
       slidesPerView: 4,
       spaceBetween: 10,
       keyboard: true,
@@ -169,7 +208,12 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
   // view the selected image
   public selectImage(image, i) {
     this.productImageId = image.productImageId;
-    this.image = this.imagePath + '?width=390&height=3900&path=' + image.containerName + '&name=' + image.image;
+    this.isActive = [];
+    this.isActive[image.productImageId] = true;
+
+    this.image = this.imagePath + '?width=390&height=390&path=' + image.containerName + '&name=' + image.image;
+
+    this.changeDetectRef.detectChanges();
     this.zoomImage = this.imagePath + '?width=660&height=660&path=' + image.containerName + '&name=' + image.image;
   }
 

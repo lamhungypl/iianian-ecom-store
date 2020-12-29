@@ -1,14 +1,25 @@
+<div class="spinner-wrapper">
+  <app-spinner [isShow]="productDetail.productDetailLoading$ | async"></app-spinner>
+</div>
+
 <div fxLayout="row wrap">
   <div fxFlex="100" fxFlex.gt-md="35" fxFlex.md="45">
     <mat-card class="product-image">
       <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md>
         <mat-icon>fullscreen</mat-icon>
       </button>
-      <img *ngIf="image" [src]="image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" />
+      <img
+        *ngIf="image"
+        [src]="image"
+        (mousemove)="onMouseMove($event)"
+        (mouseleave)="onMouseLeave($event)"
+        class="fix-image"
+        onError="this.src='/assets/images/default_image.png';"
+      />
     </mat-card>
 
     <div class="small-carousel">
-      <div class="swiper-container" [swiper]="config">
+      <div class="swiper-container" [swiper]="configuration">
         <div class="swiper-wrapper">
           <div *ngFor="let image of (productDetail.productDetails$ | async)?.productImage" class="swiper-slide">
             <mat-card
@@ -19,8 +30,9 @@
               }"
             >
               <img
-                [attr.data-src]="imagePath + '?width=60&height=60&path=' + image.containerName + '&name=' + image.image"
+                [src]="imagePath + '?width=60&height=60&path=' + image.containerName + '&name=' + image.image"
                 class="swiper-lazy"
+                onError="this.src='/assets/images/default_image.png';"
               />
               <div class="swiper-lazy-preloader"></div>
             </mat-card>
@@ -54,6 +66,13 @@
         }}</span>
       </p>
       <p><span class="text-muted fw-500">Availibility: </span><span>Available</span></p>
+      <p *ngIf="productDetail.productDetails$ | async as detail">
+        <ng-template #t let-fill="fill">
+          <span class="star" [class.full]="fill === 100">
+            <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+          </span>
+        </ng-template>
+      </p>
     </div>
     <div class="py-1"></div>
     <div class="divider mt-1"></div>
@@ -134,7 +153,7 @@
           <mat-icon class="mat-icon-xlg text-muted m-0">history</mat-icon>
           <div class="content">
             <p>ONLINE SUPPORT 24/7</p>
-            <span class="text-muted m-0">Call us: (+100) 123 456 7890</span>
+            <span class="text-muted m-0">Call Us: {{ (productDetail.settingDetail$ | async)?.storeTelephone }}</span>
           </div>
         </mat-card>
       </div>
@@ -155,9 +174,33 @@
     </mat-card>
   </div>
   <div fxFlex="100" fxFlex.gt-md="22" fxFlex.md="26" ngClass.gt-sm="pl-3" fxHide fxShow.gt-sm>
+    <!--
     <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%201" alt="" class="mw-100 d-block" />
     <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%202" alt="" class="mw-100 d-block mt-3" />
     <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%203" alt="" class="mw-100 d-block mt-3" />
+  -->
+
+    <div class="big-carousel">
+      <div class="swiper-container" [swiper]="config">
+        <div class="swiper-wrapper">
+          <div *ngFor="let slide of productDetail.bannerList$ | async" class="swiper-slide">
+            <img
+              [routerLink]="['/products']"
+              [src]="imagePath + '?path=' + slide.imagePath + '&name=' + slide.image + '&width=560&height=560'"
+              class="swiper-lazy"
+              onError="this.src='/assets/images/default_image.png';"
+              class="mw-100 d-block mt-3 bannercursor"
+            />
+          </div>
+        </div>
+        <button mat-icon-button class="swiper-button-prev swipe-arrow">
+          <mat-icon>keyboard_arrow_up</mat-icon>
+        </button>
+        <button mat-icon-button class="swiper-button-next swipe-arrow">
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
