@@ -39,7 +39,7 @@
       ></mat-slider>
       <mat-slider
         color="warn"
-        [max]="(listSandbox.maxProductPrice$ | async)?.maximumProductPrice"
+        [max]="(listSandbox.maxProductPrice$ | async) || 1000"
         [min]="1000"
         thumb-label="true"
         [(ngModel)]="priceTo"

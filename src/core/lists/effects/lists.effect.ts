@@ -37,7 +37,7 @@ export class ListsEffect {
     ofType(actions.ActionTypes.GET_PRODUCT_COUNT),
     map((action: actions.GetProductCount) => action.payload),
     switchMap(state => {
-      return this.authApi.getProductList(state).pipe(
+      return this.authApi.getProductCount(state).pipe(
         map(register => new actions.GetProductCountSuccess(register)),
         catchError(error => of(new actions.GetProductCountFail(error)))
       );

@@ -37,7 +37,9 @@ export function reducer(state = initialState, { type, payload }: any): ListsStat
         const productLists = new ProductsResponseModel(product);
         return productLists;
       });
-      const tempMaxProductPrice = payload.data.map(prod => parseInt(prod.price));
+
+      const prices = payload.data.map(prod => parseInt(prod.price) || 0);
+      const tempMaxProductPrice = Math.max(...prices);
 
       return Object.assign({}, state, {
         productLoading: false,
@@ -61,7 +63,8 @@ export function reducer(state = initialState, { type, payload }: any): ListsStat
 
     case actions.ActionTypes.PRODUCT_COUNT_SUCCESS: {
       return Object.assign({}, state, {
-        productCount: payload.data,
+        productCount: payload.data.productCount,
+        maxProductPrice: payload.data.maximumProductPrice,
       });
     }
     case actions.ActionTypes.PRODUCT_COUNT_FAIL: {

@@ -29,6 +29,23 @@ export class ListsService extends Api {
     return this.http.get(this.base + 'list/custom-product-list', reqOpts);
   }
 
+  /* get product list api*/
+
+  public getProductCount(params: any): Observable<any> {
+    this.base = this.getBaseUrl();
+    const reqOpts: any = {};
+    params.count = 1;
+    if (params) {
+      reqOpts.params = new HttpParams();
+      for (const k in params) {
+        if (k) {
+          reqOpts.params = reqOpts.params.set(k, params[k]);
+        }
+      }
+    }
+    return this.http.get(this.base + 'list/custom-product-list', reqOpts);
+  }
+
   /* get category list api*/
 
   public getCategoryList(params: any): Observable<any> {
