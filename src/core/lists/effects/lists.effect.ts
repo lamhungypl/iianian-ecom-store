@@ -87,8 +87,8 @@ export class ListsEffect {
       return this.authApi.getProductDetail(state).pipe(
         tap(res => {
           if (res) {
-            this.title.setTitle(res.data[0].metaTagTitle);
-            this.meta.addTags([{ name: 'description', content: res.data[0].metaTagDescription }]);
+            this.title.setTitle(res.data.metaTagTitle);
+            this.meta.addTags([{ name: 'description', content: res.data.metaTagDescription }]);
             const description = this.meta.getTags('name=description');
           }
         }),

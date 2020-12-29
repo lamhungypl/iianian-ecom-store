@@ -164,7 +164,7 @@ export function reducer(state = initialState, { type, payload }: any): ListsStat
     }
 
     case actions.ActionTypes.PRODUCT_DETAIL_SUCCESS: {
-      const productdetail = new ProductDetailResponseModel(payload.data[0]);
+      const productdetail = new ProductDetailResponseModel(payload.data);
       return Object.assign({}, state, {
         productDetail: productdetail,
         productDetailLoading: false,
