@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { Api } from '../providers/api/api';
 import { TodaydealModel } from './models/todaydeal.model';
+import { ProductListRequest } from './models/request/product-list.request';
 
 @Injectable()
 export class ListsService extends Api {
@@ -18,11 +19,12 @@ export class ListsService extends Api {
   public getProductList(params: any): Observable<any> {
     this.base = this.getBaseUrl();
     const reqOpts: any = {};
-    if (params) {
+    const reqQuery = new ProductListRequest(params);
+    if (reqQuery) {
       reqOpts.params = new HttpParams();
-      for (const k in params) {
-        if (k) {
-          reqOpts.params = reqOpts.params.set(k, params[k]);
+      for (const k in reqQuery) {
+        if (k && reqQuery[k] != null) {
+          reqOpts.params = reqOpts.params.set(k, reqQuery[k]);
         }
       }
     }
