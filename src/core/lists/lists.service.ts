@@ -37,14 +37,14 @@ export class ListsService extends Api {
     this.base = this.getBaseUrl();
     const reqOpts: any = {};
     params.count = 1;
-    if (params) {
-      reqOpts.params = new HttpParams();
-      for (const k in params) {
-        if (k) {
-          reqOpts.params = reqOpts.params.set(k, params[k]);
-        }
+    const reqQuery = new ProductListRequest(params);
+    reqOpts.params = new HttpParams();
+    for (const k in reqQuery) {
+      if (k && reqQuery[k] != null) {
+        reqOpts.params = reqOpts.params.set(k, reqQuery[k]);
       }
     }
+
     return this.http.get(this.base + 'list/custom-product-list', reqOpts);
   }
 
