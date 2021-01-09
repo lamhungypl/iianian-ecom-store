@@ -15,7 +15,12 @@
   </div>
   <div *ngFor="let order of accountSandbox.orderHistoryList$ | async; let i = index" class="mat-row">
     <div class="mat-cell">
-      <span class="order" [ngClass]="{ color: order.orderPrefixId }">{{ order.orderPrefixId }}</span>
+      <span
+        class="order"
+        [ngClass]="{ color: order.orderPrefixId }"
+        [ngStyle]="{ 'background-color': order.orderStatus?.colorCode || '#6798e3' }"
+        >{{ order.orderPrefixId }}</span
+      >
     </div>
     <div class="mat-cell">{{ order.createdDate | date: 'dd/MM/yyyy' }}</div>
     <div class="mat-cell">{{ order.orderStatus.name }}</div>
