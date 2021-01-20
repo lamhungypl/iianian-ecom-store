@@ -18,7 +18,7 @@ import { ConfigService } from '../../../../core/service/config.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-spurt-product-filter',
+  selector: 'app-iian-product-filter',
   templateUrl: './product-filter.component.html',
   styleUrls: ['./product-filter.component.scss'],
 })

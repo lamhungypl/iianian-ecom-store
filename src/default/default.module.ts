@@ -46,7 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   imports: [
     BrowserModule.withServerTransition({
-      appId: 'spurtStore',
+      appId: 'iianStore',
     }),
     BrowserModule,
     BrowserAnimationsModule,

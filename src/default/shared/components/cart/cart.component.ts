@@ -5,7 +5,7 @@ import { ConfigService } from '../../../../core/service/config.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-spurt-cart',
+  selector: 'app-iian-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
   providers: [ProductControlService, ProductControlSandbox],

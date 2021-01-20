@@ -1,5 +1,5 @@
 {
-  "name": "spurtcommerce",
+  "name": "iiancommerce",
   "version": "2.2.0",
   "scripts": {
     "ng": "ng",
@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:ssr": "node dist/server.js",
-    "build:client-and-server-bundles": "ng build --prod && ng run spurtstore:server",
+    "build:client-and-server-bundles": "ng build --prod && ng run iianstore:server",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
     "pretty": "prettier --write \"./**/*.{js,jsx,json,ts,html,css,scss}\""
   },

@@ -7,7 +7,7 @@ export class Settings {
 @Injectable()
 export class AppSettings {
   public settings = new Settings(
-    'Spurt Commerce', // theme name
+    'iian Commerce', // theme name
     'green' // green, blue, red, pink, purple, grey
   );
 }

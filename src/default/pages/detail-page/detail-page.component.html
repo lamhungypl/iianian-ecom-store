@@ -1,4 +1,4 @@
 <div>
   <h1>{{ (listSandbox.pageDetail$ | async)?.title }}</h1>
-  <p [innerHtml]="(listSandbox.pageDetail$ | async)?.content"></p>
+  <div [innerHtml]="(listSandbox?.pageDetail$ | async)?.content"></div>
 </div>
