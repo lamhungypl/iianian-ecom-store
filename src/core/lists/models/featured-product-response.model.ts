@@ -10,16 +10,16 @@ export class FeaturedProductResponseModel {
   public flag: any;
   public pricerefer: any;
 
-  constructor(bannerResponse: any) {
-    this.flag = bannerResponse.flag || '';
-    this.pricerefer = bannerResponse.pricerefer || '';
-    this.productId = bannerResponse.productId || '';
-    this.title = bannerResponse.metaTagTitle || '';
-    this.name = bannerResponse.name || '';
-    this.price = bannerResponse.price || '';
-    this.sku = bannerResponse.sku || '';
-    this.quantity = bannerResponse.quantity || 0;
-    this.image = bannerResponse.Images;
-    this.rating = bannerResponse.rating || 0;
+  constructor(featuredResponse: any) {
+    this.flag = featuredResponse.flag || '';
+    this.pricerefer = featuredResponse.pricerefer || '';
+    this.productId = featuredResponse.productId || '';
+    this.title = featuredResponse.metaTagTitle || '';
+    this.name = featuredResponse.name || '';
+    this.price = featuredResponse.price || '';
+    this.sku = featuredResponse.sku || '';
+    this.quantity = featuredResponse.quantity || 0;
+    this.image = featuredResponse.Images;
+    this.rating = featuredResponse.rating || 0;
   }
 }
