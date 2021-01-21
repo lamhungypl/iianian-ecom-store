@@ -77,17 +77,14 @@
     <div class="py-1"></div>
     <div class="divider mt-1"></div>
     <h2 class="py-2 new-price">
-      <ng-container
-        *ngIf="
-          (productDetail.productDetails$ | async)?.flag == '' &&
-          (productDetail.productDetails$ | async)?.pricerefer == ''
-        "
-      >
+      <ng-container *ngIf="(productDetail.productDetails$ | async)?.pricerefer == ''; else one">
         {{ (productDetail.productDetails$ | async)?.price | currency: 'VND':'symbol-narrow' }}
       </ng-container>
+      <!--
       <ng-container *ngIf="(productDetail.productDetails$ | async)?.flag == 0; else one">
         {{ (productDetail.productDetails$ | async)?.pricerefer | currency: 'VND':'symbol-narrow' }}
       </ng-container>
+    -->
       <ng-template #one>
         <span
           ><del class="del">{{ (productDetail.productDetails$ | async)?.price | currency: 'VND':'symbol-narrow' }}</del>
