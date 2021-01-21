@@ -40,8 +40,8 @@
           <span class="text-muted fw-500">Category: </span><span>{{ product.name }}</span>
         </p>
         <p>
-          <span class="text-muted fw-500">Availibility: </span
-          ><span>{{ product.availibilityCount > 0 ? 'In stock' : 'Unavailable' }}</span>
+          <span class="text-muted fw-500">Availibility: Available</span>
+          <!-- <span>{{ product.availibilityCount > 0 ? 'In stock' : 'Unavailable' }}</span> -->
         </p>
       </div>
       <div class="py-1"></div>
@@ -53,7 +53,15 @@
       </div>
       <div class="divider"></div>
       <h2 class="mt-2 new-price">
-        {{ product.price | currency: 'VND':'symbol-narrow' }}
+        <ng-container *ngIf="product.pricerefer == ''; else one">
+          {{ product.price | currency: 'VND':'symbol-narrow' }}
+        </ng-container>
+        <ng-template #one>
+          <p>
+            <del class="del">{{ product.price | currency: 'VND':'symbol-narrow' }}</del>
+            {{ product.price | currency: 'VND':'symbol-narrow' }}
+          </p>
+        </ng-template>
       </h2>
       <app-controls [product]="product" [type]="'detail'"></app-controls>
     </div>
